@@ -1,19 +1,36 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './style/App.css';
 import {TopBar} from "./components/TopBar";
-
 import 'bootstrap/dist/css/bootstrap.min.css';
+import {GenOptionsComponent} from "./components/GenOptionsComponent";
+import {Generation} from "./types";
+
+
 
 function App() {
-  const [selectedGens, setSelectedGens] = useState<number[]>([1,2,3,4,5,6,7,8,9])
+  const [selectedGens, setSelectedGens] = useState<Generation[]>([])
   const [asGrid, setAsGrid] = useState<boolean>(true)
+
+  useEffect(() => {
+    let list = [1,2,3,4,5,6,7,8]
+    let GenList: Generation[] = []
+    list.map((gen, i) => {
+      const newGen: Generation = {
+        selected: true,
+        name: "Gen " + gen
+      }
+      GenList.push(newGen)
+    })
+    setSelectedGens(GenList)
+    // console.log(selectedGens)
+  }, []);
 
   return (
     <div className="App">
-      <TopBar selectedGens={selectedGens}
-              setSelectedGens={setSelectedGens}
-              asGrid={asGrid}
+      <TopBar asGrid={asGrid}
               setAsGrid={setAsGrid}/>
+      <GenOptionsComponent selectedGens={selectedGens}
+                           setSelectedGens={setSelectedGens}/>
     </div>
   );
 }
