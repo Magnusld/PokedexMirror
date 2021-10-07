@@ -1,5 +1,11 @@
+:root {
+  --main-color: #F5F5F5;
+  --secondary-color: #466060;
+}
+
 .App {
   text-align: center;
+  background: var(--main-color);
 }
 
 .App-logo {
@@ -35,4 +41,32 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.topbar {
+  width: 100vw;
+  background: var(--secondary-color);
+  height: 15vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+.search {
+  height: 35px;
+  margin: 3px;
+  align-content: baseline;
+}
+.displayOptions {
+  display: flex;
+
+}
+.active {
+  fill: var(--main-color);
+}
+.showGenSelection {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  justify-content: center;
 }
