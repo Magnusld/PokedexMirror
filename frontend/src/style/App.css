@@ -1,9 +1,11 @@
 :root {
+  --main-color: #F5F5F5;
   --secondary-color: #466060;
 }
 
 .App {
   text-align: center;
+  background: var(--main-color);
 }
 
 .App-logo {
@@ -58,4 +60,7 @@
 .displayOptions {
   display: flex;
 
+}
+.active {
+  fill: var(--main-color);
 }
