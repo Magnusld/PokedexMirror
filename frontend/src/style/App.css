@@ -64,3 +64,9 @@
 .active {
   fill: var(--main-color);
 }
+.showGenSelection {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  justify-content: center;
+}

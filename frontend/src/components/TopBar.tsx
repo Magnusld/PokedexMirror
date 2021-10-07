@@ -8,12 +8,19 @@ import {ReactComponent as Search} from "../assets/search_black_24dp.svg";
 export function TopBar(props: {
   asGrid: boolean
   setAsGrid: (value: boolean) => void
+  setShowGenSelection: (value: boolean) => void
+  showGenSelection: boolean
+
 }) {
   const searchText = ""
   const asGrid = props.asGrid
+  const showGenSelection = props.showGenSelection
 
   const swapAsGrid = () => {
     props.setAsGrid(!asGrid)
+  }
+  const swapShowGenSelection = () => {
+    props.setShowGenSelection(!showGenSelection)
   }
 
 
@@ -24,7 +31,7 @@ export function TopBar(props: {
           <Search style={{height: 35, width: 35, fill: "#F5F5F5"}}/>
         </div>
         <div>
-          <Button variant="outline-light" style={{marginRight:5}}>Velg Generasjon</Button>
+          <Button variant="outline-light" style={{marginRight:5}} onClick={swapShowGenSelection}>Velg Generasjon</Button>
           <Button variant="outline-light">Velg Type</Button>
         </div>
         <div>

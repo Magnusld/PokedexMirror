@@ -10,6 +10,7 @@ import {Generation} from "./types";
 function App() {
   const [selectedGens, setSelectedGens] = useState<Generation[]>([])
   const [asGrid, setAsGrid] = useState<boolean>(true)
+  const [showGenSelection, setShowGenSelection] = useState<boolean>(false)
 
   useEffect(() => {
     let list = [1,2,3,4,5,6,7,8]
@@ -22,15 +23,17 @@ function App() {
       GenList.push(newGen)
     })
     setSelectedGens(GenList)
-    // console.log(selectedGens)
+    console.log(selectedGens)
   }, []);
 
   return (
     <div className="App">
       <TopBar asGrid={asGrid}
-              setAsGrid={setAsGrid}/>
-      <GenOptionsComponent selectedGens={selectedGens}
-                           setSelectedGens={setSelectedGens}/>
+              setAsGrid={setAsGrid}
+              setShowGenSelection={setShowGenSelection}
+              showGenSelection={showGenSelection}/>
+      {showGenSelection ? <GenOptionsComponent selectedGens={selectedGens}
+                           setSelectedGens={setSelectedGens}/> : null}
     </div>
   );
 }

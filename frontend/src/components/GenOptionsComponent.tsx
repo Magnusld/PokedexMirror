@@ -1,6 +1,6 @@
 import React from 'react';
 import '../style/App.css';
-import {Form} from "react-bootstrap";
+import {Button, Form} from "react-bootstrap";
 import {Generation} from "../types";
 
 export function GenOptionsComponent(props: {
@@ -8,11 +8,19 @@ export function GenOptionsComponent(props: {
   setSelectedGens: (gens: Generation[]) => void
 }) {
   const selectedGens = props.selectedGens
-  const setSelectedGens = props.setSelectedGens
+  const updateSeletedGens = (index: number) => {
+    selectedGens[index].selected = !selectedGens[index].selected
+    props.setSelectedGens(selectedGens)
+    console.log(selectedGens)
+  }
+
+  let showGenSelection = selectedGens.map((gen, i) => (
+      <Button key={i} onClick={() => {updateSeletedGens(i+1)}}>{gen.name}</Button>
+  ));
 
   return (
-      <div>
-
+      <div className={"showGenSelection"}>
+        {showGenSelection}
       </div>
   )
 }
