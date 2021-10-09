@@ -4,6 +4,7 @@ import {TopBar} from "./components/TopBar";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {GenOptionsComponent} from "./components/GenOptionsComponent";
 import {Generation} from "./types";
+import Info from './pages/Info';
 
 
 
@@ -34,6 +35,7 @@ function App() {
               showGenSelection={showGenSelection}/>
       {showGenSelection ? <GenOptionsComponent selectedGens={selectedGens}
                            setSelectedGens={setSelectedGens}/> : null}
+      <Info />
     </div>
   );
 }
