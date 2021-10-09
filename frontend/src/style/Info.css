@@ -1,0 +1,105 @@
+.info-container {
+    width: 70vw;
+    padding: 10px;
+    margin: 20px auto;
+    background-color: rgb(161, 189, 214);
+}
+
+.top-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-gap: 10px;
+    height: 300px;
+}
+
+.image {
+    background-color: white;
+    padding: 20px;
+}
+
+.basic-info {
+    background-color: white;
+    padding: 10px;
+}
+
+.name-number {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.pokename {
+    font-size: 2em;
+
+}
+
+.pokenum {
+    text-align: center;
+    font-size: 1.2em;
+    height: 3em;
+    width: 3em;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.more-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 45%;
+}
+
+.types {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 40%;
+}
+
+.type-icon {
+    padding: 5px 20px;
+    font-size: 1.4em;
+    font-weight: 600;
+    border-radius: 5px;
+    border: 1px solid black
+}
+
+.middle-container {
+    width: 70%;
+    margin: 10px auto;
+    background-color: goldenrod;
+    height: 200px;
+}
+
+.bottom-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+    height: 400px;
+}
+
+.stats {
+    background-color: white;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 10px;
+    font-size: 1.2em;
+    font-weight: 500;
+
+
+}
+
+.stats-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.abilities {
+    background-color: orangered;
+}
