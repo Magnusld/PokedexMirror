@@ -11,10 +11,16 @@ import {
 } from 'nexus';
 import { nexusPrisma } from 'nexus-plugin-prisma'
 import {Context} from './context';
+import pluralize from "pluralize";
+
+// Fix for duplikat, noe fra nexus-plugin-prisma
+pluralize.addIrregularRule("pokemon", "pokemons");
+
 
 const Pokemon = objectType({
     name: 'Pokemon',
     definition(t) {
+
         t.nonNull.int('id');
         t.nonNull.int('pokedexNr');
         t.nonNull.string('name');
@@ -37,23 +43,14 @@ const Pokemon = objectType({
 });
 
 const Query = queryType( {
+
     definition: t => {
-        // allPokemon
-        t.nonNull.list.nonNull.field('allPokemon', {
-            type: 'Pokemon',
-            resolve: (_parent, _args, ctx: Context) => {
-                return ctx.prisma.pokemon.findMany()
-            }
-
-        });
-
-        // pokemonsByGeneration
-        // pokemonByNatDex
-        // pokemonBy
-        //
-        //
-
-
+        t.crud.pokemon()
+        t.crud.pokemons({
+            pagination: true,
+            filtering: true,
+            ordering: true,
+        })
     }
 });
 
@@ -70,18 +67,10 @@ const Mutation = objectType({
 });
 */
 
-const SortOrder = enumType({
-    name: 'SortOrder',
-    members: ['asc', 'desc'],
-})
-
-
 export const schema = makeSchema({
     types: [
         //Mutation,
         Query,
-        SortOrder,
-
         Pokemon,
     ],
     outputs: {
