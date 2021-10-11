@@ -38,14 +38,20 @@ const Pokemon = objectType({
 
 const Query = queryType( {
     definition: t => {
+
+        t.crud.pokemon({
+            pagination: true,
+            filtering: true,
+            ordering: true,
+        })
+
         // allPokemon
-        t.nonNull.list.nonNull.field('allPokemon', {
+        /*t.nonNull.list.nonNull.field('allPokemon', {
             type: 'Pokemon',
             resolve: (_parent, _args, ctx: Context) => {
                 return ctx.prisma.pokemon.findMany()
             }
-
-        });
+        }); */
 
         // pokemonsByGeneration
         // pokemonByNatDex
@@ -70,18 +76,10 @@ const Mutation = objectType({
 });
 */
 
-const SortOrder = enumType({
-    name: 'SortOrder',
-    members: ['asc', 'desc'],
-})
-
-
 export const schema = makeSchema({
     types: [
         //Mutation,
         Query,
-        SortOrder,
-
         Pokemon,
     ],
     outputs: {
