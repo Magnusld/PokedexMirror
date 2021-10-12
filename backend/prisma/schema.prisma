@@ -1,0 +1,29 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Pokemon {
+    id              Int     @id @default(autoincrement())
+    pokedexNr       Int
+    name            String
+    generation      Int
+    species         String
+    type1           String
+    type2           String?
+    heightMeter     Float?
+    weightKg        Float?
+    hp              Int
+    attack          Int
+    defense         Int
+    sp_attack       Int
+    sp_defense      Int
+    speed           Int
+    ability1        String?
+    ability2        String?
+    ability3        String?
+}
