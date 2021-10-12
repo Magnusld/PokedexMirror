@@ -1,10 +1,29 @@
 import React, {useState} from 'react';
 import '../style/App.css';
 import {Button, Form, ToggleButton} from "react-bootstrap";
+import {RootState} from "../redux/store";
+import {useDispatch, useSelector} from "react-redux";
+import {swapSelected} from "../redux/generationSlice";
 
 export function GenOptionsComponent() {
+  const [checked, setChecked] = useState(false)
+  const selectedGen = useSelector((state: RootState) => state.selectedGen.value)
+  const dispatch = useDispatch()
 
-  const [checked, setChecked] = useState(false) // Temp variabel
+  const handleButtonClick = (id: number) => {
+    dispatch(swapSelected(id))
+    //console.log(selectedGen)
+  }
+
+  let showToggleButtons = selectedGen.map((gen, i) => (
+      <ToggleButton key = {gen.id}
+                    className="mb-2"
+                    type="checkbox" value="1"
+                    checked={gen.selected}
+                    variant="outline-primary"
+                    id="toggle-check"
+                    onClick={() => handleButtonClick(i)}>{gen.name}</ToggleButton>
+  ))
 
   return (
       <div style={{display: "flex", justifyContent: "center"}}>
@@ -13,7 +32,15 @@ export function GenOptionsComponent() {
             <h3 style={{textAlign: "left"}}>Generasjon</h3>
           </div>
           <div className={"optionsButtonsContainer"} style={{flexGrow: 1}}>
-            <ToggleButton className="mb-2"
+            {showToggleButtons}
+          </div>
+        </div>
+      </div>
+  )
+}
+
+/*
+<ToggleButton className="mb-2"
                           type="checkbox" value="1"
                           checked={checked}
                           variant="outline-primary"
@@ -61,8 +88,5 @@ export function GenOptionsComponent() {
                           variant="outline-primary"
                           id="toggle-check"
                           onClick={() => setChecked(!checked)}>Gen 8</ToggleButton>
-          </div>
-        </div>
-      </div>
-  )
-}
+
+ */

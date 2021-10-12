@@ -82,8 +82,10 @@
 }
 
 .mb-2:hover {
- background-color: var(--secondary-color) !important;
+  background-color: var(--secondary-color) !important;
+  color: var(--main-color) !important;
 }
 .btn-check:checked + .mb-2 {
   background-color: var(--secondary-color) !important;
+  color: var(--main-color) !important;
 }
