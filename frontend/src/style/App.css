@@ -64,7 +64,7 @@
 .active {
   fill: var(--main-color);
 }
-.showGenSelection {
+.optionsButtonsContainer {
   display: flex;
   flex-direction: row;
   gap: 5px;

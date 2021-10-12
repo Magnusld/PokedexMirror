@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import '../style/App.css';
 import {Button, Form, ToggleButton} from "react-bootstrap";
 
-export function GenOptionsComponent() {
+export function TypeOptionComponent() {
 
   const [checked, setChecked] = useState(false) // Temp variabel
 
