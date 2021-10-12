@@ -70,3 +70,9 @@
   gap: 5px;
   justify-content: center;
 }
+.genOptions {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 60vw;
+}
