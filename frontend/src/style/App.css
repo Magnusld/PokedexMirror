@@ -68,5 +68,10 @@
   display: flex;
   flex-direction: row;
   gap: 5px;
-  justify-content: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+.genOptions {
+  justify-content: left;
+  width: 40vw;
 }
