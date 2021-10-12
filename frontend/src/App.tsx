@@ -4,9 +4,6 @@ import {TopBar} from "./components/TopBar";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {GenOptionsComponent} from "./components/GenOptionsComponent";
 import {TypeOptionComponent} from "./components/TypeOptionComponent";
-import {useDispatch, useSelector} from "react-redux";
-import {RootState} from "./redux/store";
-import {setAllTrue} from "./redux/generationSlice";
 
 function App() {
   const [asGrid, setAsGrid] = useState<boolean>(true)

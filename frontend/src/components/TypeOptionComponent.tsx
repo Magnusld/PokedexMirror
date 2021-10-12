@@ -19,10 +19,18 @@ import {ReactComponent as Psychic} from "../assets/typeIconsSvg/Pokémon_Psychic
 import {ReactComponent as Rock} from "../assets/typeIconsSvg/Pokémon_Rock_Type_Icon.svg";
 import {ReactComponent as Steel} from "../assets/typeIconsSvg/Pokémon_Steel_Type_Icon.svg";
 import {ReactComponent as Water} from "../assets/typeIconsSvg/Pokémon_Water_Type_Icon.svg";
+import {useDispatch, useSelector} from "react-redux";
+import {RootState} from "../redux/store";
+import {swapSelectedType} from "../redux/TypeSlice";
 
 export function TypeOptionComponent() {
-
   const [checked, setChecked] = useState(false) // Temp variabel
+  const selectedType = useSelector((state: RootState) => state.selectedType.value)
+  const dispatch = useDispatch()
+
+  const handleButtonClick = (id: number) => {
+    dispatch(swapSelectedType(id))
+  }
 
   return (
       <div style={{display: "flex", justifyContent: "center"}}>
@@ -33,129 +41,129 @@ export function TypeOptionComponent() {
           <div className={"optionsButtonsContainer"}>
             <ToggleButton className="mb-2"
                           type="checkbox" value="1"
-                          checked={checked}
+                          checked={selectedType[0].selected}
                           variant="outline-primary"
                           id="toggle-check"
-                          onClick={() => setChecked(!checked)}>
+                          onClick={() => handleButtonClick(0)}>
               <Bug style={{height: 35, width: 35}}/></ToggleButton>
             <ToggleButton className="mb-2"
                           type="checkbox" value="1"
-                          checked={checked}
+                          checked={selectedType[1].selected}
                           variant="outline-primary"
                           id="toggle-check"
-                          onClick={() => setChecked(!checked)}>
+                          onClick={() => handleButtonClick(1)}>
               <Dark style={{height: 35, width: 35}}/></ToggleButton>
             <ToggleButton className="mb-2"
                           type="checkbox" value="1"
-                          checked={checked}
+                          checked={selectedType[2].selected}
                           variant="outline-primary"
                           id="toggle-check"
-                          onClick={() => setChecked(!checked)}>
+                          onClick={() => handleButtonClick(2)}>
               <Dragon style={{height: 35, width: 35}}/></ToggleButton>
             <ToggleButton className="mb-2"
                           type="checkbox" value="1"
-                          checked={checked}
+                          checked={selectedType[3].selected}
                           variant="outline-primary"
                           id="toggle-check"
-                          onClick={() => setChecked(!checked)}>
+                          onClick={() => handleButtonClick(3)}>
               <Electric style={{height: 35, width: 35}}/></ToggleButton>
             <ToggleButton className="mb-2"
                           type="checkbox" value="1"
-                          checked={checked}
+                          checked={selectedType[4].selected}
                           variant="outline-primary"
                           id="toggle-check"
-                          onClick={() => setChecked(!checked)}>
+                          onClick={() => handleButtonClick(4)}>
               <Fairy style={{height: 35, width: 35}}/></ToggleButton>
             <ToggleButton className="mb-2"
                           type="checkbox" value="1"
-                          checked={checked}
+                          checked={selectedType[5].selected}
                           variant="outline-primary"
                           id="toggle-check"
-                          onClick={() => setChecked(!checked)}>
+                          onClick={() => handleButtonClick(5)}>
               <Fighting style={{height: 35, width: 35}}/></ToggleButton>
             <ToggleButton className="mb-2"
                           type="checkbox" value="1"
-                          checked={checked}
+                          checked={selectedType[6].selected}
                           variant="outline-primary"
                           id="toggle-check"
-                          onClick={() => setChecked(!checked)}>
+                          onClick={() => handleButtonClick(6)}>
               <Fire style={{height: 35, width: 35}}/></ToggleButton>
             <ToggleButton className="mb-2"
                           type="checkbox" value="1"
-                          checked={checked}
+                          checked={selectedType[7].selected}
                           variant="outline-primary"
                           id="toggle-check"
-                          onClick={() => setChecked(!checked)}>
+                          onClick={() => handleButtonClick(7)}>
               <Flying style={{height: 35, width: 35}}/></ToggleButton>
             <ToggleButton className="mb-2"
                           type="checkbox" value="1"
-                          checked={checked}
+                          checked={selectedType[8].selected}
                           variant="outline-primary"
                           id="toggle-check"
-                          onClick={() => setChecked(!checked)}>
+                          onClick={() => handleButtonClick(8)}>
               <Ghost style={{height: 35, width: 35}}/></ToggleButton>
             <ToggleButton className="mb-2"
                           type="checkbox" value="1"
-                          checked={checked}
+                          checked={selectedType[9].selected}
                           variant="outline-primary"
                           id="toggle-check"
-                          onClick={() => setChecked(!checked)}>
+                          onClick={() => handleButtonClick(9)}>
               <Grass style={{height: 35, width: 35}}/></ToggleButton>
             <ToggleButton className="mb-2"
                           type="checkbox" value="1"
-                          checked={checked}
+                          checked={selectedType[10].selected}
                           variant="outline-primary"
                           id="toggle-check"
-                          onClick={() => setChecked(!checked)}>
+                          onClick={() => handleButtonClick(10)}>
               <Ground style={{height: 35, width: 35}}/></ToggleButton>
             <ToggleButton className="mb-2"
                           type="checkbox" value="1"
-                          checked={checked}
+                          checked={selectedType[11].selected}
                           variant="outline-primary"
                           id="toggle-check"
-                          onClick={() => setChecked(!checked)}>
+                          onClick={() => handleButtonClick(11)}>
               <Ice style={{height: 35, width: 35}}/></ToggleButton>
             <ToggleButton className="mb-2"
                           type="checkbox" value="1"
-                          checked={checked}
+                          checked={selectedType[12].selected}
                           variant="outline-primary"
                           id="toggle-check"
-                          onClick={() => setChecked(!checked)}>
+                          onClick={() => handleButtonClick(12)}>
               <Normal style={{height: 35, width: 35}}/></ToggleButton>
             <ToggleButton className="mb-2"
                           type="checkbox" value="1"
-                          checked={checked}
+                          checked={selectedType[13].selected}
                           variant="outline-primary"
                           id="toggle-check"
-                          onClick={() => setChecked(!checked)}>
+                          onClick={() => handleButtonClick(13)}>
               <Poison style={{height: 35, width: 35}}/></ToggleButton>
             <ToggleButton className="mb-2"
                           type="checkbox" value="1"
-                          checked={checked}
+                          checked={selectedType[14].selected}
                           variant="outline-primary"
                           id="toggle-check"
-                          onClick={() => setChecked(!checked)}>
+                          onClick={() => handleButtonClick(14)}>
               <Psychic style={{height: 35, width: 35}}/></ToggleButton>
             <ToggleButton className="mb-2"
                           type="checkbox" value="1"
-                          checked={checked}
+                          checked={selectedType[15].selected}
                           variant="outline-primary"
                           id="toggle-check"
-                          onClick={() => setChecked(!checked)}>
+                          onClick={() => handleButtonClick(15)}>
               <Rock style={{height: 35, width: 35}}/></ToggleButton>
             <ToggleButton className="mb-2"
                           type="checkbox" value="1"
-                          checked={checked}
+                          checked={selectedType[16].selected}
                           variant="outline-primary"
                           id="toggle-check"
-                          onClick={() => setChecked(!checked)}>
+                          onClick={() => handleButtonClick(16)}>
               <Steel style={{height: 35, width: 35}}/></ToggleButton>
             <ToggleButton className="mb-2"
                           type="checkbox" value="1"
-                          checked={checked}
+                          checked={selectedType[17].selected}
                           variant="outline-primary"
                           id="toggle-check"
-                          onClick={() => setChecked(!checked)}>
+                          onClick={() => handleButtonClick(17)}>
               <Water style={{height: 35, width: 35}}/></ToggleButton>
           </div>
         </div>

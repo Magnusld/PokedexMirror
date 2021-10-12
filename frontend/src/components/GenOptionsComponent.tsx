@@ -3,7 +3,7 @@ import '../style/App.css';
 import {Button, Form, ToggleButton} from "react-bootstrap";
 import {RootState} from "../redux/store";
 import {useDispatch, useSelector} from "react-redux";
-import {swapSelected} from "../redux/generationSlice";
+import {swapSelectedGen} from "../redux/generationSlice";
 
 export function GenOptionsComponent() {
   const [checked, setChecked] = useState(false)
@@ -11,7 +11,7 @@ export function GenOptionsComponent() {
   const dispatch = useDispatch()
 
   const handleButtonClick = (id: number) => {
-    dispatch(swapSelected(id))
+    dispatch(swapSelectedGen(id))
     //console.log(selectedGen)
   }
 
