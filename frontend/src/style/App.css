@@ -75,3 +75,15 @@
   justify-content: left;
   width: 40vw;
 }
+
+.mb-2 {
+  border-color: var(--secondary-color) !important;
+  color: var(--secondary-color) !important;
+}
+
+.mb-2:hover {
+ background-color: var(--secondary-color) !important;
+}
+.btn-check:checked + .mb-2 {
+  background-color: var(--secondary-color) !important;
+}
