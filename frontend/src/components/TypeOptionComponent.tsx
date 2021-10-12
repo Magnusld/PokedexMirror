@@ -28,7 +28,7 @@ export function TypeOptionComponent() {
       <div style={{display: "flex", justifyContent: "center"}}>
         <div className={"filteringOptionsContainer"}>
           <div>
-            <h3 style={{textAlign: "left"}}>Generasjon</h3>
+            <h3 style={{textAlign: "left"}}>Type</h3>
           </div>
           <div className={"optionsButtonsContainer"}>
             <ToggleButton className="mb-2"
