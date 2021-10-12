@@ -3,7 +3,7 @@ import '../style/App.css';
 import {Button, Form, ToggleButton} from "react-bootstrap";
 import {RootState} from "../redux/store";
 import {useDispatch, useSelector} from "react-redux";
-import {swapSelectedGen} from "../redux/generationSlice";
+import {setAllGensTrue, swapSelectedGen} from "../redux/generationSlice";
 
 export function GenOptionsComponent() {
   const [checked, setChecked] = useState(false)
@@ -29,11 +29,13 @@ export function GenOptionsComponent() {
       <div style={{display: "flex", justifyContent: "center"}}>
         <div className={"filteringOptionsContainer"}>
           <div>
-            <h3 style={{textAlign: "left"}}>Generasjon</h3>
+            <h3 style={{textAlign: "left", marginTop: 10}}>Generasjon</h3>
           </div>
           <div className={"optionsButtonsContainer"} style={{flexGrow: 1}}>
             {showToggleButtons}
           </div>
+          <Button className="clearAllButton" variant="secondary"
+                  onClick={() => dispatch(setAllGensTrue())}>Fjerne alle valg</Button>
         </div>
       </div>
   )

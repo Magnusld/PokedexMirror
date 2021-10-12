@@ -19,8 +19,10 @@ function App() {
               showGenSelection={showGenSelection}
               setShowTypeSelection={setShowTypeSelection}
               showTypeSelection={showTypeSelection}/>
-      {showGenSelection ? <GenOptionsComponent /> : null}
-      {showTypeSelection ? <TypeOptionComponent /> : null}
+      <div className="optionsContainer">
+        {showGenSelection ? <GenOptionsComponent /> : null}
+        {showTypeSelection ? <TypeOptionComponent /> : null}
+      </div>
     </div>
   );
 }
