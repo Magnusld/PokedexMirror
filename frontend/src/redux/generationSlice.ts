@@ -1,14 +1,14 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import {Generation} from "../types";
+import {SelectedGeneration} from "../types";
 
 export interface SelectedGenState {
-  value: Generation[]
+  value: SelectedGeneration[]
 }
 function initiateList() {
-  const value: Generation[] = []
+  const value: SelectedGeneration[] = []
   const list = [1,2,3,4,5,6,7,8]
   list.map((gen, i) => {
-    const generation: Generation = {
+    const generation: SelectedGeneration = {
       id: i,
       selected: true,
       name: "Gen " + gen

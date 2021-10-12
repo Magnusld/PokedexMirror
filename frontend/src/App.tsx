@@ -12,8 +12,6 @@ function App() {
   const [asGrid, setAsGrid] = useState<boolean>(true)
   const [showGenSelection, setShowGenSelection] = useState<boolean>(false)
   const [showTypeSelection, setShowTypeSelection] = useState<boolean>(false)
-  const selectedGen = useSelector((state: RootState) => state.selectedGen.value)
-  const dispatch = useDispatch()
 
 
   return (
