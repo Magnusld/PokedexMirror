@@ -15,8 +15,9 @@ function App() {
       <TopBar asGrid={asGrid}
               setAsGrid={setAsGrid}
               setShowGenSelection={setShowGenSelection}
-              showGenSelection={showGenSelection}/>
-
+              showGenSelection={showGenSelection}
+              setShowTypeSelection={setShowTypeSelection}
+              showTypeSelection={showTypeSelection}/>
       {showGenSelection ? <GenOptionsComponent /> : null}
       {showTypeSelection ? <TypeOptionComponent /> : null}
     </div>

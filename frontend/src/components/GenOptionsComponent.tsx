@@ -8,7 +8,7 @@ export function GenOptionsComponent() {
 
   return (
       <div style={{display: "flex", justifyContent: "center"}}>
-        <div className={"genOptions"}>
+        <div className={"filteringOptionsContainer"}>
           <div>
             <h3 style={{textAlign: "left"}}>Generasjon</h3>
           </div>
