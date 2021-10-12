@@ -8,11 +8,11 @@ export function GenOptionsComponent() {
 
   return (
       <div style={{display: "flex", justifyContent: "center"}}>
-        <div className={"genOptions"}>
+        <div className={"filteringOptionsContainer"}>
           <div>
             <h3 style={{textAlign: "left"}}>Generasjon</h3>
           </div>
-          <div className={"showGenSelection"}>
+          <div className={"optionsButtonsContainer"} style={{flexGrow: 1}}>
             <ToggleButton className="mb-2"
                           type="checkbox" value="1"
                           checked={checked}
