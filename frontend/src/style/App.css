@@ -74,6 +74,7 @@
 .filteringOptionsContainer {
   justify-content: left;
   width: 40vw;
+  min-width: 300px;
 }
 
 .mb-2 {
@@ -82,8 +83,21 @@
 }
 
 .mb-2:hover {
- background-color: var(--secondary-color) !important;
+  background-color: var(--secondary-color) !important;
+  color: var(--main-color) !important;
 }
 .btn-check:checked + .mb-2 {
   background-color: var(--secondary-color) !important;
+  color: var(--main-color) !important;
+}
+
+.clearAllButton {
+  float: left;
+  margin-bottom: 25px;
+}
+.optionsContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
 }

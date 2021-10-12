@@ -10,6 +10,7 @@ function App() {
   const [showGenSelection, setShowGenSelection] = useState<boolean>(false)
   const [showTypeSelection, setShowTypeSelection] = useState<boolean>(false)
 
+
   return (
     <div className="App">
       <TopBar asGrid={asGrid}
@@ -18,8 +19,10 @@ function App() {
               showGenSelection={showGenSelection}
               setShowTypeSelection={setShowTypeSelection}
               showTypeSelection={showTypeSelection}/>
-      {showGenSelection ? <GenOptionsComponent /> : null}
-      {showTypeSelection ? <TypeOptionComponent /> : null}
+      <div className="optionsContainer">
+        {showGenSelection ? <GenOptionsComponent /> : null}
+        {showTypeSelection ? <TypeOptionComponent /> : null}
+      </div>
     </div>
   );
 }
