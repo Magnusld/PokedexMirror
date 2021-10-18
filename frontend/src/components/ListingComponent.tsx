@@ -32,22 +32,24 @@ export function ListingComponent(props: {
 
   let showTypeEmblem = pokemon.type.map((Type) => (
       <div>
-        {Type == "Bug" ? <Bug/> : null}
-        {Type == "Dark" ? <Dark/> : null}
-        {Type == "Dragon" ? <Dragon/> : null}
-        {Type == "Electric" ? <Electric/> : null}
-        {Type == "Fairy" ? <Fairy/> : null}
-        {Type == "Fighting" ? <Fighting/> : null}
-        {Type == "Fire" ? <Fire/> : null}
-        {Type == "Flying" ? <Flying/> : null}
-        {Type == "Ghost" ? <Ghost/> : null}
-        {Type == "Grass" ? <Grass/> : null}
-        {Type == "Ground" ? <Ground/> : null}
-        {Type == "Ice" ? <Ice/> : null}
-        {Type == "Normal" ? <Normal/> : null}
-        {Type == "Poison" ? <Poison/> : null}
-        {Type == "Bug" ? <Bug/> : null}
-
+        {Type == "Bug" ? <Bug className={"typeIcon"}/> : null}
+        {Type == "Dark" ? <Dark className={"typeIcon"}/> : null}
+        {Type == "Dragon" ? <Dragon className={"typeIcon"}/> : null}
+        {Type == "Electric" ? <Electric className={"typeIcon"}/> : null}
+        {Type == "Fairy" ? <Fairy className={"typeIcon"}/> : null}
+        {Type == "Fighting" ? <Fighting className={"typeIcon"}/> : null}
+        {Type == "Fire" ? <Fire className={"typeIcon"}/> : null}
+        {Type == "Flying" ? <Flying className={"typeIcon"}/> : null}
+        {Type == "Ghost" ? <Ghost className={"typeIcon"}/> : null}
+        {Type == "Grass" ? <Grass className={"typeIcon"}/> : null}
+        {Type == "Ground" ? <Ground className={"typeIcon"}/> : null}
+        {Type == "Ice" ? <Ice className={"typeIcon"}/> : null}
+        {Type == "Normal" ? <Normal className={"typeIcon"}/> : null}
+        {Type == "Poison" ? <Poison className={"typeIcon"}/> : null}
+        {Type == "Psychic" ? <Psychic className={"typeIcon"}/> : null}
+        {Type == "Rock" ? <Rock className={"typeIcon"}/> : null}
+        {Type == "Steel" ? <Steel className={"typeIcon"}/> : null}
+        {Type == "Water" ? <Water className={"typeIcon"}/> : null}
       </div>
   ))
 
