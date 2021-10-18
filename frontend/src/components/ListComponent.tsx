@@ -37,7 +37,22 @@ export function ListComponent(props: {
     generation: 1,
     name: "Pikachu"
   }
-  const dummyData: DummyPokemon[] = [dummyPokemon1, dummyPokemon2, dummyPokemon3, dummyPokemon4]
+  const dummyPokemon5: DummyPokemon = {
+    id: 5,
+    pokedexNr: 74,
+    type: ["Rock", "Ground"],
+    generation: 1,
+    name: "Geodude"
+  }
+  const dummyPokemon6: DummyPokemon = {
+    id: 6,
+    pokedexNr: 149,
+    type: ["Dragon", "Flying"],
+    generation: 1,
+    name: "Dragonite"
+  }
+
+  const dummyData: DummyPokemon[] = [dummyPokemon1, dummyPokemon2, dummyPokemon3, dummyPokemon4, dummyPokemon5, dummyPokemon6]
   const [showResults, setShowResults] = useState<boolean>(false)
 
 
