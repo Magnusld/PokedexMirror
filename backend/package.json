@@ -8,7 +8,8 @@
     "build": "npm -s run clean && npm -s run generate && tsc",
     "generate": "npm -s run generate:prisma && npm -s run generate:nexus",
     "generate:prisma": "prisma generate",
-    "generate:nexus": "ts-node --transpile-only src/schema"
+    "generate:nexus": "ts-node --transpile-only src/schema",
+    "seed": "ts-node ./prisma/seed.ts"
   },
   "prettier": {
     "semi": false,
@@ -17,6 +18,7 @@
     "tabWidth": 4
   },
   "dependencies": {
+    "@fast-csv/parse": "^4.3.6",
     "@prisma/client": "^2.23.0",
     "apollo-server": "3.3.0",
     "graphql": "15.6.1",

@@ -60,9 +60,8 @@ const Mutation = objectType({
 
     name: 'Mutation',
     definition: t => {
-
+        t.crud.createOnePokemon();
         //Mutations skrives inn her:
-
 }
 });
 */
