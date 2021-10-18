@@ -1,6 +1,7 @@
 :root {
   --main-color: #F5F5F5;
   --secondary-color: #466060;
+  --tertiary-color: #57886C;
 }
 
 .App {
@@ -102,12 +103,33 @@
   justify-content: center;
 }
 .list {
-  height: 40vh;
+  height: inherit;
   width: 100vw;
   background: var(--main-color);
   padding: 25px;
 }
+.listAsList {
 
-.listing {
-  height: 200px;
+}
+
+.listingAsList {
+  background: var(--tertiary-color);
+  color: var(--main-color);
+  border-radius: 10px;
+  display: flex;
+  margin: 10px;
+}
+.listingAsGrid {
+
+}
+.pokedexNumberAsList {
+  width: 40px;
+  margin: 10px;
+  align-self: center;
+}
+.listingInfoAsList {
+  text-align: left;
+}
+.typeEmblemAsList {
+  align-self: flex-end;
 }
