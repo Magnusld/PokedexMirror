@@ -129,8 +129,9 @@
   width: 300px;
 }
 .pokedexNumberAsList {
-  width: 40px;
+  width: 60px;
   margin: 10px;
+  text-align: right;
   align-self: center;
 }
 .listingInfoAsList {
