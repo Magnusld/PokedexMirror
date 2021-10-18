@@ -43,6 +43,7 @@ export function ListComponent(props: {
 
   useEffect(() => {
     console.log(dummyData)
+    console.log(asGrid)
   })
 
   let showListing = dummyData.map((pok) => (
@@ -51,9 +52,20 @@ export function ListComponent(props: {
                       pokemon={pok}/>
   ))
 
+  function chooseClassName() {
+    if (asGrid) {
+      return "AsGrid"
+    } else { return "AsList"}
+  }
+
   return (
-      <div className={"listAsList"}>
-        {showListing}
+      <div>
+        <div className={"listTopbar"}>
+            viser {dummyData.length}/"hvor enn mange hele datasettet er"
+        </div>
+        <div className={"list"+chooseClassName()}>
+          {showListing}
+        </div>
       </div>
   )
 }

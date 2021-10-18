@@ -24,11 +24,17 @@ export function ListingComponent(props: {
   asGrid: boolean
   pokemon: DummyPokemon
 }) {
+  const asGrid = props.asGrid
   const pokemon = props.pokemon
 
   useEffect(() => {
     console.log("Im alive")
   })
+
+  function log() {
+    console.log(asGrid)
+    console.log("listing"+chooseClassName())
+  }
 
   let showTypeEmblem = pokemon.type.map((Type) => (
       <div>
@@ -53,19 +59,28 @@ export function ListingComponent(props: {
       </div>
   ))
 
+  function chooseClassName() {
+    if (asGrid) {
+      return "AsGrid"
+    } else { return "AsList"}
+  }
+
+
   return (
-      <div className={"listingAsList"}>
-        <div className={"pokedexNumberAsList"}>
-          <h3>{pokemon.pokedexNr}:</h3>
-        </div>
-        <div className={"listingInfoAsList"}>
-          <div>
-            <h5>{pokemon.name}</h5>
+      <div className={chooseClassName()}>
+        <div className={"listing"+chooseClassName()}>
+          <div className={"pokedexNumber"+chooseClassName()}>
+            <h3>{pokemon.pokedexNr}:</h3>
           </div>
-          <p>Gen: {pokemon.generation} Type: {pokemon.type.toString()}</p>
-        </div>
-        <div className={"typeEmblemAsList"}>
-          {showTypeEmblem}
+          <div className={"listingInfo"+chooseClassName()}>
+            <div>
+              <h5 onClick={log}>{pokemon.name}</h5>
+            </div>
+            <p>Gen: {pokemon.generation} Type: {pokemon.type.toString()}</p>
+          </div>
+          <div className={"typeEmblem"+chooseClassName()}>
+            {showTypeEmblem}
+          </div>
         </div>
       </div>
   )

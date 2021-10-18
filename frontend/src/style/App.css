@@ -45,7 +45,7 @@
 }
 
 .topbar {
-  width: 100vw;
+  max-width: 100vw;
   background: var(--secondary-color);
   height: 15vh;
   display: flex;
@@ -101,10 +101,11 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
+  max-width: 100vw;
 }
 .list {
   height: inherit;
-  width: 100vw;
+  max-width: 100vw;
   background: var(--main-color);
   padding: 25px;
 }
@@ -120,7 +121,12 @@
   margin: 10px;
 }
 .listingAsGrid {
-
+  background: var(--tertiary-color);
+  color: var(--main-color);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  width: 300px;
 }
 .pokedexNumberAsList {
   width: 40px;
@@ -143,4 +149,42 @@
   height: 35px;
   width: 35px;
   margin-left: 5px;
+}
+.listTopbar {
+  text-align: right;
+  margin-right: 20px;
+}
+.listAsGrid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.pokedexNumberAsGrid {
+  width: 30px;
+  margin: 10px;
+  align-self: center;
+}
+.listingInfoAsGrid {
+  align-self: center;
+  text-align: left;
+  padding: 5px;
+}
+.typeEmblemAsGrid {
+  align-self: center;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.AsGrid {
+  border-radius: 15px;
+  border-color: var(--tertiary-color);
+  border-style: solid;
+  border-width: 3px;
+  background: var(--main-color);
+  height: 300px;
+  display: flex;
+  align-items: flex-end;
+  margin: 10px;
+  background-image: url("../assets/typeIconsSvg/Pokémon_Bug_Type_Icon.svg")
 }

@@ -7,7 +7,7 @@ import {TypeOptionComponent} from "./components/TypeOptionComponent";
 import {ListComponent} from "./components/ListComponent";
 
 function App() {
-  const [asGrid, setAsGrid] = useState<boolean>(true)
+  const [asGrid, setAsGrid] = useState<boolean>(false)
   const [showGenSelection, setShowGenSelection] = useState<boolean>(false)
   const [showTypeSelection, setShowTypeSelection] = useState<boolean>(false)
 
