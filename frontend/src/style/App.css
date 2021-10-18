@@ -101,3 +101,13 @@
   flex-wrap: wrap;
   justify-content: center;
 }
+.list {
+  height: 40vh;
+  width: 100vw;
+  background: var(--main-color);
+  padding: 25px;
+}
+
+.listing {
+  height: 200px;
+}

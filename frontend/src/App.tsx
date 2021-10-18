@@ -4,6 +4,7 @@ import {TopBar} from "./components/TopBar";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {GenOptionsComponent} from "./components/GenOptionsComponent";
 import {TypeOptionComponent} from "./components/TypeOptionComponent";
+import {ListComponent} from "./components/ListComponent";
 
 function App() {
   const [asGrid, setAsGrid] = useState<boolean>(true)
@@ -22,6 +23,9 @@ function App() {
       <div className="optionsContainer">
         {showGenSelection ? <GenOptionsComponent /> : null}
         {showTypeSelection ? <TypeOptionComponent /> : null}
+      </div>
+      <div className={"list"}>
+        <ListComponent asGrid={asGrid}></ListComponent>
       </div>
     </div>
   );
