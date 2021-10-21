@@ -109,9 +109,6 @@
   background: var(--main-color);
   padding: 25px;
 }
-.listAsList {
-
-}
 
 .listingAsList {
   background: var(--tertiary-color);
@@ -119,6 +116,7 @@
   border-radius: 10px;
   display: flex;
   margin: 10px;
+  padding: 10px;
 }
 .listingAsGrid {
   background: var(--tertiary-color);
@@ -129,22 +127,35 @@
   width: 300px;
 }
 .pokedexNumberAsList {
-  width: 60px;
-  margin: 10px;
-  text-align: right;
+  width: 20%;
+  flex-grow: 1;
   align-self: center;
+  display: flex;
+  justify-content: flex-start;
+
 }
 .listingInfoAsList {
-  align-self: center;
-  text-align: left;
-  padding: 5px;
+  width: 60%;
+  align-self: flex-start;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
+
+.listingInfoAsList div {
+  width: 40%;
+  text-align: left;
+}
+.listingInfoAsList p {
+  width: 60%;
+  text-align: left;
+}
+
 .typeEmblemAsList {
   align-self: center;
-  flex-grow: 1;
+  width: 20%;
   display: flex;
   justify-content: flex-end;
-  margin-right: 20px;
 }
 .typeIcon {
   height: 35px;
@@ -161,7 +172,7 @@
   flex-wrap: wrap;
 }
 .pokedexNumberAsGrid {
-  width: 41px;
+  flex-grow: 1;
   margin: 10px;
   align-self: center;
 }
@@ -169,6 +180,7 @@
   align-self: center;
   text-align: left;
   padding: 5px;
+  flex-grow: 2;
 }
 .typeEmblemAsGrid {
   align-self: center;

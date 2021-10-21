@@ -70,13 +70,13 @@ export function ListingComponent(props: {
       <div className={chooseClassName()}>
         <div className={"listing"+chooseClassName()}>
           <div className={"pokedexNumber"+chooseClassName()}>
-            <h3>{pokemon.pokedexNr}:</h3>
+            <h3>#{pokemon.pokedexNr}</h3>
           </div>
           <div className={"listingInfo"+chooseClassName()}>
             <div>
               <h5 onClick={log}>{pokemon.name}</h5>
             </div>
-            <p>Gen: {pokemon.generation} Type: {pokemon.type.toString()}</p>
+            <p>Gen {pokemon.generation}</p>
           </div>
           <div className={"typeEmblem"+chooseClassName()}>
             {showTypeEmblem}
