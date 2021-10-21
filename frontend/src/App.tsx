@@ -4,6 +4,8 @@ import {TopBar} from "./components/TopBar";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {GenOptionsComponent} from "./components/GenOptionsComponent";
 import {TypeOptionComponent} from "./components/TypeOptionComponent";
+import {Generation} from "./types";
+import Info from './pages/Info';
 
 function App() {
   const [asGrid, setAsGrid] = useState<boolean>(true)
