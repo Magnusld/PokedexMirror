@@ -1,0 +1,149 @@
+.info-container {
+    --info-container-bg: rgba(3, 101, 140, 1);
+    --info-container-boxes: white;
+    --pokenum-bg: rgba(3, 76, 140, 1);
+}
+
+/* -- FARGE TEMA -- */
+
+/* Color Theme Swatches in Hex */
+.Color-Theme-1-hex { color: #FFFFFF; }
+.Color-Theme-2-hex { color: #CCFFEB; }
+.Color-Theme-3-hex { color: #04BEC4; }
+.Color-Theme-4-hex { color: #03658C; }
+.Color-Theme-5-hex { color: #034C8C; }
+
+/* Color Theme Swatches in RGBA */
+.Color-Theme-1-rgba { color: rgba(255, 255, 255, 1); }
+.Color-Theme-2-rgba { color: rgba(204, 255, 235, 1); }
+.Color-Theme-3-rgba { color: rgba(4, 190, 196, 1); }
+.Color-Theme-4-rgba { color: rgba(3, 101, 140, 1); }
+.Color-Theme-5-rgba { color: rgba(3, 76, 140, 1); }
+
+.info-container {
+    width: 70vw;
+    padding: 10px;
+    margin: 20px auto;
+    background-color: var(--info-container-bg);
+}
+
+.top-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-gap: 10px;
+    height: 300px;
+}
+
+.image {
+    background-color: var(--info-container-boxes);
+    padding: 20px;
+}
+
+.basic-info {
+    background-color: var(--info-container-boxes);
+    padding: 10px;
+}
+
+.name-number {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.pokename {
+    font-size: 2em;
+
+}
+
+.pokenum {
+    text-align: center;
+    color: white;
+    font-size: 1.2em;
+    height: 3em;
+    width: 3em;
+    background-color: var(--pokenum-bg);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.more-info {
+    display: flex;
+    align-items: center;
+    justify-content:flex-start;
+    width: 100%;
+}
+
+.more-info span:last-of-type {
+    margin-left: 10px;
+}
+
+.types {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.type-icon {
+    padding: 5px 20px;
+    font-size: 1.4em;
+    font-weight: 600;
+    border-radius: 5px;
+    border: 1px solid black
+}
+
+.type-icon:last-of-type {
+    margin-left: 10px;
+}
+
+.middle-container {
+    width: 100%;
+    margin: 10px auto;
+    background-color: var(--info-container-boxes);
+    height: 200px;
+}
+
+.bottom-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+    height: 400px;
+}
+
+.stats {
+    background-color: var(--info-container-boxes);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 10px;
+    font-size: 1.2em;
+    font-weight: 500;
+
+
+}
+
+.stats-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.abilities {
+    background-color: var(--info-container-boxes);
+}
+
+@media only screen and (max-width: 900px) {
+    .top-container {
+        grid-auto-flow: row;
+        grid-template-columns: 1fr;
+        height: fit-content;
+    }
+
+    .bottom-container {
+        grid-auto-flow: row;
+        grid-template-columns: 1fr;
+    }
+}
