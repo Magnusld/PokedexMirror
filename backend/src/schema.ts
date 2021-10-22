@@ -124,9 +124,43 @@ const Mutation = objectType({
             }
         })
 
+        t.field('ChangeRating', {
+            type: 'PokemonRating',
+            args: {
+                data: nonNull(
+                    arg({
+                        type: RatingUpdateInput
+                    })
+                )
+            },
+            resolve: (source, args, context) => {
+                return context.prisma.pokemonRating.update({
+                    where: {id: args.data.ratingToUpdate.id},
+                    data: {
+                        rating: args.data.newRating
+                    }
+                })
+            }
+        })
+
         t.crud.deleteOnePokemonRating()
     }
 });
+
+const RatingWhereInput = inputObjectType({
+    name: 'RatingWhereInput',
+    definition(t) {
+        t.nonNull.int('id')
+    }
+})
+
+const RatingUpdateInput = inputObjectType({
+    name: 'RatingUpdateInput',
+    definition(t) {
+        t.nonNull.field('ratingToUpdate', {type: RatingWhereInput})
+        t.nonNull.int('newRating')
+    }
+})
 
 const RatingCreateInput = inputObjectType({
     name: 'RatingCreateInput',
@@ -144,6 +178,7 @@ export const schema = makeSchema({
         Pokemon,
         PokemonRating,
         RatingCreateInput,
+        RatingWhereInput
     ],
     outputs: {
         schema: __dirname + '/../schema.graphql',

@@ -25,6 +25,7 @@ input IntFilter {
 }
 
 type Mutation {
+  ChangeRating(data: RatingUpdateInput!): PokemonRating
   CreateRating(data: RatingCreateInput!): PokemonRating
   deleteOnePokemonRating(where: PokemonRatingWhereUniqueInput!): PokemonRating
 }
@@ -194,6 +195,15 @@ type Query {
 input RatingCreateInput {
   pokemonId: Int!
   rating: Int!
+}
+
+input RatingUpdateInput {
+  newRating: Int!
+  ratingToUpdate: RatingWhereInput!
+}
+
+input RatingWhereInput {
+  id: Int!
 }
 
 enum SortOrder {
