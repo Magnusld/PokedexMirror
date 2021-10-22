@@ -15,7 +15,7 @@ import pluralize from "pluralize";
 
 // Fix for duplikat, noe fra nexus-plugin-prisma
 pluralize.addIrregularRule("pokemon", "pokemons");
-
+pluralize.addIrregularRule("pokemonRating", "pokemonRatings");
 
 const Pokemon = objectType({
     name: 'Pokemon',
@@ -39,8 +39,46 @@ const Pokemon = objectType({
         t.string('ability1');
         t.string('ability2');
         t.string('ability3');
+        t.field('aggregated_rating', {
+            type: "Float",
+            resolve: (source, args, context) => {
+                return context.prisma.pokemonRating.findMany({
+                    where: {
+                        pokemonId: source.id
+                    }
+                })
+                    .then(ratings => {
+                        const total = ratings
+                            .map(entry => entry.rating)
+                            .reduce((accumulator, currentValue) => accumulator+currentValue)
+                        const numberOfRatings = ratings.length
+                        if (numberOfRatings <= 0) return 0
+                        return total / numberOfRatings
+                    })
+            }
+        })
     }
 });
+
+const PokemonRating = objectType({
+    name: 'PokemonRating',
+    definition(t) {
+        t.nonNull.int('id')
+        t.nonNull.int('pokemonId')
+        t.field('ratedPokemon', {
+            type: 'Pokemon',
+            resolve: (source, _, context) => {
+                return context.prisma.pokemon
+                    .findUnique({
+                        where: {
+                            id: source.pokemonId
+                        }
+                    })
+            }
+        })
+        t.nonNull.float("rating")
+    }
+})
 
 const Query = queryType( {
 
@@ -50,27 +88,62 @@ const Query = queryType( {
             pagination: true,
             filtering: true,
             ordering: true,
+
         })
+        t.crud.pokemonRating()
+        t.crud.pokemonratings({
+            pagination: true,
+            filtering: true,
+            ordering: true,
+        })
+
     }
 });
-
-/*
 
 const Mutation = objectType({
 
     name: 'Mutation',
     definition: t => {
-        t.crud.createOnePokemon();
-        //Mutations skrives inn her:
-}
+
+        t.field('CreateRating', {
+            type: 'PokemonRating',
+            args: {
+                data: nonNull(
+                    arg({
+                        type: RatingCreateInput,
+                    })
+                )
+            },
+            resolve: (source, args, context) => {
+                return context.prisma.pokemonRating.create({
+                    data: {
+                        pokemonId: args.data.pokemonId,
+                        rating: args.data.rating
+                    }
+                })
+            }
+        })
+
+        t.crud.deleteOnePokemonRating()
+    }
 });
-*/
+
+const RatingCreateInput = inputObjectType({
+    name: 'RatingCreateInput',
+    definition(t) {
+        t.nonNull.int('pokemonId')
+        t.nonNull.int('rating')
+    }
+})
+
 
 export const schema = makeSchema({
     types: [
-        //Mutation,
+        Mutation,
         Query,
         Pokemon,
+        PokemonRating,
+        RatingCreateInput,
     ],
     outputs: {
         schema: __dirname + '/../schema.graphql',
