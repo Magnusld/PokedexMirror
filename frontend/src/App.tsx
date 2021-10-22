@@ -4,7 +4,8 @@ import {TopBar} from "./components/TopBar";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {GenOptionsComponent} from "./components/GenOptionsComponent";
 import {TypeOptionComponent} from "./components/TypeOptionComponent";
-import {Generation} from "./types";
+import {ListComponent} from "./components/ListComponent";
+//import {Generation} from "./types";
 import Info from './pages/Info';
 
 function App() {
@@ -24,6 +25,9 @@ function App() {
       <div className="optionsContainer">
         {showGenSelection ? <GenOptionsComponent /> : null}
         {showTypeSelection ? <TypeOptionComponent /> : null}
+      </div>
+      <div className={"list"}>
+        <ListComponent asGrid={asGrid}></ListComponent>
       </div>
     </div>
   );

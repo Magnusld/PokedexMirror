@@ -1,6 +1,7 @@
 :root {
   --main-color: #F5F5F5;
   --secondary-color: #466060;
+  --tertiary-color: #57886C;
 }
 
 .App {
@@ -43,7 +44,7 @@
 }
 
 .topbar {
-  width: 100vw;
+  max-width: 100vw;
   background: var(--secondary-color);
   height: 15vh;
   display: flex;
@@ -99,4 +100,103 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
+  max-width: 100vw;
+}
+.list {
+  height: inherit;
+  max-width: 100vw;
+  background: var(--main-color);
+  padding: 25px;
+}
+
+.listingAsList {
+  background: var(--tertiary-color);
+  color: var(--main-color);
+  border-radius: 10px;
+  display: flex;
+  margin: 10px;
+  padding: 10px;
+}
+.listingAsGrid {
+  background: var(--tertiary-color);
+  color: var(--main-color);
+  border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  width: 300px;
+}
+.pokedexNumberAsList {
+  width: 20%;
+  flex-grow: 1;
+  align-self: center;
+  display: flex;
+  justify-content: flex-start;
+
+}
+.listingInfoAsList {
+  width: 60%;
+  align-self: flex-start;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.listingInfoAsList div {
+  width: 40%;
+  text-align: left;
+}
+.listingInfoAsList p {
+  width: 60%;
+  text-align: left;
+}
+
+.typeEmblemAsList {
+  align-self: center;
+  width: 20%;
+  display: flex;
+  justify-content: flex-end;
+}
+.typeIcon {
+  height: 35px;
+  width: 35px;
+  margin-left: 5px;
+}
+.listTopbar {
+  text-align: right;
+  margin-right: 20px;
+}
+.listAsGrid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.pokedexNumberAsGrid {
+  flex-grow: 1;
+  margin: 10px;
+  align-self: center;
+}
+.listingInfoAsGrid {
+  align-self: center;
+  text-align: left;
+  padding: 5px;
+  flex-grow: 2;
+}
+.typeEmblemAsGrid {
+  align-self: center;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.AsGrid {
+  border-radius: 15px;
+  border-color: var(--tertiary-color);
+  border-style: solid;
+  border-width: 3px;
+  background: var(--main-color);
+  height: 300px;
+  display: flex;
+  align-items: flex-end;
+  margin: 10px;
+  background-image: url("../assets/typeIconsSvg/Pokémon_Bug_Type_Icon.svg")
 }
