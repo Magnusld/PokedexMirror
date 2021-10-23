@@ -116,6 +116,10 @@
   display: flex;
   margin: 10px;
   padding: 10px;
+  transition: 0.3s;
+}
+.listingAsList:hover {
+  background-color: #75b18f;
 }
 .listingAsGrid {
   background: var(--tertiary-color);
@@ -124,6 +128,10 @@
   display: flex;
   flex-direction: row;
   width: 300px;
+  transition: 0.3s;
+}
+.listingAsGrid:hover {
+  background-color: #75b18f;
 }
 .pokedexNumberAsList {
   width: 20%;
@@ -199,4 +207,13 @@
   align-items: flex-end;
   margin: 10px;
   background-image: url("../assets/typeIconsSvg/Pokémon_Bug_Type_Icon.svg")
+}
+
+.listingLink {
+  text-decoration: none;
+  text-decoration-line: none;
+}
+
+.listingLink:hover {
+  background-color: #75b18f;
 }
