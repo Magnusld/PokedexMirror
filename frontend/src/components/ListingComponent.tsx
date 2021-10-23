@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import '../style/App.css';
-import {DummyPokemon} from "../types";
+import {PokemonSimple} from "../types";
 import {ReactComponent as Bug} from "../assets/typeIconsSvg/Pokémon_Bug_Type_Icon.svg";
 import {ReactComponent as Dark} from "../assets/typeIconsSvg/Pokémon_Dark_Type_Icon.svg";
 import {ReactComponent as Dragon} from "../assets/typeIconsSvg/Pokémon_Dragon_Type_Icon.svg";
@@ -22,7 +22,7 @@ import {ReactComponent as Water} from "../assets/typeIconsSvg/Pokémon_Water_Typ
 
 export function ListingComponent(props: {
   asGrid: boolean
-  pokemon: DummyPokemon
+  pokemon: PokemonSimple
 }) {
   const asGrid = props.asGrid
   const pokemon = props.pokemon
@@ -36,7 +36,18 @@ export function ListingComponent(props: {
     console.log("listing"+chooseClassName())
   }
 
-  let showTypeEmblem = pokemon.type.map((Type) => (
+
+  /**
+   * takes potential type 1 and type 2 and makes it into a list
+   * @param types rest param with one or two types
+   * @returns 
+   */
+  function typesToList(...types : string[]) {
+    const typeList = types.filter((type) => type.length > 0)
+    return typeList;
+  }
+
+  let showTypeEmblem = typesToList(pokemon.type1, pokemon.type2).map((Type) => (
       <div>
         {Type == "Bug" ? <Bug className={"typeIcon"}/> : null}
         {Type == "Dark" ? <Dark className={"typeIcon"}/> : null}
