@@ -29,7 +29,7 @@ export interface PokemonAdvanced {
   type1: string,
   type2: string
   heightMeter: number,
-  weigthKg: number,
+  weightKg: number,
   hp: number,
   attack: number,
   defense: number,
