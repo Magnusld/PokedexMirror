@@ -1,71 +1,74 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import '../style/App.css';
 import {ListingComponent} from "./ListingComponent";
-import {DummyPokemon} from "../types";
-import {Button} from "react-bootstrap";
+import {PokemonSimple} from "../types";
+import gql from 'graphql-tag';
+import { useQuery } from '@apollo/client';
 
 export function ListComponent(props: {
   asGrid: boolean
 }) {
+
+  interface PokemonSimpleData {
+    pokemons: PokemonSimple[]
+  }
+
+  const GET_POKEMON_DATA = gql`
+    query($orderBy: [PokemonOrderByInput!], $first: Int) {
+      pokemons(orderBy: $orderBy, first: $first) {
+        id
+        pokedexNr
+        name
+        generation
+        type1
+        type2
+      }
+    }
+  `;
+
+  /**
+   * used by useQuery hook
+   * @returns a set of variables to be used by graphQL query
+   */
+  function setQueryVariables() : any {
+    const variables = {
+      variables: {
+        "orderBy": {
+          "pokedexNr": "asc"
+        },
+        "first": 20
+      }
+      
+    }
+    return variables;
+  }
+
+  const { loading, error, data } = useQuery<PokemonSimpleData, any>(GET_POKEMON_DATA, setQueryVariables());
+
   const asGrid = props.asGrid
-  const liste = [1,2,3,4,5,6,7,8]
-  const dummyPokemon1: DummyPokemon = {
-    id: 1,
-    pokedexNr: 1,
-    type: ["Grass", "Poison"],
-    generation: 1,
-    name: "Bulbasaur"
-  }
-  const dummyPokemon2: DummyPokemon = {
-    id: 2,
-    pokedexNr: 4,
-    type: ["Fire"],
-    generation: 1,
-    name: "Charmander"
-  }
-  const dummyPokemon3: DummyPokemon = {
-    id: 3,
-    pokedexNr: 7,
-    type: ["Water"],
-    generation: 1,
-    name: "Squirtle"
-  }
-  const dummyPokemon4: DummyPokemon = {
-    id: 4,
-    pokedexNr: 25,
-    type: ["Electric"],
-    generation: 1,
-    name: "Pikachu"
-  }
-  const dummyPokemon5: DummyPokemon = {
-    id: 5,
-    pokedexNr: 74,
-    type: ["Rock", "Ground"],
-    generation: 1,
-    name: "Geodude"
-  }
-  const dummyPokemon6: DummyPokemon = {
-    id: 6,
-    pokedexNr: 149,
-    type: ["Dragon", "Flying"],
-    generation: 1,
-    name: "Dragonite"
-  }
-
-  const dummyData: DummyPokemon[] = [dummyPokemon1, dummyPokemon2, dummyPokemon3, dummyPokemon4, dummyPokemon5, dummyPokemon6]
-  const [showResults, setShowResults] = useState<boolean>(false)
-
 
   useEffect(() => {
-    console.log(dummyData)
+    console.log(setQueryVariables())
+    console.log(data)
     console.log(asGrid)
   })
 
-  let showListing = dummyData.map((pok) => (
-    <ListingComponent key={pok.id}
-                      asGrid={asGrid}
-                      pokemon={pok}/>
-  ))
+  /**
+   * used to render pokemon to grid/list
+   * @returns a list with compontents
+   */
+  function showListing() {
+    let pokeList : PokemonSimple[] = []
+    if(data !== undefined) {
+      pokeList = data.pokemons
+      return pokeList.map((pokemon : PokemonSimple) => (
+        <ListingComponent key={pokemon.id} asGrid={asGrid} pokemon={pokemon} />
+      ))
+    }
+    else {
+      return <div>Failed!</div>
+    }
+  }
 
   function chooseClassName() {
     if (asGrid) {
@@ -73,14 +76,15 @@ export function ListComponent(props: {
     } else { return "AsList"}
   }
 
+  if (error) return <div>Error! error.message</div>;
+
   return (
       <div>
-        <div className={"listTopbar"}>
-            viser {dummyData.length}/"hvor enn mange hele datasettet er"
-        </div>
-        <div className={"list"+chooseClassName()}>
-          {showListing}
-        </div>
+          {loading ? (<p>Loading</p>) : (
+            <div className={"list"+chooseClassName()}>
+              {showListing()}
+            </div>
+          )}
       </div>
   )
 }
