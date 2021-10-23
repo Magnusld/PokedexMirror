@@ -2,8 +2,67 @@ import React from 'react'
 import { Button, Card } from 'react-bootstrap';
 import '../style/Info.css';
 import pokemon from "../images/376.jpg";
+import { useParams } from 'react-router-dom';
+import gql from 'graphql-tag';
+import { useQuery } from '@apollo/client';
+import { PokemonAdvanced } from '../types';
 
 function Info() {
+
+    type PokemonParams = {
+        id: string;
+    };      
+
+    interface PokemonAdvancedData {
+        pokemon: PokemonAdvanced
+    }
+
+    const { id } = useParams<PokemonParams>()
+
+    const GET_POKEMON_INFO = gql`
+    query($where: PokemonWhereUniqueInput!) {
+        pokemon(where: $where) {
+          id
+          pokedexNr
+          name
+          generation
+          species
+          type1
+          heightMeter
+          type2
+          weightKg
+          hp
+          attack
+          defense
+          sp_attack
+          sp_defense
+          speed
+          ability1
+          ability2
+          ability3
+        }
+      }
+    `;
+
+    const variables = {
+        variables: {
+            "where": {
+                "id": parseInt(id)
+            }
+        }  
+    }
+
+    const { loading, error, data } = useQuery<PokemonAdvancedData, any>(GET_POKEMON_INFO, variables);
+
+    /**
+     * takes potential type 1 and type 2 and makes it into a list
+     * @param types rest param with one or two types
+     * @returns 
+     */
+    function typesToList(...types : string[]) {
+        const typeList = types.filter((type) => type.length > 0)
+        return typeList;
+    }
 
     function generateTypes(types : string[]) {
         if(types.length === 1) {
@@ -52,6 +111,8 @@ function Info() {
         
     }
 
+    console.log(data)
+
     return (
         <div className="info-container">
             <div className="top-container">
@@ -65,21 +126,21 @@ function Info() {
                 </div>
                 <div className="basic-info">
                     <div className="name-number">
-                        <span className="pokename">Metagross</span>
-                        <span className="pokenum">#376</span>
+                        <span className="pokename">{data?.pokemon.name}</span>
+                        <span className="pokenum">#{data?.pokemon.pokedexNr}</span>
                     </div>
                     <div className="more-info">
-                        <span>Iron Leg Pokemon</span>
-                        <span>Generasjon: 3</span>
+                        <span>{data?.pokemon.species}</span>
+                        <span>Generasjon: {data?.pokemon.generation}</span>
                     </div>
                     <div>
-                        {generateTypes(["Steel", "Psychic"])}
+                        {generateTypes(typesToList(data ? data.pokemon.type1 : "", data ? data.pokemon.type2 : ""))}
                     </div>
                 </div>
             </div>
             <div className="middle-container">
-                <span>Weigth:</span>
-                <span>Heigt:</span>
+                <span>Weigth: {data?.pokemon.weightKg}kg</span>
+                <span>Height: {data?.pokemon.heightMeter}m</span>
             </div>
             <div className="bottom-container">
                 <div className="stats">
