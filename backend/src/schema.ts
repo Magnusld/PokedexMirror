@@ -48,11 +48,11 @@ const Pokemon = objectType({
                     }
                 })
                     .then(ratings => {
+                        const numberOfRatings = ratings.length
+                        if (numberOfRatings <= 0) return 0
                         const total = ratings
                             .map(entry => entry.rating)
                             .reduce((accumulator, currentValue) => accumulator+currentValue)
-                        const numberOfRatings = ratings.length
-                        if (numberOfRatings <= 0) return 0
                         return total / numberOfRatings
                     })
             }
