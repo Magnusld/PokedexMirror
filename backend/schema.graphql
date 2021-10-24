@@ -24,6 +24,12 @@ input IntFilter {
   notIn: [Int!]
 }
 
+type Mutation {
+  ChangeRating(data: RatingUpdateInput!): PokemonRating
+  CreateRating(data: RatingCreateInput!): PokemonRating
+  deleteOnePokemonRating(where: PokemonRatingWhereUniqueInput!): PokemonRating
+}
+
 input NestedFloatNullableFilter {
   equals: Float
   gt: Float
@@ -78,6 +84,7 @@ type Pokemon {
   ability1: String
   ability2: String
   ability3: String
+  aggregated_rating: Float
   attack: Int!
   defense: Int!
   generation: Int!
@@ -116,6 +123,48 @@ input PokemonOrderByInput {
   weightKg: SortOrder
 }
 
+type PokemonRating {
+  id: Int!
+  pokemonId: Int!
+  ratedPokemon: Pokemon
+  rating: Float!
+  userGuid: String!
+}
+
+input PokemonRatingListRelationFilter {
+  every: PokemonRatingWhereInput
+  none: PokemonRatingWhereInput
+  some: PokemonRatingWhereInput
+}
+
+input PokemonRatingOrderByInput {
+  id: SortOrder
+  pokemonId: SortOrder
+  rating: SortOrder
+  userGuid: SortOrder
+}
+
+input PokemonRatingUserGuidPokemonIdCompoundUniqueInput {
+  pokemonId: Int!
+  userGuid: String!
+}
+
+input PokemonRatingWhereInput {
+  AND: [PokemonRatingWhereInput!]
+  NOT: [PokemonRatingWhereInput!]
+  OR: [PokemonRatingWhereInput!]
+  id: IntFilter
+  pokemonId: IntFilter
+  ratedPokemon: PokemonWhereInput
+  rating: IntFilter
+  userGuid: StringFilter
+}
+
+input PokemonRatingWhereUniqueInput {
+  id: Int
+  userGuid_pokemonId: PokemonRatingUserGuidPokemonIdCompoundUniqueInput
+}
+
 input PokemonWhereInput {
   AND: [PokemonWhereInput!]
   NOT: [PokemonWhereInput!]
@@ -131,6 +180,7 @@ input PokemonWhereInput {
   id: IntFilter
   name: StringFilter
   pokedexNr: IntFilter
+  ratings: PokemonRatingListRelationFilter
   sp_attack: IntFilter
   sp_defense: IntFilter
   species: StringFilter
@@ -146,7 +196,29 @@ input PokemonWhereUniqueInput {
 
 type Query {
   pokemon(where: PokemonWhereUniqueInput!): Pokemon
+  pokemonRating(where: PokemonRatingWhereUniqueInput!): PokemonRating
+  pokemonratings(after: PokemonRatingWhereUniqueInput, before: PokemonRatingWhereUniqueInput, first: Int, last: Int, orderBy: [PokemonRatingOrderByInput!], where: PokemonRatingWhereInput): [PokemonRating!]!
   pokemons(after: PokemonWhereUniqueInput, before: PokemonWhereUniqueInput, first: Int, last: Int, orderBy: [PokemonOrderByInput!], where: PokemonWhereInput): [Pokemon!]!
+}
+
+input RatingCreateInput {
+  pokemonId: Int!
+  rating: Int!
+  userGuid: String!
+}
+
+input RatingUpdateInput {
+  newRating: Int!
+  ratingToUpdate: RatingWhereInputGuidId!
+}
+
+input RatingWhereInput {
+  id: Int!
+}
+
+input RatingWhereInputGuidId {
+  pokemonId: Int!
+  userGuid: String!
 }
 
 enum SortOrder {
