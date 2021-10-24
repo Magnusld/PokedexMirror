@@ -128,6 +128,7 @@ type PokemonRating {
   pokemonId: Int!
   ratedPokemon: Pokemon
   rating: Float!
+  userGuid: String!
 }
 
 input PokemonRatingListRelationFilter {
@@ -140,6 +141,12 @@ input PokemonRatingOrderByInput {
   id: SortOrder
   pokemonId: SortOrder
   rating: SortOrder
+  userGuid: SortOrder
+}
+
+input PokemonRatingUserGuidPokemonIdCompoundUniqueInput {
+  pokemonId: Int!
+  userGuid: String!
 }
 
 input PokemonRatingWhereInput {
@@ -150,10 +157,12 @@ input PokemonRatingWhereInput {
   pokemonId: IntFilter
   ratedPokemon: PokemonWhereInput
   rating: IntFilter
+  userGuid: StringFilter
 }
 
 input PokemonRatingWhereUniqueInput {
   id: Int
+  userGuid_pokemonId: PokemonRatingUserGuidPokemonIdCompoundUniqueInput
 }
 
 input PokemonWhereInput {
@@ -195,15 +204,21 @@ type Query {
 input RatingCreateInput {
   pokemonId: Int!
   rating: Int!
+  userGuid: String!
 }
 
 input RatingUpdateInput {
   newRating: Int!
-  ratingToUpdate: RatingWhereInput!
+  ratingToUpdate: RatingWhereInputGuidId!
 }
 
 input RatingWhereInput {
   id: Int!
+}
+
+input RatingWhereInputGuidId {
+  pokemonId: Int!
+  userGuid: String!
 }
 
 enum SortOrder {

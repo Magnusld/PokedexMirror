@@ -9,9 +9,11 @@ datasource db {
 
 model PokemonRating {
   id           Int     @id @default(autoincrement())
+  userGuid     String
   ratedPokemon Pokemon @relation(fields: [pokemonId], references: [id])
   pokemonId    Int
   rating       Int
+  @@unique([userGuid, pokemonId])
 }
 
 model Pokemon {
@@ -34,6 +36,6 @@ model Pokemon {
   ability2    String?
   ability3    String?
   ratings PokemonRating[]
-
+  @@index(name)
   @@index(pokedexNr)
 }

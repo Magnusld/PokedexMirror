@@ -65,6 +65,7 @@ const PokemonRating = objectType({
     definition(t) {
         t.nonNull.int('id')
         t.nonNull.int('pokemonId')
+        t.nonNull.string("userGuid")
         t.field('ratedPokemon', {
             type: 'Pokemon',
             resolve: (source, _, context) => {
@@ -118,7 +119,8 @@ const Mutation = objectType({
                 return context.prisma.pokemonRating.create({
                     data: {
                         pokemonId: args.data.pokemonId,
-                        rating: args.data.rating
+                        rating: args.data.rating,
+                        userGuid: args.data.userGuid
                     }
                 })
             }
@@ -135,7 +137,12 @@ const Mutation = objectType({
             },
             resolve: (source, args, context) => {
                 return context.prisma.pokemonRating.update({
-                    where: {id: args.data.ratingToUpdate.id},
+                    where: {
+                        userGuid_pokemonId: {
+                            userGuid: args.data.ratingToUpdate.userGuid,
+                            pokemonId: args.data.ratingToUpdate.pokemonId
+                        }
+                    },
                     data: {
                         rating: args.data.newRating
                     }
@@ -154,10 +161,18 @@ const RatingWhereInput = inputObjectType({
     }
 })
 
+const RatingWhereInputGuidId = inputObjectType( {
+    name: "RatingWhereInputGuidId",
+    definition(t) {
+        t.nonNull.int("pokemonId")
+        t.nonNull.string("userGuid")
+    }
+})
+
 const RatingUpdateInput = inputObjectType({
     name: 'RatingUpdateInput',
     definition(t) {
-        t.nonNull.field('ratingToUpdate', {type: RatingWhereInput})
+        t.nonNull.field('ratingToUpdate', {type: RatingWhereInputGuidId})
         t.nonNull.int('newRating')
     }
 })
@@ -166,6 +181,7 @@ const RatingCreateInput = inputObjectType({
     name: 'RatingCreateInput',
     definition(t) {
         t.nonNull.int('pokemonId')
+        t.nonNull.string("userGuid")
         t.nonNull.int('rating')
     }
 })
@@ -178,7 +194,8 @@ export const schema = makeSchema({
         Pokemon,
         PokemonRating,
         RatingCreateInput,
-        RatingWhereInput
+        RatingWhereInput,
+        RatingWhereInputGuidId,
     ],
     outputs: {
         schema: __dirname + '/../schema.graphql',
