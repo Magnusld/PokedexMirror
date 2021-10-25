@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Button, Card } from 'react-bootstrap';
 import '../style/Info.css';
 import pokemon from "../images/376.jpg";
@@ -53,6 +53,23 @@ function Info() {
     }
 
     const { loading, error, data } = useQuery<PokemonAdvancedData, any>(GET_POKEMON_INFO, variables);
+
+    const [hp, setHp] = useState<number>(0);
+    const [attack, setAttack] = useState<number>(0);
+    const [defense, setDefense] = useState<number>(0);
+    const [spAttack, setSpAttack] = useState<number>(0);
+    const [spDefense, setSpDefense] = useState<number>(0);
+    const [speed, setSpeed] = useState<number>(0);
+
+    useEffect(() => {
+        console.log("useEffect")
+        if(data?.pokemon) setHp(data?.pokemon.hp)
+        if(data?.pokemon) setAttack(data?.pokemon.attack)
+        if(data?.pokemon) setDefense(data?.pokemon.defense)
+        if(data?.pokemon) setSpAttack(data?.pokemon.sp_attack)
+        if(data?.pokemon) setSpDefense(data?.pokemon.sp_defense)
+        if(data?.pokemon) setSpeed(data?.pokemon.speed)
+    }, [data])
 
     /**
      * takes potential type 1 and type 2 and makes it into a list
@@ -139,28 +156,42 @@ function Info() {
                 </div>
             </div>
             <div className="middle-container">
-                <span>Weigth: {data?.pokemon.weightKg}kg</span>
+                <span>Weight: {data?.pokemon.weightKg}kg</span>
                 <span>Height: {data?.pokemon.heightMeter}m</span>
             </div>
             <div className="bottom-container">
                 <div className="stats">
-                    <div className="stats-column">
-                        <span>HP</span>
-                        <span>Attack</span>
-                        <span>Defense</span>
-                        <span>Sp. Attack</span>
-                        <span>Sp. Defense</span>
-                        <span>Speed</span>
-                    </div>
-                    <div className="stats-column">
-                        <span>80</span>
-                        <span>135</span>
-                        <span>130</span>
-                        <span>95</span>
-                        <span>90</span>
-                        <span>70</span>
-                    </div>
-
+                    <h2>Stats</h2>
+                    <table className="stats-table">
+                        <tr>
+                            <td>HP</td>
+                            <td>{hp}</td>
+                        </tr>
+                        <tr>
+                            <td>Attack</td>
+                            <td>{attack}</td>
+                        </tr>
+                        <tr>
+                            <td>Defense</td>
+                            <td>{defense}</td>
+                        </tr>
+                        <tr>
+                            <td>Sp. Attack</td>
+                            <td>{spAttack}</td>
+                        </tr>
+                        <tr>
+                            <td>Sp. Defense</td>
+                            <td>{spDefense}</td>
+                        </tr>
+                        <tr>
+                            <td>Speed</td>
+                            <td>{speed}</td>
+                        </tr>
+                        <tr>
+                            <td>Totalt</td>
+                            <td>{hp + attack + defense + spAttack + spDefense + speed}</td>
+                        </tr>
+                    </table>
                 </div>
                 <div className="abilities"></div>
             </div>
