@@ -40,3 +40,25 @@ export interface PokemonAdvanced {
   ability2: string,
   ability3: string
 }
+
+export interface Variables {
+  where: WhereInputFields,
+  orderBy: OrderByInputFields
+  first: number,
+  after: AfterInputFields
+}
+
+export interface WhereInputFields {
+  generation?: number[]
+  name?: string
+  type?: string[]
+}
+
+export interface OrderByInputFields {
+  pokedexNr?: string,
+  name?: string,
+}
+
+export interface AfterInputFields {
+  id: number
+}
