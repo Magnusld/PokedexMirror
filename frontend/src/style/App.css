@@ -130,8 +130,7 @@
   flex-grow: 1;
   align-self: center;
   display: flex;
-  justify-content: flex-start;
-
+  justify-content: space-between;
 }
 .listingInfoAsList {
   width: 60%;
@@ -198,5 +197,4 @@
   display: flex;
   align-items: flex-end;
   margin: 10px;
-  background-image: url("../assets/typeIconsSvg/Pokémon_Bug_Type_Icon.svg")
 }
