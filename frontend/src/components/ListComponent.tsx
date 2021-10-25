@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import '../style/App.css';
 import {ListingComponent} from "./ListingComponent";
-import {PokemonSimple} from "../types";
+import {PokemonSimple, Variables} from "../types";
 import gql from 'graphql-tag';
 import { useQuery } from '@apollo/client';
 
@@ -14,16 +14,16 @@ export function ListComponent(props: {
   }
 
   const GET_POKEMON_DATA = gql`
-    query($orderBy: [PokemonOrderByInput!], $first: Int) {
-      pokemons(orderBy: $orderBy, first: $first) {
-        id
-        pokedexNr
-        name
-        generation
-        type1
-        type2
-      }
+  query($orderBy: [PokemonOrderByInput!], $where: PokemonWhereInput, $first: Int, $after: PokemonWhereUniqueInput) {
+    pokemons(orderBy: $orderBy, where: $where, first: $first, after: $after) {
+      id
+      pokedexNr
+      name
+      generation
+      type1
+      type2
     }
+  }
   `;
 
   /**
@@ -31,15 +31,44 @@ export function ListComponent(props: {
    * @returns a set of variables to be used by graphQL query
    */
   function setQueryVariables() : any {
-    const variables = {
+    const variables : Variables = { 
       variables: {
         "orderBy": {
           "pokedexNr": "asc"
         },
-        "first": 20
+        "first": 15,
+        "after": null,
+        "where": {
+          "type1": {
+            "in": [
+              "Bug",
+              "Dark",
+              "Dragon",
+              "Electric",
+              "Fairy",
+              "Fighting",
+              "Fire",
+              "Flying",
+              "Ghost",
+              "Grass",
+              "Ground",
+              "Ice",
+              "Normal",
+              "Poison",
+              "Psychic",
+              "Rock",
+              "Steel",
+              "Water"
+            ]
+          },
+          "generation": {
+            "in": [1, 2, 3, 4, 5, 6, 7, 8]
+          }
+        }
       }
-      
     }
+      
+    
     return variables;
   }
 
