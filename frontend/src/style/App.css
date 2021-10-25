@@ -130,8 +130,14 @@
   flex-grow: 1;
   align-self: center;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
+  gap: max(2px, 20%);
 }
+
+.ListSprite {
+
+}
+
 .listingInfoAsList {
   width: 60%;
   align-self: flex-start;
