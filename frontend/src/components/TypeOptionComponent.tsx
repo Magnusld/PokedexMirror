@@ -21,8 +21,7 @@ import {ReactComponent as Steel} from "../assets/typeIconsSvg/Pokémon_Steel_Typ
 import {ReactComponent as Water} from "../assets/typeIconsSvg/Pokémon_Water_Type_Icon.svg";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../redux/store";
-import {setAllTypesTrue, swapSelectedType} from "../redux/TypeSlice";
-import {setAllGensTrue} from "../redux/generationSlice";
+import {setAllTypesFalse, swapSelectedType} from "../redux/TypeSlice";
 
 export function TypeOptionComponent() {
   const [checked, setChecked] = useState(false) // Temp variabel
@@ -169,7 +168,7 @@ export function TypeOptionComponent() {
           </div>
           <div>
             <Button className="clearAllButton" variant="secondary"
-                    onClick={() => dispatch(setAllTypesTrue())}>Fjerne alle valg</Button>
+                    onClick={() => dispatch(setAllTypesFalse())}>Fjerne alle valg</Button>
           </div>
         </div>
       </div>
