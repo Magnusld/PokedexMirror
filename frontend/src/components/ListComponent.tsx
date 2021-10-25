@@ -4,6 +4,8 @@ import {ListingComponent} from "./ListingComponent";
 import {PokemonSimple, Variables} from "../types";
 import gql from 'graphql-tag';
 import { useQuery } from '@apollo/client';
+import { useSelector } from 'react-redux';
+import { RootState } from '../redux/store';
 
 export function ListComponent(props: {
   asGrid: boolean
@@ -12,6 +14,7 @@ export function ListComponent(props: {
   interface PokemonSimpleData {
     pokemons: PokemonSimple[]
   }
+
 
   const GET_POKEMON_DATA = gql`
   query($orderBy: [PokemonOrderByInput!], $where: PokemonWhereInput, $first: Int, $after: PokemonWhereUniqueInput) {
@@ -26,11 +29,28 @@ export function ListComponent(props: {
   }
   `;
 
+  const searchInput = useSelector((state: RootState) => state.searchInput.value)
+  const selectedGen = useSelector((state: RootState) => state.selectedGen.value.filter(element => element.selected).map(element => element.id + 1))
+  const selectedType = useSelector((state: RootState) => state.selectedType.value.filter(element => element.selected).map(element => element.name))
+
+  useEffect(() => {
+    console.log(searchInput)
+    console.log(selectedGen)
+    console.log(selectedType);
+    
+  }, [searchInput, selectedGen, selectedType])
+
+
   /**
    * used by useQuery hook
    * @returns a set of variables to be used by graphQL query
    */
   function setQueryVariables() : any {
+
+    let name : string | null = null
+
+    searchInput ? name = searchInput : name = null
+
     const variables : Variables = { 
       variables: {
         "orderBy": {
@@ -40,29 +60,13 @@ export function ListComponent(props: {
         "after": null,
         "where": {
           "type1": {
-            "in": [
-              "Bug",
-              "Dark",
-              "Dragon",
-              "Electric",
-              "Fairy",
-              "Fighting",
-              "Fire",
-              "Flying",
-              "Ghost",
-              "Grass",
-              "Ground",
-              "Ice",
-              "Normal",
-              "Poison",
-              "Psychic",
-              "Rock",
-              "Steel",
-              "Water"
-            ]
+            "in": selectedType
           },
           "generation": {
-            "in": [1, 2, 3, 4, 5, 6, 7, 8]
+            "in": selectedGen
+          },
+          "name": {
+            "contains": name
           }
         }
       }
@@ -105,7 +109,7 @@ export function ListComponent(props: {
     } else { return "AsList"}
   }
 
-  if (error) return <div>Error! error.message</div>;
+  if (error) return <div>Error! {error.message}</div>;
 
   return (
       <div>
