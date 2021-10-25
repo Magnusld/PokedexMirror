@@ -53,7 +53,7 @@ export interface Variables {
 
 export interface WhereInputFields {
   generation?: {"in": number[]}
-  name?: {"contains": string}
+  name?: {"contains": string | null}
   type1?: {"in": string[]}
 }
 

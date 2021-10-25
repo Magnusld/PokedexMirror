@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit'
 import selectedGenReducer from './generationSlice'
 import selectedTypeReducer from './TypeSlice'
+import searchReducer from './searchSlice'
 
 export const store = configureStore({
   reducer: {
     selectedGen: selectedGenReducer,
-    selectedType: selectedTypeReducer
+    selectedType: selectedTypeReducer,
+    searchInput: searchReducer
   },
 })
 
