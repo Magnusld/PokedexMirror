@@ -21,7 +21,7 @@ import {ReactComponent as Steel} from "../assets/typeIconsSvg/Pokémon_Steel_Typ
 import {ReactComponent as Water} from "../assets/typeIconsSvg/Pokémon_Water_Type_Icon.svg";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../redux/store";
-import {setAllTypesTrue, swapSelectedType} from "../redux/TypeSlice";
+import {setAllTypesFalse, setAllTypesTrue, swapSelectedType} from "../redux/TypeSlice";
 import {setAllGensTrue} from "../redux/generationSlice";
 
 export function TypeOptionComponent() {
@@ -169,7 +169,9 @@ export function TypeOptionComponent() {
           </div>
           <div>
             <Button className="clearAllButton" variant="secondary"
-                    onClick={() => dispatch(setAllTypesTrue())}>Fjerne alle valg</Button>
+                    onClick={() => dispatch(setAllTypesFalse())}>Fjerne alle valg</Button>
+            <Button className="setAllButton" variant="secondary"
+                    onClick={() => dispatch(setAllTypesTrue())}>Velg alle</Button>
           </div>
         </div>
       </div>

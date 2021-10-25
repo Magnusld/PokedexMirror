@@ -4,6 +4,7 @@ import {ListingComponent} from "./ListingComponent";
 import {PokemonSimple, Variables} from "../types";
 import gql from 'graphql-tag';
 import { useQuery } from '@apollo/client';
+import {Button} from "react-bootstrap";
 
 export function ListComponent(props: {
   asGrid: boolean
@@ -114,6 +115,9 @@ export function ListComponent(props: {
               {showListing()}
             </div>
           )}
+          <div className={"showMore"}>
+            <Button className={"showMoreButton"}>Vis flere</Button>
+          </div>
       </div>
   )
 }

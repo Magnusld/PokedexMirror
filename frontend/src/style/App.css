@@ -95,6 +95,7 @@
 .clearAllButton {
   float: left;
   margin-bottom: 25px;
+  margin-right: 5px;
 }
 .optionsContainer {
   display: flex;
@@ -201,4 +202,14 @@
   align-items: flex-end;
   margin: 10px;
   background-image: url("../assets/typeIconsSvg/Pokémon_Bug_Type_Icon.svg")
+}
+
+.showMore {
+  display: flex;
+  justify-content: center;
+}
+.showMoreButton {
+  background-color: var(--secondary-color) !important;
+  color: var(--main-color) !important;
+  border-color: var(--secondary-color) !important;
 }
