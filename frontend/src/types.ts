@@ -42,21 +42,24 @@ export interface PokemonAdvanced {
 }
 
 export interface Variables {
-  where: WhereInputFields,
-  orderBy: OrderByInputFields
-  first: number,
-  after: AfterInputFields
+  variables: {
+    where: WhereInputFields
+    orderBy: OrderByInputFields
+    first: number
+    after: AfterInputFields | null
+  }
 }
+  
 
 export interface WhereInputFields {
-  generation?: number[]
-  name?: string
-  type?: string[]
+  generation?: {"in": number[]}
+  name?: {"contains": string}
+  type1?: {"in": string[]}
 }
 
 export interface OrderByInputFields {
-  pokedexNr?: string,
-  name?: string,
+  pokedexNr?: string
+  name?: string
 }
 
 export interface AfterInputFields {
