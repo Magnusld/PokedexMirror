@@ -10,6 +10,8 @@ export function ListComponent(props: {
   asGrid: boolean
 }) {
 
+  const pokeData: PokemonSimple[] = []
+
   interface PokemonSimpleData {
     pokemons: PokemonSimple[]
   }
@@ -31,14 +33,14 @@ export function ListComponent(props: {
    * used by useQuery hook
    * @returns a set of variables to be used by graphQL query
    */
-  function setQueryVariables() : any {
+  function setQueryVariables(after=null) : object {
     const variables : Variables = { 
       variables: {
         "orderBy": {
           "pokedexNr": "asc"
         },
         "first": 15,
-        "after": null,
+        "after": after,
         "where": {
           "type1": {
             "in": [
@@ -91,13 +93,25 @@ export function ListComponent(props: {
     let pokeList : PokemonSimple[] = []
     if(data !== undefined) {
       pokeList = data.pokemons
-      return pokeList.map((pokemon : PokemonSimple) => (
+      pokeList.forEach((e) => { pokeData.push(e) })
+      return pokeData.map((pokemon : PokemonSimple) => (
         <ListingComponent key={pokemon.id} asGrid={asGrid} pokemon={pokemon} />
       ))
     }
     else {
       return <div>Failed!</div>
     }
+  }
+
+  function showMoreListings() {
+    let paginationObj: any = {
+      "id": pokeData[pokeData.length - 1].id
+    }
+    setQueryVariables(paginationObj)
+    console.log(paginationObj)
+    console.log(pokeData)
+    showListing()
+    console.log(pokeData)
   }
 
   function chooseClassName() {
@@ -116,7 +130,7 @@ export function ListComponent(props: {
             </div>
           )}
           <div className={"showMore"}>
-            <Button className={"showMoreButton"}>Vis flere</Button>
+            <Button className={"showMoreButton"} onClick={showMoreListings}>Vis flere</Button>
           </div>
       </div>
   )
