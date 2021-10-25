@@ -1,24 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useEffect, useState} from 'react';
+import './style/App.css';
+import {TopBar} from "./components/TopBar";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {GenOptionsComponent} from "./components/GenOptionsComponent";
+import {TypeOptionComponent} from "./components/TypeOptionComponent";
+import {ListComponent} from "./components/ListComponent";
+//import {Generation} from "./types";
+import Info from './pages/Info';
 
 function App() {
+  const [asGrid, setAsGrid] = useState<boolean>(true)
+  const [showGenSelection, setShowGenSelection] = useState<boolean>(false)
+  const [showTypeSelection, setShowTypeSelection] = useState<boolean>(false)
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <TopBar asGrid={asGrid}
+              setAsGrid={setAsGrid}
+              setShowGenSelection={setShowGenSelection}
+              showGenSelection={showGenSelection}
+              setShowTypeSelection={setShowTypeSelection}
+              showTypeSelection={showTypeSelection}/>
+      <div className="optionsContainer">
+        {showGenSelection ? <GenOptionsComponent /> : null}
+        {showTypeSelection ? <TypeOptionComponent /> : null}
+      </div>
+      <div className={"list"}>
+        <ListComponent asGrid={asGrid}></ListComponent>
+      </div>
     </div>
   );
 }

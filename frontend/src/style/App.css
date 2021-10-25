@@ -1,0 +1,202 @@
+:root {
+  --main-color: #F5F5F5;
+  --secondary-color: #466060;
+  --tertiary-color: #57886C;
+}
+
+.App {
+  background: var(--main-color);
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.topbar {
+  max-width: 100vw;
+  background: var(--secondary-color);
+  height: 15vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+.search {
+  height: 35px;
+  margin: 3px;
+  align-content: baseline;
+}
+.displayOptions {
+  display: flex;
+
+}
+.active {
+  fill: var(--main-color);
+}
+.optionsButtonsContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+.filteringOptionsContainer {
+  justify-content: left;
+  width: 40vw;
+  min-width: 300px;
+}
+
+.mb-2 {
+  border-color: var(--secondary-color) !important;
+  color: var(--secondary-color) !important;
+}
+
+.mb-2:hover {
+  background-color: var(--secondary-color) !important;
+  color: var(--main-color) !important;
+}
+.btn-check:checked + .mb-2 {
+  background-color: var(--secondary-color) !important;
+  color: var(--main-color) !important;
+}
+
+.clearAllButton {
+  float: left;
+  margin-bottom: 25px;
+}
+.optionsContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 100vw;
+}
+.list {
+  height: inherit;
+  max-width: 100vw;
+  background: var(--main-color);
+  padding: 25px;
+}
+
+.listingAsList {
+  background: var(--tertiary-color);
+  color: var(--main-color);
+  border-radius: 10px;
+  display: flex;
+  margin: 10px;
+  padding: 10px;
+}
+.listingAsGrid {
+  background: var(--tertiary-color);
+  color: var(--main-color);
+  border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  width: 300px;
+}
+.pokedexNumberAsList {
+  width: 20%;
+  flex-grow: 1;
+  align-self: center;
+  display: flex;
+  justify-content: flex-start;
+
+}
+.listingInfoAsList {
+  width: 60%;
+  align-self: flex-start;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.listingInfoAsList div {
+  width: 40%;
+  text-align: left;
+}
+.listingInfoAsList p {
+  width: 60%;
+  text-align: left;
+}
+
+.typeEmblemAsList {
+  align-self: center;
+  width: 20%;
+  display: flex;
+  justify-content: flex-end;
+}
+.typeIcon {
+  height: 35px;
+  width: 35px;
+  margin-left: 5px;
+}
+.listTopbar {
+  text-align: right;
+  margin-right: 20px;
+}
+.listAsGrid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.pokedexNumberAsGrid {
+  flex-grow: 1;
+  margin: 10px;
+  align-self: center;
+}
+.listingInfoAsGrid {
+  align-self: center;
+  text-align: left;
+  padding: 5px;
+  flex-grow: 2;
+}
+.typeEmblemAsGrid {
+  align-self: center;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.AsGrid {
+  border-radius: 15px;
+  border-color: var(--tertiary-color);
+  border-style: solid;
+  border-width: 3px;
+  background: var(--main-color);
+  height: 300px;
+  display: flex;
+  align-items: flex-end;
+  margin: 10px;
+  background-image: url("../assets/typeIconsSvg/Pokémon_Bug_Type_Icon.svg")
+}
