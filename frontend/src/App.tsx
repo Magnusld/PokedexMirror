@@ -22,12 +22,14 @@ function App() {
               showGenSelection={showGenSelection}
               setShowTypeSelection={setShowTypeSelection}
               showTypeSelection={showTypeSelection}/>
-      <div className="optionsContainer">
-        {showGenSelection ? <GenOptionsComponent /> : null}
-        {showTypeSelection ? <TypeOptionComponent /> : null}
-      </div>
-      <div className={"list"}>
-        <ListComponent asGrid={asGrid}></ListComponent>
+      <div style={{paddingTop: "15vh"}}>
+        <div className="optionsContainer">
+          {showGenSelection ? <GenOptionsComponent /> : null}
+          {showTypeSelection ? <TypeOptionComponent /> : null}
+        </div>
+        <div className={"list"}>
+          <ListComponent asGrid={asGrid}></ListComponent>
+        </div>
       </div>
     </div>
   );
