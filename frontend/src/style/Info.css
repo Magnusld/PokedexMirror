@@ -125,7 +125,7 @@
 
 .stats {
     background-color: var(--info-container-boxes);
-    padding: 10px 30px;
+    padding: 20px 30px;
     font-size: 1.2em;
     font-weight: 500;
 }
@@ -160,6 +160,20 @@
 
 .abilities {
     background-color: var(--info-container-boxes);
+    padding: 20px 30px;
+    font-size: 1.2em;
+    font-weight: 500;
+}
+
+.ability-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.ability-list span {
+    padding-bottom: 10px;
+    font-size: 1em;
+    font-weight: 400;
 }
 
 @media only screen and (max-width: 900px) {
@@ -172,5 +186,6 @@
     .bottom-container {
         grid-auto-flow: row;
         grid-template-columns: 1fr;
+        height: fit-content;
     }
 }

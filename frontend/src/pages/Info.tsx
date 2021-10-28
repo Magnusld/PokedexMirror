@@ -77,7 +77,7 @@ function Info() {
      * @returns 
      */
     function typesToList(...types : string[]) {
-        const typeList = types.filter((type) => type.length > 0)
+        const typeList = types.filter((type) => type.length > 0);
         return typeList;
     }
 
@@ -94,6 +94,14 @@ function Info() {
         else {
             return <div className="types"><span className="type-icon" style={{backgroundColor: "white"}}>None</span></div>
         }
+    }
+
+    function generateAbilities(ability1: string, ability2: string, ability3: string) {
+        return <div className="ability-list">
+            {ability1.length > 0 ? <span>1. {ability1}</span> : null}
+            {ability2.length > 0 ? <span>2. {ability2}</span> : null}
+            {ability3.length > 0 ? <span style={{color: "orange"}}>(Hidden ability) {ability3}</span> : null}
+        </div>
     }
 
     const colours : any = {
@@ -193,7 +201,10 @@ function Info() {
                         </tr>
                     </table>
                 </div>
-                <div className="abilities"></div>
+                <div className="abilities">
+                    <h2>Abilities</h2>
+                    {generateAbilities(data ? data.pokemon.ability1 : "", data ? data.pokemon.ability2 : "", data ? data.pokemon.ability3 : "")}
+                </div>
             </div>
         </div>
     )
