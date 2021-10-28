@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import '../style/App.css';
 import {ListingComponent} from "./ListingComponent";
-import {PokemonSimple, Variables} from "../types";
+import {OrderByInputFields, PokemonSimple, Variables} from "../types";
 import gql from 'graphql-tag';
 import { useQuery } from '@apollo/client';
 import { useSelector } from 'react-redux';
@@ -32,13 +32,16 @@ export function ListComponent(props: {
   const searchInput = useSelector((state: RootState) => state.searchInput.value)
   const selectedGen = useSelector((state: RootState) => state.selectedGen.value.filter(element => element.selected).map(element => element.id + 1))
   const selectedType = useSelector((state: RootState) => state.selectedType.value.filter(element => element.selected).map(element => element.name))
+  const sorting = useSelector((state: RootState) => state.sort.value)
 
   useEffect(() => {
     console.log(searchInput)
     console.log(selectedGen)
     console.log(selectedType);
+    console.log(sorting);
     
-  }, [searchInput, selectedGen, selectedType])
+    
+  }, [searchInput, selectedGen, selectedType, sorting])
 
 
   /**
@@ -46,16 +49,21 @@ export function ListComponent(props: {
    * @returns a set of variables to be used by graphQL query
    */
   function setQueryVariables() : any {
+    let orderBy : OrderByInputFields = {}
+    if(sorting.type === "name") {
+      orderBy = {"name": sorting.ordering}
+    } else if(sorting.type === "pokedexNr") {
+      orderBy = {"pokedexNr": sorting.ordering}
+    }
+
+    console.log(orderBy)
 
     let name : string | null = null
-
     searchInput ? name = searchInput : name = null
 
     const variables : Variables = { 
       variables: {
-        "orderBy": {
-          "pokedexNr": "asc"
-        },
+        "orderBy" : orderBy,
         "first": 15,
         "after": null,
         "where": {
@@ -71,8 +79,6 @@ export function ListComponent(props: {
         }
       }
     }
-      
-    
     return variables;
   }
 
