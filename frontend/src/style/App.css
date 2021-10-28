@@ -214,6 +214,6 @@
   text-decoration-line: none;
 }
 
-.listingLink:hover {
+.AsList .listingLink:hover {
   background-color: #75b18f;
 }
