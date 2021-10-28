@@ -11,6 +11,11 @@ export interface SelectedType {
   name: string
 }
 
+export interface SortType {
+  type: string
+  ordering: string
+}
+
 export interface PokemonSimple {
   id: number,
   pokedexNr: number,
@@ -53,7 +58,7 @@ export interface Variables {
 
 export interface WhereInputFields {
   generation?: {"in": number[]}
-  name?: {"contains": string}
+  name?: {"contains": string | null}
   type1?: {"in": string[]}
 }
 
