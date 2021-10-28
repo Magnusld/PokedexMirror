@@ -7,11 +7,15 @@ import {TypeOptionComponent} from "./components/TypeOptionComponent";
 import {ListComponent} from "./components/ListComponent";
 //import {Generation} from "./types";
 import Info from './pages/Info';
+import { SortOptions } from './components/SortOptions';
 
 function App() {
   const [asGrid, setAsGrid] = useState<boolean>(true)
   const [showGenSelection, setShowGenSelection] = useState<boolean>(false)
   const [showTypeSelection, setShowTypeSelection] = useState<boolean>(false)
+  const [showSorting, setShowSorting] = useState<boolean>(false)
+
+
 
 
   return (
@@ -21,8 +25,12 @@ function App() {
               setShowGenSelection={setShowGenSelection}
               showGenSelection={showGenSelection}
               setShowTypeSelection={setShowTypeSelection}
-              showTypeSelection={showTypeSelection}/>
+              showTypeSelection={showTypeSelection}
+              showSorting={showSorting}
+              setShowSorting={setShowSorting}
+              />
       <div className="optionsContainer">
+        {showSorting ? <SortOptions /> : null}
         {showGenSelection ? <GenOptionsComponent /> : null}
         {showTypeSelection ? <TypeOptionComponent /> : null}
       </div>
