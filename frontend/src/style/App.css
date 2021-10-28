@@ -206,7 +206,7 @@
   display: flex;
   align-items: flex-end;
   margin: 10px;
-  background-image: url("../assets/typeIconsSvg/Pokémon_Bug_Type_Icon.svg");
+  background-image: url("../assets/typeIconsSvg/Pokémon_Bug_Type_Icon.svg")
 }
 
 .listingLink {
@@ -214,6 +214,6 @@
   text-decoration-line: none;
 }
 
-.AsList .listingLink:hover {
+.listingLink:hover {
   background-color: #75b18f;
 }
