@@ -11,6 +11,11 @@ export interface SelectedType {
   name: string
 }
 
+export interface SortType {
+  type: string
+  ordering: string
+}
+
 export interface PokemonSimple {
   id: number,
   pokedexNr: number,
