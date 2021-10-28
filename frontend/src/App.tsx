@@ -8,6 +8,8 @@ import {ListComponent} from "./components/ListComponent";
 //import {Generation} from "./types";
 import Info from './pages/Info';
 
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+
 function App() {
   const [asGrid, setAsGrid] = useState<boolean>(true)
   const [showGenSelection, setShowGenSelection] = useState<boolean>(false)
@@ -15,21 +17,34 @@ function App() {
 
 
   return (
-    <div className="App">
-      <TopBar asGrid={asGrid}
-              setAsGrid={setAsGrid}
-              setShowGenSelection={setShowGenSelection}
-              showGenSelection={showGenSelection}
-              setShowTypeSelection={setShowTypeSelection}
-              showTypeSelection={showTypeSelection}/>
-      <div className="optionsContainer">
-        {showGenSelection ? <GenOptionsComponent /> : null}
-        {showTypeSelection ? <TypeOptionComponent /> : null}
+    <Router>
+      <div className="App">
+
+        <TopBar asGrid={asGrid}
+                setAsGrid={setAsGrid}
+                setShowGenSelection={setShowGenSelection}
+                showGenSelection={showGenSelection}
+                setShowTypeSelection={setShowTypeSelection}
+                showTypeSelection={showTypeSelection}/>
+                
+        <div className="optionsContainer">
+          {showGenSelection ? <GenOptionsComponent /> : null}
+          {showTypeSelection ? <TypeOptionComponent /> : null}
+        </div>
+        
+        <Switch>
+          <Route exact path="/">
+            <div className={"list"}>
+              <ListComponent asGrid={asGrid} />
+            </div>
+          </Route>
+          <Route path="/info/:id">
+            <Info />
+          </Route>
+        </Switch>
+
       </div>
-      <div className={"list"}>
-        <ListComponent asGrid={asGrid}></ListComponent>
-      </div>
-    </div>
+    </Router>
   );
 }
 

@@ -78,7 +78,7 @@
 }
 
 .more-info span:last-of-type {
-    margin-left: 10px;
+    margin-left: 30px;
 }
 
 .types {
@@ -105,7 +105,15 @@
     width: 100%;
     margin: 10px auto;
     background-color: var(--info-container-boxes);
-    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.4em;
+    font-weight: 400;
+}
+
+.middle-container span {
+    padding: 35px;
 }
 
 .bottom-container {
@@ -117,13 +125,32 @@
 
 .stats {
     background-color: var(--info-container-boxes);
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 10px;
+    padding: 20px 30px;
     font-size: 1.2em;
     font-weight: 500;
+}
 
+.stats-table {
+    background-color: rgb(248, 248, 248);
+    width: 100%;
+}
 
+.stats-table tr, .stats-table td {
+    border-bottom: solid lightgrey 1px;
+    padding: 8px 20px;
+}
+
+.stats-table tr:last-of-type, .stats-table td {
+    border-bottom: none;
+}
+
+.stats-table tr:last-of-type {
+    background-color: var(--pokenum-bg);
+    color: white;
+}
+
+.stats-table td:nth-of-type(2) {
+    text-align: right;
 }
 
 .stats-column {
@@ -133,6 +160,20 @@
 
 .abilities {
     background-color: var(--info-container-boxes);
+    padding: 20px 30px;
+    font-size: 1.2em;
+    font-weight: 500;
+}
+
+.ability-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.ability-list span {
+    padding-bottom: 10px;
+    font-size: 1em;
+    font-weight: 400;
 }
 
 @media only screen and (max-width: 900px) {
@@ -145,5 +186,6 @@
     .bottom-container {
         grid-auto-flow: row;
         grid-template-columns: 1fr;
+        height: fit-content;
     }
 }

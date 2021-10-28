@@ -19,6 +19,7 @@ import {ReactComponent as Psychic} from "../assets/typeIconsSvg/Pokémon_Psychic
 import {ReactComponent as Rock} from "../assets/typeIconsSvg/Pokémon_Rock_Type_Icon.svg";
 import {ReactComponent as Steel} from "../assets/typeIconsSvg/Pokémon_Steel_Type_Icon.svg";
 import {ReactComponent as Water} from "../assets/typeIconsSvg/Pokémon_Water_Type_Icon.svg";
+import { Link } from 'react-router-dom';
 
 export function ListingComponent(props: {
   asGrid: boolean
@@ -78,21 +79,25 @@ export function ListingComponent(props: {
 
 
   return (
+    
       <div className={chooseClassName()}>
-        <div className={"listing"+chooseClassName()}>
-          <div className={"pokedexNumber"+chooseClassName()}>
-            <h3>#{pokemon.pokedexNr}</h3>
-          </div>
-          <div className={"listingInfo"+chooseClassName()}>
-            <div>
-              <h5 onClick={log}>{pokemon.name}</h5>
+        <Link to={`/info/${pokemon.id}`} className="listingLink">
+          <div className={"listing"+chooseClassName()}>
+            <div className={"pokedexNumber"+chooseClassName()}>
+              <h3>#{pokemon.pokedexNr}</h3>
             </div>
-            <p>Gen {pokemon.generation}</p>
+            <div className={"listingInfo"+chooseClassName()}>
+              <div>
+                <h5 onClick={log}>{pokemon.name}</h5>
+              </div>
+              <p>Gen {pokemon.generation}</p>
+            </div>
+            <div className={"typeEmblem"+chooseClassName()}>
+              {showTypeEmblem}
+            </div>
           </div>
-          <div className={"typeEmblem"+chooseClassName()}>
-            {showTypeEmblem}
-          </div>
-        </div>
+        </Link>
       </div>
+    
   )
 }
