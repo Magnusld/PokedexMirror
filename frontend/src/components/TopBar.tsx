@@ -64,7 +64,7 @@ export function TopBar(props: {
           <Search style={{height: 35, width: 35, fill: "#F5F5F5"}}/>
         </div>
         <div className="advanced">
-          <Button variant="outline-light" onClick={toggleAdvanced}>Instillinger</Button>
+          <Button variant="outline-light" onClick={toggleAdvanced}>Innstillinger</Button>
         </div>
         <div className="list-grid-swap">
           <List style={{height: 35, width: 35}} className={asGrid ? "" : "active"} onClick={swapAsGrid}/>
