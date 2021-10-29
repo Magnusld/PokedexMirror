@@ -1,7 +1,7 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import '../style/App.css';
 import {ListingComponent} from "./ListingComponent";
-import {PokemonSimple, Variables} from "../types";
+import {AfterInputFields, PokemonSimple, Variables} from "../types";
 import gql from 'graphql-tag';
 import { useQuery } from '@apollo/client';
 import {Button} from "react-bootstrap";
@@ -10,7 +10,8 @@ export function ListComponent(props: {
   asGrid: boolean
 }) {
 
-  const pokeData: PokemonSimple[] = []
+  const [pokeData, setPokeData] = useState<any>([])
+  const [nextAfterId, setNextAfterId] = useState<AfterInputFields|null>(null)
 
   interface PokemonSimpleData {
     pokemons: PokemonSimple[]
@@ -33,7 +34,7 @@ export function ListComponent(props: {
    * used by useQuery hook
    * @returns a set of variables to be used by graphQL query
    */
-  function setQueryVariables(after=null) : object {
+  function setQueryVariables(after:AfterInputFields|null=null) : object {
     const variables : Variables = { 
       variables: {
         "orderBy": {
@@ -75,26 +76,27 @@ export function ListComponent(props: {
     return variables;
   }
 
-  const { loading, error, data } = useQuery<PokemonSimpleData, any>(GET_POKEMON_DATA, setQueryVariables());
+  const { loading, error, data } = useQuery<PokemonSimpleData, any>(GET_POKEMON_DATA, setQueryVariables(nextAfterId));
 
   const asGrid = props.asGrid
 
   useEffect(() => {
-    console.log(setQueryVariables())
     console.log(data)
     console.log(asGrid)
+    let pokeList : PokemonSimple[] = []
+    if(data !== undefined) {
+      pokeList = data.pokemons
+      setPokeData(pokeList)
+    }
   })
 
   /**
    * used to render pokemon to grid/list
    * @returns a list with compontents
    */
-  function showListing() {
-    let pokeList : PokemonSimple[] = []
-    if(data !== undefined) {
-      pokeList = data.pokemons
-      pokeList.forEach((e) => { pokeData.push(e) })
-      return pokeData.map((pokemon : PokemonSimple) => (
+  function showListing(pokeList: any[] | null) {
+    if(pokeList != null) {
+      return pokeList.map((pokemon : PokemonSimple) => (
         <ListingComponent key={pokemon.id} asGrid={asGrid} pokemon={pokemon} />
       ))
     }
@@ -104,14 +106,21 @@ export function ListComponent(props: {
   }
 
   function showMoreListings() {
-    let paginationObj: any = {
-      "id": pokeData[pokeData.length - 1].id
+    console.log(pokeData)
+    const newAfter: AfterInputFields = {
+      id: pokeData[pokeData.length -1].id
     }
-    setQueryVariables(paginationObj)
-    console.log(paginationObj)
-    console.log(pokeData)
-    showListing()
-    console.log(pokeData)
+    setNextAfterId(newAfter)
+    console.log(nextAfterId)
+    console.log(setQueryVariables(nextAfterId))
+    /*
+    let pokeList : PokemonSimple[] = []
+    if(data !== undefined) {
+      pokeList = data.pokemons
+      setPokeData(pokeList)
+    }
+
+     */
   }
 
   function chooseClassName() {
@@ -126,7 +135,7 @@ export function ListComponent(props: {
       <div>
           {loading ? (<p>Loading</p>) : (
             <div className={"list"+chooseClassName()}>
-              {showListing()}
+              {showListing(pokeData)}
             </div>
           )}
           <div className={"showMore"}>
