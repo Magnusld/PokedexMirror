@@ -3,7 +3,7 @@ import '../style/App.css';
 import {Button, Form, ToggleButton} from "react-bootstrap";
 import {RootState} from "../redux/store";
 import {useDispatch, useSelector} from "react-redux";
-import {setAllGensTrue, swapSelectedGen} from "../redux/generationSlice";
+import {setAllGensFalse, swapSelectedGen} from "../redux/generationSlice";
 
 export function GenOptionsComponent() {
   const [checked, setChecked] = useState(false)
@@ -35,7 +35,7 @@ export function GenOptionsComponent() {
             {showToggleButtons}
           </div>
           <Button className="clearAllButton" variant="secondary"
-                  onClick={() => dispatch(setAllGensTrue())}>Fjerne alle valg</Button>
+                  onClick={() => dispatch(setAllGensFalse())}>Fjerne alle valg</Button>
         </div>
       </div>
   )

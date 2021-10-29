@@ -25,9 +25,9 @@ export const selectedGenSlicer = createSlice({
   name: 'selectedGen',
   initialState,
   reducers: {
-    setAllGensTrue: (state) => {
+    setAllGensFalse: (state) => {
       state.value.forEach(gen => {
-        gen.selected = true
+        gen.selected = false
       })
     },
     swapSelectedGen: (state, action: PayloadAction<number>) => {
@@ -36,6 +36,6 @@ export const selectedGenSlicer = createSlice({
   },
 })
 
-export const { setAllGensTrue, swapSelectedGen } = selectedGenSlicer.actions
+export const { setAllGensFalse, swapSelectedGen } = selectedGenSlicer.actions
 
 export default selectedGenSlicer.reducer

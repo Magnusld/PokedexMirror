@@ -20,6 +20,7 @@ import {ReactComponent as Rock} from "../assets/typeIconsSvg/Pokémon_Rock_Type_
 import {ReactComponent as Steel} from "../assets/typeIconsSvg/Pokémon_Steel_Type_Icon.svg";
 import {ReactComponent as Water} from "../assets/typeIconsSvg/Pokémon_Water_Type_Icon.svg";
 import {getFullSize, getSprite, getThumbnail} from "../util/imageResolver";
+import { Link } from 'react-router-dom';
 
 export function ListingComponent(props: {
   asGrid: boolean
@@ -88,23 +89,28 @@ export function ListingComponent(props: {
   }
 
   return (
+    
       <div className={chooseClassName()}
-        style={asGrid ? ImageGridStyle() : undefined}>
-        <div className={"listing"+chooseClassName()}>
-          <div className={"pokedexNumber"+chooseClassName()}>
-            <h3>#{pokemon.pokedexNr}</h3>
-            {!asGrid && <img className={"ListSprite"} src={getSprite(pokemon.pokedexNr)} alt={pokemon.name}/>}
-          </div>
-          <div className={"listingInfo"+chooseClassName()}>
-            <div>
-              <h5 onClick={log}>{pokemon.name}</h5>
+           style={asGrid ? ImageGridStyle() : undefined}>>
+        <Link to={`/info/${pokemon.id}`} className="listingLink">
+          <div className={"listing"+chooseClassName()}>
+            <div className={"pokedexNumber"+chooseClassName()}>
+              <h3>#{pokemon.pokedexNr}</h3>
+              {!asGrid && <img className={"ListSprite"} src={getSprite(pokemon.pokedexNr)} alt={pokemon.name}/>}
+
             </div>
-            <p>Gen {pokemon.generation}</p>
+            <div className={"listingInfo"+chooseClassName()}>
+              <div>
+                <h5 onClick={log}>{pokemon.name}</h5>
+              </div>
+              <p>Gen {pokemon.generation}</p>
+            </div>
+            <div className={"typeEmblem"+chooseClassName()}>
+              {showTypeEmblem}
+            </div>
           </div>
-          <div className={"typeEmblem"+chooseClassName()}>
-            {showTypeEmblem}
-          </div>
-        </div>
+        </Link>
       </div>
+
   )
 }
