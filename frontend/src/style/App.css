@@ -286,13 +286,14 @@ select.sort-select.form-select {
 
 .showMore {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   margin-top: 10px;
 }
-.showMoreButton {
+.showNextButton {
   background-color: var(--secondary-color) !important;
   color: var(--main-color) !important;
   border-color: var(--secondary-color) !important;
+  margin: 5px;
 }
 
 .listingLink {
@@ -302,4 +303,8 @@ select.sort-select.form-select {
 
 .AsList .listingLink:hover {
   background-color: #75b18f;
+}
+
+.PageNavButtonGroups {
+
 }

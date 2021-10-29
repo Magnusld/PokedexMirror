@@ -50,8 +50,10 @@ export interface Variables {
   variables: {
     where: WhereInputFields
     orderBy: OrderByInputFields
-    first: number
+    first: number | null
+    last: number | null
     after: AfterInputFields | null
+    before: AfterInputFields | null
   }
 }
   

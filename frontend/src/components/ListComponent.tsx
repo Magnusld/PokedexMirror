@@ -14,6 +14,7 @@ export function ListComponent(props: {
 
   const [pokeData, setPokeData] = useState<any>([])
   const [nextAfterId, setNextAfterId] = useState<AfterInputFields|null>(null)
+  const [nextPrevId, setNextPrevId] = useState<AfterInputFields|null>(null)
 
   interface PokemonSimpleData {
     pokemons: PokemonSimple[]
@@ -50,7 +51,7 @@ export function ListComponent(props: {
    * used by useQuery hook
    * @returns a set of variables to be used by graphQL query
    */
-  function setQueryVariables(after:AfterInputFields|null=null) : object {
+  function setQueryVariables(after:AfterInputFields|null=null, prev:AfterInputFields|null=null) : object {
     let orderBy : OrderByInputFields = {}
     if(sorting.type === "name") {
       orderBy = {"name": sorting.ordering}
@@ -60,12 +61,19 @@ export function ListComponent(props: {
     console.log(orderBy)
     let name : string | null = null
     searchInput ? name = searchInput : name = null
-
+    let first: number | null = 15
+    let last: number | null = null
+    if (prev != null) {
+      first = null
+      last = 15
+    }
     const variables : Variables = { 
       variables: {
         "orderBy" : orderBy,
-        "first": 15,
+        "first": first,
+        "last": last,
         "after": after,
+        "before": prev,
         "where": {
           "type1": {
             "in": selectedType
@@ -82,7 +90,7 @@ export function ListComponent(props: {
     return variables;
   }
 
-  const { loading, error, data } = useQuery<PokemonSimpleData, any>(GET_POKEMON_DATA, setQueryVariables(nextAfterId));
+  const { loading, error, data } = useQuery<PokemonSimpleData, any>(GET_POKEMON_DATA, setQueryVariables(nextAfterId, nextPrevId));
 
   const asGrid = props.asGrid
 
@@ -110,23 +118,36 @@ export function ListComponent(props: {
       return <div>Failed!</div>
     }
   }
+  function showPrevListings() {
+    console.log(pokeData)
+    const newPrev: AfterInputFields = {
+      id: pokeData[pokeData.length - 15].id
+    }
+    setNextAfterId(null)
+    setNextPrevId(newPrev)
+    console.log(nextPrevId)
+  }
+  function showFirstListings() {
+    console.log(pokeData)
+    const newPrev: AfterInputFields = {
+      id: pokeData[0].id
+    }
+    setNextAfterId(null)
+    setNextPrevId(newPrev)
+    console.log(nextPrevId)
+  }
+  function showLastListings() {
 
-  function showMoreListings() {
+  }
+
+  function showNextListings() {
     console.log(pokeData)
     const newAfter: AfterInputFields = {
       id: pokeData[pokeData.length -1].id
     }
+    setNextPrevId(null)
     setNextAfterId(newAfter)
     console.log(nextAfterId)
-    console.log(setQueryVariables(nextAfterId))
-    /*
-    let pokeList : PokemonSimple[] = []
-    if(data !== undefined) {
-      pokeList = data.pokemons
-      setPokeData(pokeList)
-    }
-
-     */
   }
 
   function chooseClassName() {
@@ -145,7 +166,16 @@ export function ListComponent(props: {
             </div>
           )}
           <div className={"showMore"}>
-            <Button className={"showMoreButton"} onClick={showMoreListings}>Vis flere</Button>
+            <div className={"PageNavButtonGroups"}>
+              <Button className={"showNextButton"} onClick={showFirstListings}>&lt;&lt; Første side</Button>
+            </div>
+            <div className={"PageNavButtonGroups"}>
+              <Button className={"showNextButton"} onClick={showPrevListings}> &lt; Forrige side</Button>
+              <Button className={"showNextButton"} onClick={showNextListings}>Neste side &gt; </Button>
+            </div>
+            <div className={"PageNavButtonGroups"}>
+              <Button className={"showNextButton"} onClick={showLastListings}>Siste side &gt;&gt;</Button>
+            </div>
           </div>
       </div>
   )
