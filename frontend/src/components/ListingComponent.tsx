@@ -91,7 +91,7 @@ export function ListingComponent(props: {
   return (
     
       <div className={chooseClassName()}
-           style={asGrid ? ImageGridStyle() : undefined}>>
+           style={asGrid ? ImageGridStyle() : undefined}>
         <Link to={`/info/${pokemon.id}`} className="listingLink">
           <div className={"listing"+chooseClassName()}>
             <div className={"pokedexNumber"+chooseClassName()}>
