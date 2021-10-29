@@ -139,7 +139,7 @@ select.sort-select.form-select {
   .sort-inner-select {
     padding-bottom: 20px;
   }
-  
+
 }
 
 .mb-2 {
@@ -206,8 +206,13 @@ select.sort-select.form-select {
   align-self: center;
   display: flex;
   justify-content: flex-start;
+  gap: max(2px, 20%);
+}
+
+.ListSprite {
 
 }
+
 .listingInfoAsList {
   width: 60%;
   align-self: flex-start;
@@ -273,7 +278,6 @@ select.sort-select.form-select {
   display: flex;
   align-items: flex-end;
   margin: 10px;
-  background-image: url("../assets/typeIconsSvg/Pokémon_Bug_Type_Icon.svg")
 }
 
 .listingLink {
