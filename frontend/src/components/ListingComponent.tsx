@@ -19,6 +19,8 @@ import {ReactComponent as Psychic} from "../assets/typeIconsSvg/Pokémon_Psychic
 import {ReactComponent as Rock} from "../assets/typeIconsSvg/Pokémon_Rock_Type_Icon.svg";
 import {ReactComponent as Steel} from "../assets/typeIconsSvg/Pokémon_Steel_Type_Icon.svg";
 import {ReactComponent as Water} from "../assets/typeIconsSvg/Pokémon_Water_Type_Icon.svg";
+import {getFullSize, getSprite, getThumbnail} from "../util/imageResolver";
+import { Link } from 'react-router-dom';
 
 export function ListingComponent(props: {
   asGrid: boolean
@@ -34,6 +36,7 @@ export function ListingComponent(props: {
   function log() {
     console.log(asGrid)
     console.log("listing"+chooseClassName())
+    console.log(getThumbnail(pokemon.pokedexNr))
   }
 
 
@@ -49,24 +52,24 @@ export function ListingComponent(props: {
 
   let showTypeEmblem = typesToList(pokemon.type1, pokemon.type2).map((Type) => (
       <div>
-        {Type == "Bug" ? <Bug className={"typeIcon"}/> : null}
-        {Type == "Dark" ? <Dark className={"typeIcon"}/> : null}
-        {Type == "Dragon" ? <Dragon className={"typeIcon"}/> : null}
-        {Type == "Electric" ? <Electric className={"typeIcon"}/> : null}
-        {Type == "Fairy" ? <Fairy className={"typeIcon"}/> : null}
-        {Type == "Fighting" ? <Fighting className={"typeIcon"}/> : null}
-        {Type == "Fire" ? <Fire className={"typeIcon"}/> : null}
-        {Type == "Flying" ? <Flying className={"typeIcon"}/> : null}
-        {Type == "Ghost" ? <Ghost className={"typeIcon"}/> : null}
-        {Type == "Grass" ? <Grass className={"typeIcon"}/> : null}
-        {Type == "Ground" ? <Ground className={"typeIcon"}/> : null}
-        {Type == "Ice" ? <Ice className={"typeIcon"}/> : null}
-        {Type == "Normal" ? <Normal className={"typeIcon"}/> : null}
-        {Type == "Poison" ? <Poison className={"typeIcon"}/> : null}
-        {Type == "Psychic" ? <Psychic className={"typeIcon"}/> : null}
-        {Type == "Rock" ? <Rock className={"typeIcon"}/> : null}
-        {Type == "Steel" ? <Steel className={"typeIcon"}/> : null}
-        {Type == "Water" ? <Water className={"typeIcon"}/> : null}
+        {Type === "Bug" ? <Bug className={"typeIcon"}/> : null}
+        {Type === "Dark" ? <Dark className={"typeIcon"}/> : null}
+        {Type === "Dragon" ? <Dragon className={"typeIcon"}/> : null}
+        {Type === "Electric" ? <Electric className={"typeIcon"}/> : null}
+        {Type === "Fairy" ? <Fairy className={"typeIcon"}/> : null}
+        {Type === "Fighting" ? <Fighting className={"typeIcon"}/> : null}
+        {Type === "Fire" ? <Fire className={"typeIcon"}/> : null}
+        {Type === "Flying" ? <Flying className={"typeIcon"}/> : null}
+        {Type === "Ghost" ? <Ghost className={"typeIcon"}/> : null}
+        {Type === "Grass" ? <Grass className={"typeIcon"}/> : null}
+        {Type === "Ground" ? <Ground className={"typeIcon"}/> : null}
+        {Type === "Ice" ? <Ice className={"typeIcon"}/> : null}
+        {Type === "Normal" ? <Normal className={"typeIcon"}/> : null}
+        {Type === "Poison" ? <Poison className={"typeIcon"}/> : null}
+        {Type === "Psychic" ? <Psychic className={"typeIcon"}/> : null}
+        {Type === "Rock" ? <Rock className={"typeIcon"}/> : null}
+        {Type === "Steel" ? <Steel className={"typeIcon"}/> : null}
+        {Type === "Water" ? <Water className={"typeIcon"}/> : null}
       </div>
   ))
 
@@ -76,23 +79,38 @@ export function ListingComponent(props: {
     } else { return "AsList"}
   }
 
+  function ImageGridStyle() {
+    return(
+        {backgroundImage: asGrid ? `url(${getFullSize(pokemon.pokedexNr)})` : undefined,
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center 25%",
+        backgroundSize: "150px 150px"}
+    )
+  }
 
   return (
-      <div className={chooseClassName()}>
-        <div className={"listing"+chooseClassName()}>
-          <div className={"pokedexNumber"+chooseClassName()}>
-            <h3>#{pokemon.pokedexNr}</h3>
-          </div>
-          <div className={"listingInfo"+chooseClassName()}>
-            <div>
-              <h5 onClick={log}>{pokemon.name}</h5>
+    
+      <div className={chooseClassName()}
+           style={asGrid ? ImageGridStyle() : undefined}>
+        <Link to={`/info/${pokemon.id}`} className="listingLink">
+          <div className={"listing"+chooseClassName()}>
+            <div className={"pokedexNumber"+chooseClassName()}>
+              <h3>#{pokemon.pokedexNr}</h3>
+              {!asGrid && <img className={"ListSprite"} src={getSprite(pokemon.pokedexNr)} alt={pokemon.name}/>}
+
             </div>
-            <p>Gen {pokemon.generation}</p>
+            <div className={"listingInfo"+chooseClassName()}>
+              <div>
+                <h5 onClick={log}>{pokemon.name}</h5>
+              </div>
+              <p>Gen {pokemon.generation}</p>
+            </div>
+            <div className={"typeEmblem"+chooseClassName()}>
+              {showTypeEmblem}
+            </div>
           </div>
-          <div className={"typeEmblem"+chooseClassName()}>
-            {showTypeEmblem}
-          </div>
-        </div>
+        </Link>
       </div>
+
   )
 }
