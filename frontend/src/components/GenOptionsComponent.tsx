@@ -12,7 +12,6 @@ export function GenOptionsComponent() {
 
   const handleButtonClick = (id: number) => {
     dispatch(swapSelectedGen(id))
-    //console.log(selectedGen)
   }
 
   let showToggleButtons = selectedGen.map((gen, i) => (

@@ -29,17 +29,6 @@ export function ListingComponent(props: {
   const asGrid = props.asGrid
   const pokemon = props.pokemon
 
-  useEffect(() => {
-    //console.log("Im alive")
-  })
-
-  function log() {
-    console.log(asGrid)
-    console.log("listing"+chooseClassName())
-    console.log(getThumbnail(pokemon.pokedexNr))
-  }
-
-
   /**
    * takes potential type 1 and type 2 and makes it into a list
    * @param types rest param with one or two types

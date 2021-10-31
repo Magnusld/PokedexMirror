@@ -1,12 +1,12 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import '../style/App.css';
 import {ListingComponent} from "./ListingComponent";
-import {AfterInputFields, PokemonSimple, Variables, OrderByInputFields} from "../types";
-import { useQuery } from '@apollo/client';
+import {AfterInputFields, OrderByInputFields, PokemonSimple, Variables} from "../types";
+import {useQuery} from '@apollo/client';
 import {Button} from "react-bootstrap";
 import gql from 'graphql-tag';
-import { useSelector } from 'react-redux';
-import { RootState } from '../redux/store';
+import {useSelector} from 'react-redux';
+import {RootState} from '../redux/store';
 
 export function ListComponent(props: {
   asGrid: boolean
@@ -38,17 +38,6 @@ export function ListComponent(props: {
   const selectedType = useSelector((state: RootState) => state.selectedType.value.filter(element => element.selected).map(element => element.name))
   const sorting = useSelector((state: RootState) => state.sort.value)
 
-  /*
-  useEffect(() => {
-    console.log(searchInput)
-    console.log(selectedGen)
-    console.log(selectedType);
-    console.log(sorting);
-  }, [searchInput, selectedGen, selectedType, sorting])
-
-   */
-
-
   /**
    * used by useQuery hook
    * @returns a set of variables to be used by graphQL query
@@ -64,8 +53,7 @@ export function ListComponent(props: {
     }
     let name : string | null = null
     searchInput ? name = searchInput : name = null
-    //console.log("prevId i variablers: ", prev)
-    //console.log("afterId i variablers: ", after)
+
     let first: number | null = 15
     let last: number | null = null
     if (pageCounter != 1){
@@ -74,10 +62,10 @@ export function ListComponent(props: {
         first = null
       }
     }
-    //console.log("first: ",first,"last: ", last,"after: ", after, "before:", before)
-    const variables : Variables = { 
+
+    return {
       variables: {
-        "orderBy" : orderBy,
+        "orderBy": orderBy,
         "first": first,
         "last": last,
         "after": after,
@@ -94,9 +82,7 @@ export function ListComponent(props: {
           }
         }
       }
-    }
-    //console.log(variables)
-    return variables;
+    };
   }
 
   const { loading, error, data } = useQuery<PokemonSimpleData, any>(GET_POKEMON_DATA, setQueryVariables());
@@ -120,8 +106,6 @@ export function ListComponent(props: {
   }
   function showPrevListings() {
     setPageCounter(pageCounter - 1)
-    //console.log(pageCounter)
-    //console.log(data)
     if (pageCounter == 2) {
       setNextQueryIds([null, null])
     } else {
@@ -129,7 +113,6 @@ export function ListComponent(props: {
         const newPrev: AfterInputFields = {
           id: data.pokemons[0].id
         }
-        //console.log("prevId = ",newPrev)
         setNextQueryIds([null, newPrev])
       }
     }
@@ -142,13 +125,12 @@ export function ListComponent(props: {
 
   function showNextListings() {
     setPageCounter(pageCounter + 1)
-    //console.log(pageCounter)
-    //console.log(data)
+
     if (data != undefined) {
       const newAfter: AfterInputFields = {
         id: data.pokemons[data.pokemons.length -1].id
       }
-      //console.log("afterId = ",newAfter)
+
       setNextQueryIds([newAfter, null])
     }
   }
