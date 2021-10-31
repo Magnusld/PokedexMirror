@@ -31,7 +31,11 @@ exports[`Unit test on the ListComponent component matches snapshot for component
       >
          &lt; Forrige side
       </button>
-      1
+      <div
+        className="page-counter"
+      >
+        1
+      </div>
       <button
         className="showNextButton btn btn-primary"
         disabled={true}
