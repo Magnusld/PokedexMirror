@@ -12,9 +12,8 @@ export function ListComponent(props: {
   asGrid: boolean
 }) {
 
-  const [pokeData, setPokeData] = useState<any>([])
-  const [nextAfterId, setNextAfterId] = useState<AfterInputFields|null>(null)
-  const [nextPrevId, setNextPrevId] = useState<AfterInputFields|null>(null)
+  const [nextQueryIds, setNextQueryIds] = useState<any[]>([null, null])
+  const [pageCounter, setPageCounter] = useState<number>(1)
 
   interface PokemonSimpleData {
     pokemons: PokemonSimple[]
@@ -22,8 +21,8 @@ export function ListComponent(props: {
 
 
   const GET_POKEMON_DATA = gql`
-  query($orderBy: [PokemonOrderByInput!], $where: PokemonWhereInput, $first: Int, $after: PokemonWhereUniqueInput) {
-    pokemons(orderBy: $orderBy, where: $where, first: $first, after: $after) {
+  query($orderBy: [PokemonOrderByInput!], $where: PokemonWhereInput, $first: Int, $after: PokemonWhereUniqueInput, $last: Int, $before: PokemonWhereUniqueInput) {
+    pokemons(orderBy: $orderBy, where: $where, first: $first, after: $after, last: $last, before: $before,) {
       id
       pokedexNr
       name
@@ -39,6 +38,7 @@ export function ListComponent(props: {
   const selectedType = useSelector((state: RootState) => state.selectedType.value.filter(element => element.selected).map(element => element.name))
   const sorting = useSelector((state: RootState) => state.sort.value)
 
+  /*
   useEffect(() => {
     console.log(searchInput)
     console.log(selectedGen)
@@ -46,34 +46,42 @@ export function ListComponent(props: {
     console.log(sorting);
   }, [searchInput, selectedGen, selectedType, sorting])
 
+   */
+
 
   /**
    * used by useQuery hook
    * @returns a set of variables to be used by graphQL query
    */
-  function setQueryVariables(after:AfterInputFields|null=null, prev:AfterInputFields|null=null) : object {
+  function setQueryVariables() : object {
+    let after = nextQueryIds[0]
+    let before = nextQueryIds[1]
     let orderBy : OrderByInputFields = {}
     if(sorting.type === "name") {
       orderBy = {"name": sorting.ordering}
     } else if(sorting.type === "pokedexNr") {
       orderBy = {"pokedexNr": sorting.ordering}
     }
-    console.log(orderBy)
     let name : string | null = null
     searchInput ? name = searchInput : name = null
+    //console.log("prevId i variablers: ", prev)
+    //console.log("afterId i variablers: ", after)
     let first: number | null = 15
     let last: number | null = null
-    if (prev != null) {
-      first = null
-      last = 15
+    if (pageCounter != 1){
+      if (after == null && before != null){
+        last = 15
+        first = null
+      }
     }
+    console.log("first: ",first,"last: ", last,"after: ", after, "before:", before)
     const variables : Variables = { 
       variables: {
         "orderBy" : orderBy,
         "first": first,
         "last": last,
         "after": after,
-        "before": prev,
+        "before": before,
         "where": {
           "type1": {
             "in": selectedType
@@ -87,29 +95,21 @@ export function ListComponent(props: {
         }
       }
     }
+    console.log(variables)
     return variables;
   }
 
-  const { loading, error, data } = useQuery<PokemonSimpleData, any>(GET_POKEMON_DATA, setQueryVariables(nextAfterId, nextPrevId));
+  const { loading, error, data } = useQuery<PokemonSimpleData, any>(GET_POKEMON_DATA, setQueryVariables());
 
   const asGrid = props.asGrid
 
-  useEffect(() => {
-    console.log(data)
-    console.log(asGrid)
-    let pokeList : PokemonSimple[] = []
-    if(data !== undefined) {
-      pokeList = data.pokemons
-      setPokeData(pokeList)
-    }
-  })
 
   /**
    * used to render pokemon to grid/list
    * @returns a list with compontents
    */
-  function showListing(pokeList: any[] | null) {
-    if(pokeList != null) {
+  function showListing(pokeList: any[] | undefined) {
+    if(pokeList != undefined) {
       return pokeList.map((pokemon : PokemonSimple) => (
         <ListingComponent key={pokemon.id} asGrid={asGrid} pokemon={pokemon} />
       ))
@@ -119,35 +119,38 @@ export function ListComponent(props: {
     }
   }
   function showPrevListings() {
-    console.log(pokeData)
-    const newPrev: AfterInputFields = {
-      id: pokeData[pokeData.length - 15].id
+    setPageCounter(pageCounter - 1)
+    console.log(pageCounter)
+    console.log(data)
+    if (pageCounter == 2) {
+      setNextQueryIds([null, null])
+    } else {
+      if (data != undefined) {
+        const newPrev: AfterInputFields = {
+          id: data.pokemons[data.pokemons.length - 15].id
+        }
+        console.log("prevId = ",newPrev)
+        setNextQueryIds([null, newPrev])
+      }
     }
-    setNextAfterId(null)
-    setNextPrevId(newPrev)
-    console.log(nextPrevId)
   }
   function showFirstListings() {
-    console.log(pokeData)
-    const newPrev: AfterInputFields = {
-      id: pokeData[0].id
-    }
-    setNextAfterId(null)
-    setNextPrevId(newPrev)
-    console.log(nextPrevId)
+    setPageCounter(1)
+    setNextQueryIds([null, null])
   }
-  function showLastListings() {
 
-  }
 
   function showNextListings() {
-    console.log(pokeData)
-    const newAfter: AfterInputFields = {
-      id: pokeData[pokeData.length -1].id
+    setPageCounter(pageCounter + 1)
+    console.log(pageCounter)
+    console.log(data)
+    if (data != undefined) {
+      const newAfter: AfterInputFields = {
+        id: data.pokemons[data.pokemons.length -1].id
+      }
+      console.log("afterId = ",newAfter)
+      setNextQueryIds([newAfter, null])
     }
-    setNextPrevId(null)
-    setNextAfterId(newAfter)
-    console.log(nextAfterId)
   }
 
   function chooseClassName() {
@@ -162,7 +165,7 @@ export function ListComponent(props: {
       <div>
           {loading ? (<p>Loading</p>) : (
             <div className={"list"+chooseClassName()}>
-              {showListing(pokeData)}
+              {showListing(data?.pokemons)}
             </div>
           )}
           <div className={"showMore"}>
@@ -170,11 +173,13 @@ export function ListComponent(props: {
               <Button className={"showNextButton"} onClick={showFirstListings}>&lt;&lt; Første side</Button>
             </div>
             <div className={"PageNavButtonGroups"}>
-              <Button className={"showNextButton"} onClick={showPrevListings}> &lt; Forrige side</Button>
-              <Button className={"showNextButton"} onClick={showNextListings}>Neste side &gt; </Button>
+              <Button className={"showNextButton"} onClick={showPrevListings} disabled={pageCounter==1} > &lt; Forrige side</Button>
+              {pageCounter}
+              <Button className={"showNextButton"} onClick={showNextListings} disabled={data?.pokemons.length != 15}>Neste side &gt; </Button>
             </div>
             <div className={"PageNavButtonGroups"}>
-              <Button className={"showNextButton"} onClick={showLastListings}>Siste side &gt;&gt;</Button>
+              {/*Funksjonalitet for en annen gang :)*/}
+              <Button className={"showNextButton"} style={{visibility: "hidden"}}>Siste side &gt;&gt;</Button>
             </div>
           </div>
       </div>

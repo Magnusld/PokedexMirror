@@ -30,7 +30,7 @@ export function ListingComponent(props: {
   const pokemon = props.pokemon
 
   useEffect(() => {
-    console.log("Im alive")
+    //console.log("Im alive")
   })
 
   function log() {
@@ -101,7 +101,7 @@ export function ListingComponent(props: {
             </div>
             <div className={"listingInfo"+chooseClassName()}>
               <div>
-                <h5 onClick={log}>{pokemon.name}</h5>
+                <h5>{pokemon.name}</h5>
               </div>
               <p>Gen {pokemon.generation}</p>
             </div>
