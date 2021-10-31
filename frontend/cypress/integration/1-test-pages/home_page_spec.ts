@@ -1,9 +1,9 @@
+
 describe('Testing home page - App.tsx', () => {
   before('successfully loads', () => {
     cy.visit('/') // URL for homepage
 
   })
-
 
   describe('Using options button', () => {
 
@@ -23,13 +23,42 @@ describe('Testing home page - App.tsx', () => {
     })
   })
 
-  describe('Changing content of List/Grid', () => {
+  describe('Swap grid/list', () => {
+    it("Grid to list", () => {
+      cy.get(".list-grid-swap .active").click()
+      cy.get(".listAsList").should("exist")
+      cy.get(".listAsGrid").should("not.exist")
+
+      cy.get(".list-grid-swap .active").click()
+      cy.get(".listAsList").should("not.exist")
+      cy.get(".listAsGrid").should("exist")
+    })
+  })
+
+  describe('Changing content of List/Grid (using navbar)', () => {
+    it("Search for Lucario", () => {
+      cy.get(".search").type("Lucar")
+      cy.get(".listAsGrid").contains("#448").should("exist")
+      cy.get(".listAsGrid").contains("#387").should("not.exist")
+
+    })
+  })
+
+  describe('Changing content of List/Grid (not using navbar)', () => {
+    // Refresh page
+    it('successfully refreshes', () => {
+      cy.visit('/') // URL for homepage
+  
+    })
+
     it("Remove all generations", () => {
       cy.get(".listAsGrid").children().should("have.length", 15)
 
 
       cy.contains("Innstillinger").click()
-      cy.get(".optionsContainer").children().contains("Fjerne alle valg").click()
+
+      cy.get(".topbar").hide()
+      cy.get("#genOptions > button.clearAllButton.btn.btn-secondary").click()
 
       cy.get(".listAsGrid").children().should("have.length", 0)
 
@@ -43,27 +72,8 @@ describe('Testing home page - App.tsx', () => {
     })
 
     it("Remove grass type", () => {
-      cy.get("#root > div > div.optionsContainer > div:nth-child(3) > div > div.optionsButtonsContainer > label:nth-child(20)").click()
-
+      cy.get("#typeOptions > div.optionsButtonsContainer > label:nth-child(20)").click()
       cy.get(".listAsGrid").contains("#387").should("not.exist")
-    })
-    it("Search for Lucario", () => {
-      cy.get(".search").type("Lucar")
-      cy.get(".listAsGrid").contains("#448").should("exist")
-      cy.get(".listAsGrid").contains("#387").should("not.exist")
-
-    })
-  })
-
-  describe('Swap grid/list', () => {
-    it("Grid to list", () => {
-      cy.get(".list-grid-swap .active").click()
-      cy.get(".listAsList").should("exist")
-      cy.get(".listAsGrid").should("not.exist")
-
-      cy.get(".list-grid-swap .active").click()
-      cy.get(".listAsList").should("not.exist")
-      cy.get(".listAsGrid").should("exist")
     })
   })
     
