@@ -9,9 +9,7 @@ function initiateList() {
   const list = [1,2,3,4,5,6,7,8]
   list.map((gen, i) => {
     const generation: SelectedGeneration = {
-      id: i,
-      selected: true,
-      name: "Gen " + gen
+      id: i, selected: true, name: "Gen " + gen
     }
     value.push(generation)
   })
