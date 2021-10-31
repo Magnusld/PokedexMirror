@@ -106,9 +106,14 @@ export const selectedTypeSlicer = createSlice({
     swapSelectedType: (state, action: PayloadAction<number>) => {
       state.value[action.payload].selected = !state.value[action.payload].selected
     },
+    setAllTypesTrue: (state) => {
+      state.value.forEach(type => {
+        type.selected = true
+      })
+    },
   },
 })
 
-export const { setAllTypesFalse, swapSelectedType } = selectedTypeSlicer.actions
+export const { setAllTypesFalse, swapSelectedType, setAllTypesTrue } = selectedTypeSlicer.actions
 
 export default selectedTypeSlicer.reducer

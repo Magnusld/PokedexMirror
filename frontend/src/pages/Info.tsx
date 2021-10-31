@@ -185,73 +185,76 @@ function Info() {
     console.log(data)
 
     return (
-        <div className="info-container">
-            <div className="top-container">
-                <div className="image">
-                    <img src={getFullSize(data ? data.pokemon.pokedexNr : 0)} alt={data?.pokemon.name + " bilde"}></img>
+        <div className={"container"}>
+            <div className="info-container">
+                <div className="top-container">
+                    <div className="image">
+                        <img src={getFullSize(data ? data.pokemon.pokedexNr : 0)} alt={data?.pokemon.name + " bilde"}></img>
+                    </div>
+                    <div className="basic-info">
+                        <div className="name-number">
+                            <span className="pokename">{data?.pokemon.name}</span>
+                            <span className="pokenum">#{data?.pokemon.pokedexNr}</span>
+                        </div>
+                        <div className="more-info">
+                            <span>{data?.pokemon.species}</span>
+                            <span>Generasjon: {data?.pokemon.generation}</span>
+                        </div>
+                        <div className="types">
+                            {showTypeEmblem}
+                        </div>
+                        <div className={"all-ratings-container"}>
+                            <PokemonStarRating pokemonId={parseInt(id)}/>
+                            <PokemonAggregatedRating rating={data ? data.pokemon.aggregated_rating : 0}/>
+                        </div>
+                    </div>
                 </div>
-                <div className="basic-info">
-                    <div className="name-number">
-                        <span className="pokename">{data?.pokemon.name}</span>
-                        <span className="pokenum">#{data?.pokemon.pokedexNr}</span>
-                    </div>
-                    <div className="more-info">
-                        <span>{data?.pokemon.species}</span>
-                        <span>Generasjon: {data?.pokemon.generation}</span>
-                    </div>
-                    <div className="types">
-                        {showTypeEmblem}
-                    </div>
-                    <div className={"all-ratings-container"}>
-                        <PokemonStarRating pokemonId={parseInt(id)}/>
-                        <PokemonAggregatedRating rating={data ? data.pokemon.aggregated_rating : 0}/>
-                    </div>
+                <div className="middle-container">
+                    <span>Weight: {data?.pokemon.weightKg}kg</span>
+                    <span>Height: {data?.pokemon.heightMeter}m</span>
                 </div>
-            </div>
-            <div className="middle-container">
-                <span>Weight: {data?.pokemon.weightKg}kg</span>
-                <span>Height: {data?.pokemon.heightMeter}m</span>
-            </div>
-            <div className="bottom-container">
-                <div className="stats">
-                    <h2>Stats</h2>
-                    <table className="stats-table">
-                        <tr>
-                            <td>HP</td>
-                            <td>{hp}</td>
-                        </tr>
-                        <tr>
-                            <td>Attack</td>
-                            <td>{attack}</td>
-                        </tr>
-                        <tr>
-                            <td>Defense</td>
-                            <td>{defense}</td>
-                        </tr>
-                        <tr>
-                            <td>Sp. Attack</td>
-                            <td>{spAttack}</td>
-                        </tr>
-                        <tr>
-                            <td>Sp. Defense</td>
-                            <td>{spDefense}</td>
-                        </tr>
-                        <tr>
-                            <td>Speed</td>
-                            <td>{speed}</td>
-                        </tr>
-                        <tr>
-                            <td>Totalt</td>
-                            <td>{hp + attack + defense + spAttack + spDefense + speed}</td>
-                        </tr>
-                    </table>
-                </div>
-                <div className="abilities">
-                    <h2>Abilities</h2>
-                    {generateAbilities(data ? data.pokemon.ability1 : "", data ? data.pokemon.ability2 : "", data ? data.pokemon.ability3 : "")}
+                <div className="bottom-container">
+                    <div className="stats">
+                        <h2>Stats</h2>
+                        <table className="stats-table">
+                            <tr>
+                                <td>HP</td>
+                                <td>{hp}</td>
+                            </tr>
+                            <tr>
+                                <td>Attack</td>
+                                <td>{attack}</td>
+                            </tr>
+                            <tr>
+                                <td>Defense</td>
+                                <td>{defense}</td>
+                            </tr>
+                            <tr>
+                                <td>Sp. Attack</td>
+                                <td>{spAttack}</td>
+                            </tr>
+                            <tr>
+                                <td>Sp. Defense</td>
+                                <td>{spDefense}</td>
+                            </tr>
+                            <tr>
+                                <td>Speed</td>
+                                <td>{speed}</td>
+                            </tr>
+                            <tr>
+                                <td>Totalt</td>
+                                <td>{hp + attack + defense + spAttack + spDefense + speed}</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div className="abilities">
+                        <h2>Abilities</h2>
+                        {generateAbilities(data ? data.pokemon.ability1 : "", data ? data.pokemon.ability2 : "", data ? data.pokemon.ability3 : "")}
+                    </div>
                 </div>
             </div>
         </div>
+
     )
 }
 
