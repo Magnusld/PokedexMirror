@@ -6,6 +6,8 @@ import { useParams } from 'react-router-dom';
 import gql from 'graphql-tag';
 import { useQuery } from '@apollo/client';
 import { PokemonAdvanced } from '../types';
+import PokemonStarRating from "../components/PokemonStarRating";
+import PokemonAggregatedRating from "../components/PokemonAggregatedRating";
 
 function Info() {
 
@@ -40,6 +42,7 @@ function Info() {
           ability1
           ability2
           ability3
+          aggregated_rating
         }
       }
     `;
@@ -160,6 +163,10 @@ function Info() {
                     </div>
                     <div>
                         {generateTypes(typesToList(data ? data.pokemon.type1 : "", data ? data.pokemon.type2 : ""))}
+                    </div>
+                    <div className={"all-ratings-container"}>
+                        <PokemonStarRating pokemonId={parseInt(id)}/>
+                        <PokemonAggregatedRating rating={data ? data.pokemon.aggregated_rating : 0}/>
                     </div>
                 </div>
             </div>
