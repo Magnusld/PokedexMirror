@@ -50,8 +50,8 @@ export function ListingComponent(props: {
     return typeList;
   }
 
-  let showTypeEmblem = typesToList(pokemon.type1, pokemon.type2).map((Type) => (
-      <div>
+  let showTypeEmblem = typesToList(pokemon.type1, pokemon.type2).map((Type, i) => (
+      <div key={i}>
         {Type === "Bug" ? <Bug className={"typeIcon"}/> : null}
         {Type === "Dark" ? <Dark className={"typeIcon"}/> : null}
         {Type === "Dragon" ? <Dragon className={"typeIcon"}/> : null}
