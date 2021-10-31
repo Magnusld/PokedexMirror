@@ -1,6 +1,8 @@
 :root {
   --main-color: #F5F5F5;
+  --main-darker-color: #cccccc;
   --secondary-color: #466060;
+  --secondary-light-color: #608888;
   --tertiary-color: #57886C;
 }
 
@@ -44,19 +46,46 @@
 }
 
 .topbar {
-  max-width: 100vw;
+  width: 100%;
   background: var(--secondary-color);
   height: 15vh;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
+  position: fixed;
 }
 .search {
   height: 35px;
+  width: 300px;
   margin: 3px;
   align-content: baseline;
 }
+@media only screen and (max-width: 700px) {
+  .search {
+    width: 200px;
+  }
+  .list-grid-swap {
+    display: none;
+  }
+}
+
+
+
+.advanced span {
+  color: white;
+  font-weight: 500;
+}
+
+.filters {
+  background-color: var(--secondary-light-color);
+  width: 100%;
+  display: flex;
+  padding: 20px 0;
+  justify-content: center;
+  align-items: center;
+}
+
 .displayOptions {
   display: flex;
 
@@ -75,6 +104,43 @@
   justify-content: left;
   width: 40vw;
   min-width: 300px;
+  margin: 0 10px;
+}
+
+.sortOptions {
+  width: fit-content;
+}
+
+.sort-form-select {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.sort-inner-select:last-of-type {
+  margin-left: 20px;
+}
+
+select.sort-select.form-select {
+  width: 40%;
+  min-width: 300px;
+}
+
+.sort-inner-select h4 {
+  font-size: 1.2em;
+}
+
+@media only screen and (max-width: 640px) {
+  .sort-form-select {
+    flex-direction: column;
+  }
+  .sort-inner-select:last-of-type {
+    margin-left: 0;
+  }
+  .sort-inner-select {
+    padding-bottom: 20px;
+  }
+
 }
 
 .mb-2 {
@@ -94,6 +160,7 @@
 .clearAllButton {
   float: left;
   margin-bottom: 25px;
+  margin-right: 5px;
 }
 .optionsContainer {
   display: flex;
@@ -101,6 +168,8 @@
   flex-wrap: wrap;
   justify-content: center;
   max-width: 100vw;
+  background-color: var(--main-darker-color);
+
 }
 .list {
   height: inherit;
@@ -116,6 +185,10 @@
   display: flex;
   margin: 10px;
   padding: 10px;
+  transition: 0.3s;
+}
+.listingAsList:hover {
+  background-color: #75b18f;
 }
 .listingAsGrid {
   background: var(--tertiary-color);
@@ -124,15 +197,25 @@
   display: flex;
   flex-direction: row;
   width: 300px;
+  transition: 0.3s;
+}
+.listingAsGrid:hover {
+  background-color: #75b18f;
 }
 .pokedexNumberAsList {
   width: 20%;
   flex-grow: 1;
   align-self: center;
   display: flex;
-  justify-content: flex-start;
-
+  flex-flow: row wrap;
+  justify-content: space-around;
+  gap: max(2px, 20%);
 }
+
+.ListSprite {
+  align-self: center;
+}
+
 .listingInfoAsList {
   width: 60%;
   align-self: flex-start;
@@ -169,6 +252,7 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: center;
 }
 .pokedexNumberAsGrid {
   flex-grow: 1;
@@ -199,4 +283,54 @@
   align-items: flex-end;
   margin: 10px;
   background-image: url("../assets/typeIconsSvg/Pokémon_Bug_Type_Icon.svg")
+}
+
+.showMore {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+.showNextButton {
+  background-color: var(--secondary-color) !important;
+  color: var(--main-color) !important;
+  border-color: var(--secondary-color) !important;
+  margin: 5px;
+}
+
+.listingLink {
+  text-decoration: none;
+  text-decoration-line: none;
+}
+
+.AsList .listingLink:hover {
+  background-color: #75b18f;
+}
+
+.PageNavButtonGroups {
+
+}
+
+.showMore > div:nth-child(2) {
+  display: flex;
+}
+
+.page-counter {
+  text-align: center;
+  color: white;
+  font-size: 1.2em;
+  height: 2.6em;
+  width: 2.6em;
+  background-color: var(--secondary-color);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media only screen and (max-width: 600px) {
+  .showMore > div:nth-child(2) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 }

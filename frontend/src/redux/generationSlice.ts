@@ -9,9 +9,7 @@ function initiateList() {
   const list = [1,2,3,4,5,6,7,8]
   list.map((gen, i) => {
     const generation: SelectedGeneration = {
-      id: i,
-      selected: true,
-      name: "Gen " + gen
+      id: i, selected: true, name: "Gen " + gen
     }
     value.push(generation)
   })
@@ -25,17 +23,21 @@ export const selectedGenSlicer = createSlice({
   name: 'selectedGen',
   initialState,
   reducers: {
-    setAllGensTrue: (state) => {
+    setAllGensFalse: (state) => {
       state.value.forEach(gen => {
-        gen.selected = true
+        gen.selected = false
       })
     },
     swapSelectedGen: (state, action: PayloadAction<number>) => {
       state.value[action.payload].selected = !state.value[action.payload].selected
     },
+    setAllGensTrue: (state) => {
+      state.value.forEach(gen => {
+        gen.selected = true
+      })
+    },
   },
 })
-
-export const { setAllGensTrue, swapSelectedGen } = selectedGenSlicer.actions
+export const { setAllGensTrue, swapSelectedGen, setAllGensFalse } = selectedGenSlicer.actions
 
 export default selectedGenSlicer.reducer
