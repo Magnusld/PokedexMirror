@@ -12,7 +12,8 @@ Prosjektet består av to sider. En for listen med pokemon som hentes fra API, og
 
 
 ### Npm biblioteker
-ReduxJs Toolkit og React-redux
+
+#### ReduxJs Toolkit og React-redux
 Gir Redux ekstra funksjonalitet for enklere bruk. I prosjektet brukes spesifikt “slices” for å kunne dele opp “reducers”. Må skrive litt mer kode men, mye enklere å bruke når det fungerer.
 Vi valgte å bruke Redux ettersom det er det mest brukte state management biblioteket for react applikasjoner, i tillegg til at medlemmer på gruppa hadde erfaringer med dette fra før av.
 For oppsettet av redux ved hjelp av reduxJs toolkit har vi fulgt en guide på reduxJs sin hjemmeside som dere kan se [her](https://redux-toolkit.js.org/tutorials/typescript).

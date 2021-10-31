@@ -1,4 +1,4 @@
-# Getting Started with Create React App
+# ReactPokedex - frontend
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -19,28 +19,21 @@ You will also see any lint errors in the console.
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## End-to-end Testing
+For å kjøre end-to-end testene med cypress.io må man ha en fungerende frontend og backend av appen.
+### Frontend
+Kjør kommandoene i terminal:
+```
+cd frontend
+npm install
+npm start
+```
+### Backend
+To måter:
+#### Måte 1: Sett VM som backend
+I variabelen `httpLink` i `uri:` sett `http://it2810-35.idi.ntnu.no:4000/` som string
+- NB: Husk og enten være på NTNU sitt nettverk eller bruk VPN
+#### Måte 2: Initialiser backend lokalt og bruk som backend
+Start den slik README.md i backend spesifiserer
