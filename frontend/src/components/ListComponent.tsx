@@ -111,7 +111,7 @@ export function ListComponent(props: {
     } else {
       if (data != undefined) {
         const newPrev: AfterInputFields = {
-          id: data.pokemons[data.pokemons.length - 15].id
+          id: data.pokemons[0].id
         }
         setNextQueryIds([null, newPrev])
       }
