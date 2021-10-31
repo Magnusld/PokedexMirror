@@ -20,25 +20,29 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <TopBar asGrid={asGrid}
-                setAsGrid={setAsGrid}
-                setShowGenSelection={setShowGenSelection}
-                showGenSelection={showGenSelection}
-                setShowTypeSelection={setShowTypeSelection}
-                showTypeSelection={showTypeSelection}
-                showSorting={showSorting}
-                setShowSorting={setShowSorting}
-                />
-        <div className="optionsContainer">
-          {showSorting ? <SortOptions /> : null}
-          {showGenSelection ? <GenOptionsComponent /> : null}
-          {showTypeSelection ? <TypeOptionComponent /> : null}
-        </div>
         <Switch>
           <Route exact path="/">
+
+            <TopBar asGrid={asGrid}
+                    setAsGrid={setAsGrid}
+                    setShowGenSelection={setShowGenSelection}
+                    showGenSelection={showGenSelection}
+                    setShowTypeSelection={setShowTypeSelection}
+                    showTypeSelection={showTypeSelection}
+                    showSorting={showSorting}
+                    setShowSorting={setShowSorting}
+                    />
+                    
+            <div className="optionsContainer">
+              {showSorting ? <SortOptions /> : null}
+              {showGenSelection ? <GenOptionsComponent /> : null}
+              {showTypeSelection ? <TypeOptionComponent /> : null}
+            </div>
+        
             <div className={"list"}>
               <ListComponent asGrid={asGrid} />
             </div>
+
           </Route>
           <Route path="/info/:id">
             <Info />
