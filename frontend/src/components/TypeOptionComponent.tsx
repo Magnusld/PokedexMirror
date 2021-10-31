@@ -35,7 +35,7 @@ export function TypeOptionComponent() {
 
   return (
       <div style={{display: "flex", justifyContent: "center"}}>
-        <div className={"filteringOptionsContainer"}>
+        <div className={"filteringOptionsContainer"} id="typeOptions">
           <div>
             <h3 style={{textAlign: "left", marginTop: 10}}>Type</h3>
           </div>
