@@ -207,12 +207,13 @@ select.sort-select.form-select {
   flex-grow: 1;
   align-self: center;
   display: flex;
-  justify-content: flex-start;
+  flex-flow: row wrap;
+  justify-content: space-around;
   gap: max(2px, 20%);
 }
 
 .ListSprite {
-
+  align-self: center;
 }
 
 .listingInfoAsList {

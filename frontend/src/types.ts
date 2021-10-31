@@ -44,6 +44,7 @@ export interface PokemonAdvanced {
   ability1: string,
   ability2: string,
   ability3: string
+  aggregated_rating: number
 }
 
 export interface Variables {
