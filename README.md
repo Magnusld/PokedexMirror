@@ -2,7 +2,7 @@
 
 
 ### Oppsett av prosjekt
-Informasjon om hvordan man setter opp prosjektet lokalt ligger i de indre README.md filene under frontend og backend. Dette gjelder også kjøring av testene, både komponent/enhets tester og end-2-end testene.
+Informasjon om hvordan man setter opp prosjektet lokalt ligger i de indre README.md filene under frontend og backend. Dette gjelder også kjøring av testene, både komponent- og enhetstester, samt end-2-end tester.
 
 
 ## Frontend
