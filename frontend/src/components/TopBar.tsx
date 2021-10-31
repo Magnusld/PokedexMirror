@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import '../style/App.css';
-import {Accordion, Button, Dropdown, Form} from "react-bootstrap";
+import {Button} from "react-bootstrap";
 import {ReactComponent as List } from '../assets/list_black_24dp.svg'
 import {ReactComponent as Grid } from '../assets/apps_black_24dp.svg';
 import {ReactComponent as Search} from "../assets/search_black_24dp.svg";

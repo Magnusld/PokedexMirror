@@ -74,7 +74,7 @@ export function ListComponent(props: {
         first = null
       }
     }
-    console.log("first: ",first,"last: ", last,"after: ", after, "before:", before)
+    //console.log("first: ",first,"last: ", last,"after: ", after, "before:", before)
     const variables : Variables = { 
       variables: {
         "orderBy" : orderBy,
@@ -95,7 +95,7 @@ export function ListComponent(props: {
         }
       }
     }
-    console.log(variables)
+    //console.log(variables)
     return variables;
   }
 
@@ -110,8 +110,8 @@ export function ListComponent(props: {
    */
   function showListing(pokeList: any[] | undefined) {
     if(pokeList != undefined) {
-      return pokeList.map((pokemon : PokemonSimple) => (
-        <ListingComponent key={pokemon.id} asGrid={asGrid} pokemon={pokemon} />
+      return pokeList.map((pokemon : PokemonSimple, i) => (
+        <ListingComponent key={i} asGrid={asGrid} pokemon={pokemon} />
       ))
     }
     else {
@@ -120,8 +120,8 @@ export function ListComponent(props: {
   }
   function showPrevListings() {
     setPageCounter(pageCounter - 1)
-    console.log(pageCounter)
-    console.log(data)
+    //console.log(pageCounter)
+    //console.log(data)
     if (pageCounter == 2) {
       setNextQueryIds([null, null])
     } else {
@@ -129,7 +129,7 @@ export function ListComponent(props: {
         const newPrev: AfterInputFields = {
           id: data.pokemons[0].id
         }
-        console.log("prevId = ",newPrev)
+        //console.log("prevId = ",newPrev)
         setNextQueryIds([null, newPrev])
       }
     }
@@ -142,13 +142,13 @@ export function ListComponent(props: {
 
   function showNextListings() {
     setPageCounter(pageCounter + 1)
-    console.log(pageCounter)
-    console.log(data)
+    //console.log(pageCounter)
+    //console.log(data)
     if (data != undefined) {
       const newAfter: AfterInputFields = {
         id: data.pokemons[data.pokemons.length -1].id
       }
-      console.log("afterId = ",newAfter)
+      //console.log("afterId = ",newAfter)
       setNextQueryIds([newAfter, null])
     }
   }
