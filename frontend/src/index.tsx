@@ -15,7 +15,7 @@ import {
 
 
 const httpLink = createHttpLink({
-  uri: 'http://localhost:4000'
+  uri: 'http://localhost:4000' // 'http://it2810-35.idi.ntnu.no:4000/' for liveserver
 });
 
 const client = new ApolloClient({

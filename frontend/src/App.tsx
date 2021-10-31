@@ -9,7 +9,7 @@ import {ListComponent} from "./components/ListComponent";
 import Info from './pages/Info';
 import {SortOptions} from './components/SortOptions';
 
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import {HashRouter as Router, Route, Switch} from 'react-router-dom';
 
 function App() {
     const [asGrid, setAsGrid] = useState<boolean>(true)
