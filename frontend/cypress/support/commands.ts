@@ -23,3 +23,17 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('hide', { prevSubject: 'element' }, (subject) => {
+    subject.css('visibility', 'hidden');
+  });
+
+declare namespace Cypress {
+    interface Chainable {
+        /**
+         * Custom command to change chainable DOM element's css to visibility: hidden.
+         * @example cy.get('navbar').hide()
+         */
+        hide(): Chainable<Element>;
+    }
+}
