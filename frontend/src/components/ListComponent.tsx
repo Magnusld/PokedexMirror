@@ -174,7 +174,7 @@ export function ListComponent(props: {
             </div>
             <div className={"PageNavButtonGroups"}>
               <Button className={"showNextButton"} onClick={showPrevListings} disabled={pageCounter==1} > &lt; Forrige side</Button>
-              {pageCounter}
+              <div className="page-counter">{pageCounter}</div>
               <Button className={"showNextButton"} onClick={showNextListings} disabled={data?.pokemons.length != 15}>Neste side &gt; </Button>
             </div>
             <div className={"PageNavButtonGroups"}>
