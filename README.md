@@ -15,7 +15,7 @@ Prosjektet består av to sider. En for listen med pokemon som hentes fra API, og
 ReduxJs Toolkit og React-redux
 Gir Redux ekstra funksjonalitet for enklere bruk. I prosjektet brukes spesifikt “slices” for å kunne dele opp “reducers”. Må skrive litt mer kode men, mye enklere å bruke når det fungerer.
 Vi valgte å bruke Redux ettersom det er det mest brukte state management biblioteket for react applikasjoner, i tillegg til at medlemmer på gruppa hadde erfaringer med dette fra før av.
-For oppsettet av redux ved hjelp av reduxJs toolkit har vi fulgt en guide på reduxJs sin hjemmeside som dere kan se her[ https://redux-toolkit.js.org/tutorials/typescript ]
+For oppsettet av redux ved hjelp av reduxJs toolkit har vi fulgt en guide på reduxJs sin hjemmeside som dere kan se [her](https://redux-toolkit.js.org/tutorials/typescript).
 
 Vi har valgt å bruke redux state til å lagre all info angående valg av filtrering, partiell søk og sortering, slik at dette skal være persistent i mens man klikker seg gjennom sidene, eller går inn på en informasjonsside om en pokemon.
 
