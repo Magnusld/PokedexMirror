@@ -4,9 +4,10 @@ import {Accordion, Button, Dropdown, Form} from "react-bootstrap";
 import {ReactComponent as List } from '../assets/list_black_24dp.svg'
 import {ReactComponent as Grid } from '../assets/apps_black_24dp.svg';
 import {ReactComponent as Search} from "../assets/search_black_24dp.svg";
-import { useDispatch } from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import { addInput } from '../redux/searchSlice';
 import useWindowDimensions from '../hooks/useWindowDimensions';
+import {RootState} from "../redux/store";
 
 export function TopBar(props: {
   asGrid: boolean
@@ -19,11 +20,10 @@ export function TopBar(props: {
   setShowSorting: (value: boolean) => void
 
 }) {
-
+  const searchText = useSelector((state: RootState) => state.searchInput.value)
   const dispatch = useDispatch()
   const { width } = useWindowDimensions();
 
-  const searchText = ""
   const asGrid = props.asGrid
   const showGenSelection = props.showGenSelection
   const showTypeSelection = props.showTypeSelection
@@ -60,7 +60,7 @@ export function TopBar(props: {
     <nav>
       <div className={"topbar"}>
         <div>
-          <input className={"search"} placeholder={"Søk"} onChange={handleChange} />
+          <input className={"search"} placeholder={"Søk"} onChange={handleChange} value={searchText}/>
           <Search style={{height: 35, width: 35, fill: "#F5F5F5"}}/>
         </div>
         <div className="advanced">
