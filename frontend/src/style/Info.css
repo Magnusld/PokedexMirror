@@ -176,6 +176,23 @@
     font-weight: 400;
 }
 
+.all-ratings-container {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.personal-rating-container {
+
+}
+
+.aggregated-rating-container {
+
+}
+
 @media only screen and (max-width: 900px) {
     .top-container {
         grid-auto-flow: row;
