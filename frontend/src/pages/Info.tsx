@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Button, Card } from 'react-bootstrap';
 import '../style/Info.css';
 import pokemon from "../images/376.jpg";
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import gql from 'graphql-tag';
 import { useQuery } from '@apollo/client';
 import { PokemonAdvanced } from '../types';
@@ -186,6 +186,14 @@ function Info() {
 
     return (
         <div className={"container"}>
+            <header className="info-header-container">
+                <Link to="/" className="back-button-link">
+                    <div className="back-button-container">
+                        <span className="material-icons md-36">arrow_back</span>
+                        <span className="back-button-text">Tilbake</span>
+                    </div>
+                </Link>
+            </header>
             <div className="info-container">
                 <div className="top-container">
                     <div className="image">
