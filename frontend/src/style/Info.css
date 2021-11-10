@@ -1,11 +1,9 @@
+/* -- FARGE TEMA -- */
 .info-container {
     --info-container-bg: #466060;
     --info-container-boxes: white;
     --pokenum-bg: rgba(3, 76, 140, 1);
 }
-
-/* -- FARGE TEMA -- */
-
 
 
 /* PAGE CONTAINER */
@@ -15,6 +13,7 @@
     height: 100%;
     padding-bottom: 40px;
 }
+
 
 /* PAGE HEADER */
 header.info-header-container {
@@ -41,8 +40,7 @@ a div.back-button-container:hover span {
     color: rgb(58, 140, 151);
 }
 
-
-
+/* INFO SECTION */
 .info-container {
     width: 60vw;
     height: auto;
@@ -51,6 +49,8 @@ a div.back-button-container:hover span {
     background-color: var(--info-container-bg);
 }
 
+
+/* TOP INFO */
 .top-container {
     display: grid;
     grid-template-columns: 1fr 2fr;
@@ -138,6 +138,25 @@ a div.back-button-container:hover span {
     margin-left: 10px;
 }
 
+.all-ratings-container {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* .personal-rating-container {
+
+}
+
+.aggregated-rating-container {
+
+} */
+
+
+/* MIDDLE INFO */
 .middle-container {
     width: 100%;
     margin: 10px auto;
@@ -153,6 +172,8 @@ a div.back-button-container:hover span {
     padding: 35px;
 }
 
+
+/* --BOTTOM INFO-- */
 .bottom-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -160,6 +181,7 @@ a div.back-button-container:hover span {
     height: 400px;
 }
 
+/* STATS - LEFT SIDE */
 .stats {
     background-color: var(--info-container-boxes);
     padding: 20px 30px;
@@ -195,6 +217,7 @@ a div.back-button-container:hover span {
     flex-direction: column;
 }
 
+/* ABILITIES - RIGHT SIDE */
 .abilities {
     background-color: var(--info-container-boxes);
     padding: 20px 30px;
@@ -213,23 +236,9 @@ a div.back-button-container:hover span {
     font-weight: 400;
 }
 
-.all-ratings-container {
-    margin-top: 40px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    gap: 20px;
-}
 
-.personal-rating-container {
 
-}
-
-.aggregated-rating-container {
-
-}
-
+/* --MEDIA QUERIES-- */
 @media only screen and (max-width: 900px) {
     .top-container {
         grid-auto-flow: row;
