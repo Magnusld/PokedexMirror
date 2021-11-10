@@ -62,8 +62,25 @@ Vi har valgt å ikke legge veldig mye vekt på komponenttester, men heller fokus
 
 #### End-2-End testing
 Denne testingen gjøres i frontend med biblioteket cypress. Dette biblioteket lar oss automatisk kjøre integrasjonstester mot frontend. Vi har gjort det slik at frontend er koblet mot backend når testene kjøres, slik at man får gode end-2-end tester. Testene er basert på hvordan en tenkt bruker kunne interagert med nettsiden. Disse testene tester deler av både frontend og backend. Frontend ved at alle elementer og komponenter oppfører seg rett ved å trykke på forskjellige elementer. Backend skjer implisitt ved at queries kjøres ved endring av frontend.
+
 ### Backend
 Enhetstesting ble nedprioritert i backend av den enkle grunn at mesteparten av koden som kjører "live" er generert,
 og at det derfor er rimelig å anta at genereringskoden er testet av utgiver. Det er noe egen logikk, men dette er
 av ganske enkelt art, og vi mener derfor at eksisterende e2e-tester dekker testbehovet for nå.
 
+## Web accessibility
+- For dette prosjektet bruker vi WCAG 2.0-standarden - 1.3.1 Informasjon og relasjoner (Nivå A) - Utforming og presentasjon
+
+### Løsninger som møter kravene i forskriften
+
+#### Skille innhold og presentasjon
+Vi benytter en logisk rekkefølge i HTML koden, slik at koden kan brukes på en fornuftig måte av de som skulle trenge det. Søk, filtrering og sortering er plassert øverst. Data presentert i en form for liste i midten. Navigasjon mellom sidene er nederst. Navigering med bare tastatur fungerer også godt (altså med "tab").
+
+#### Helhetlig utforming
+Menyer, søkefelt osv. er konsekvent alltid på samme plass slik at det ikke blir noen misforståelser for brukeren.
+
+#### Forstørring
+På denne nettsiden fungerer det med forstørring opp til 200%. Alt av tekst og elementer blir da veldig store slik at svaksynte lettere kan se hva som står. Ved slike forstørrelser har man fremdeles tilgang til alt på nettsiden.
+
+#### Bevegelser i grensesnittet
+Vi har ingen bevegelser i grensesnittet i mindre brukeren selv scroller opp eller ned, så denne vil ikke gjelde her.

@@ -37,3 +37,7 @@ I variabelen `httpLink` i `uri:` sett `http://it2810-35.idi.ntnu.no:4000/` som s
 - NB: Husk og enten være på NTNU sitt nettverk eller bruk VPN
 #### Måte 2: Initialiser backend lokalt og bruk som backend
 Start den slik README.md i backend spesifiserer
+
+### Cypress
+Kjør kommando i terminal:
+`npx cypress open`
