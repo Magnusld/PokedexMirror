@@ -12,6 +12,8 @@ import {
 import { nexusPrisma } from 'nexus-plugin-prisma'
 import {Context} from './context';
 import pluralize from "pluralize";
+import {createPokemonRating, getRatingsForPokemon, updatePokemonRating} from "./resolvers/PokemonRating";
+import {getPokemon} from "./resolvers/Pokemon";
 
 // Fix for duplikat, noe fra nexus-plugin-prisma
 pluralize.addIrregularRule("pokemon", "pokemons");
@@ -42,11 +44,7 @@ const Pokemon = objectType({
         t.field('aggregated_rating', {
             type: "Float",
             resolve: (source, args, context) => {
-                return context.prisma.pokemonRating.findMany({
-                    where: {
-                        pokemonId: source.id
-                    }
-                })
+                return getRatingsForPokemon(context, source)
                     .then(ratings => {
                         const numberOfRatings = ratings.length
                         if (numberOfRatings <= 0) return 0
@@ -69,12 +67,7 @@ const PokemonRating = objectType({
         t.field('ratedPokemon', {
             type: 'Pokemon',
             resolve: (source, _, context) => {
-                return context.prisma.pokemon
-                    .findUnique({
-                        where: {
-                            id: source.pokemonId
-                        }
-                    })
+                return getPokemon(context, source)
             }
         })
         t.nonNull.float("rating")
@@ -116,13 +109,7 @@ const Mutation = objectType({
                 )
             },
             resolve: (source, args, context) => {
-                return context.prisma.pokemonRating.create({
-                    data: {
-                        pokemonId: args.data.pokemonId,
-                        rating: args.data.rating,
-                        userGuid: args.data.userGuid
-                    }
-                })
+                return createPokemonRating(context, args)
             }
         })
 
@@ -136,17 +123,7 @@ const Mutation = objectType({
                 )
             },
             resolve: (source, args, context) => {
-                return context.prisma.pokemonRating.update({
-                    where: {
-                        userGuid_pokemonId: {
-                            userGuid: args.data.ratingToUpdate.userGuid,
-                            pokemonId: args.data.ratingToUpdate.pokemonId
-                        }
-                    },
-                    data: {
-                        rating: args.data.newRating
-                    }
-                })
+                return updatePokemonRating(context, args)
             }
         })
 
