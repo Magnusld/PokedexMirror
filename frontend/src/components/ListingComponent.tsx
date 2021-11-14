@@ -21,6 +21,7 @@ import {ReactComponent as Steel} from "../assets/typeIconsSvg/Pokémon_Steel_Typ
 import {ReactComponent as Water} from "../assets/typeIconsSvg/Pokémon_Water_Type_Icon.svg";
 import {getFullSize, getSprite, getThumbnail} from "../util/imageResolver";
 import { Link } from 'react-router-dom';
+import { typesToList } from '../util/helperFunctions';
 
 export function ListingComponent(props: {
   asGrid: boolean
@@ -28,16 +29,6 @@ export function ListingComponent(props: {
 }) {
   const asGrid = props.asGrid
   const pokemon = props.pokemon
-
-  /**
-   * takes potential type 1 and type 2 and makes it into a list
-   * @param types rest param with one or two types
-   * @returns 
-   */
-  function typesToList(...types : string[]) {
-    const typeList = types.filter((type) => type.length > 0)
-    return typeList;
-  }
 
   let showTypeEmblem = typesToList(pokemon.type1, pokemon.type2).map((Type, i) => (
       <div key={i}>

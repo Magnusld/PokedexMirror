@@ -9,6 +9,7 @@ import { PokemonAdvanced } from '../types';
 import PokemonStarRating from "../components/PokemonStarRating";
 import PokemonAggregatedRating from "../components/PokemonAggregatedRating";
 import { getFullSize } from '../util/imageResolver';
+import { typesToList } from '../util/helperFunctions';
 
 import {ReactComponent as Bug} from "../assets/typeIconsSvg/Pokémon_Bug_Type_Icon.svg";
 import {ReactComponent as Dark} from "../assets/typeIconsSvg/Pokémon_Dark_Type_Icon.svg";
@@ -93,16 +94,6 @@ function Info() {
         if(data?.pokemon) setSpDefense(data?.pokemon.sp_defense)
         if(data?.pokemon) setSpeed(data?.pokemon.speed)
     }, [data])
-
-    /**
-     * takes potential type 1 and type 2 and makes it into a list
-     * @param types rest param with one or two types
-     * @returns 
-     */
-    function typesToList(...types : string[]) {
-        const typeList = types.filter((type) => type.length > 0);
-        return typeList;
-    }
 
     let showTypeEmblem = typesToList(data ? data.pokemon.type1 : "", data ? data.pokemon.type2 : "").map((Type) => (
         <span>
