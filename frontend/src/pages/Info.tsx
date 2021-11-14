@@ -28,19 +28,7 @@ import {ReactComponent as Rock} from "../assets/typeIconsSvg/Pokémon_Rock_Type_
 import {ReactComponent as Steel} from "../assets/typeIconsSvg/Pokémon_Steel_Type_Icon.svg";
 import {ReactComponent as Water} from "../assets/typeIconsSvg/Pokémon_Water_Type_Icon.svg";
 
-function Info() {
-
-    type PokemonParams = {
-        id: string;
-    };      
-
-    interface PokemonAdvancedData {
-        pokemon: PokemonAdvanced
-    }
-
-    const { id } = useParams<PokemonParams>()
-
-    const GET_POKEMON_INFO = gql`
+export const GET_POKEMON_INFO = gql`
     query($where: PokemonWhereUniqueInput!) {
         pokemon(where: $where) {
           id
@@ -65,6 +53,18 @@ function Info() {
         }
       }
     `;
+
+function Info() {
+
+    type PokemonParams = {
+        id: string;
+    };      
+
+    interface PokemonAdvancedData {
+        pokemon: PokemonAdvanced
+    }
+
+    const { id } = useParams<PokemonParams>()
 
     const variables = {
         variables: {
