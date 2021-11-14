@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import { Button, Card } from 'react-bootstrap';
 import '../style/Info.css';
-import pokemon from "../images/376.jpg";
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import gql from 'graphql-tag';
 import { useQuery } from '@apollo/client';
 import { PokemonAdvanced } from '../types';
 import PokemonStarRating from "../components/PokemonStarRating";
 import PokemonAggregatedRating from "../components/PokemonAggregatedRating";
 import { getFullSize } from '../util/imageResolver';
+import { typesToList } from '../util/helperFunctions';
 
 import {ReactComponent as Bug} from "../assets/typeIconsSvg/Pokémon_Bug_Type_Icon.svg";
 import {ReactComponent as Dark} from "../assets/typeIconsSvg/Pokémon_Dark_Type_Icon.svg";
@@ -85,7 +84,7 @@ function Info() {
     const [speed, setSpeed] = useState<number>(0);
 
     useEffect(() => {
-        console.log("useEffect")
+        // Add correct data (pokemon stats) to state
         if(data?.pokemon) setHp(data?.pokemon.hp)
         if(data?.pokemon) setAttack(data?.pokemon.attack)
         if(data?.pokemon) setDefense(data?.pokemon.defense)
@@ -93,16 +92,6 @@ function Info() {
         if(data?.pokemon) setSpDefense(data?.pokemon.sp_defense)
         if(data?.pokemon) setSpeed(data?.pokemon.speed)
     }, [data])
-
-    /**
-     * takes potential type 1 and type 2 and makes it into a list
-     * @param types rest param with one or two types
-     * @returns 
-     */
-    function typesToList(...types : string[]) {
-        const typeList = types.filter((type) => type.length > 0);
-        return typeList;
-    }
 
     let showTypeEmblem = typesToList(data ? data.pokemon.type1 : "", data ? data.pokemon.type2 : "").map((Type) => (
         <span>
@@ -127,21 +116,6 @@ function Info() {
         </span>
     ))
 
-    function generateTypes(types : string[]) {
-        if(types.length === 1) {
-            let color1 = setTypeColor(types[0])
-            return <div className="types"><span className="type-icon" style={{backgroundColor: color1}}>{types[0]}</span></div>
-        }
-        else if(types.length === 2) {
-            let color1 = setTypeColor(types[0])
-            let color2 = setTypeColor(types[1])
-            return <div className="types"><span className="type-icon" style={{backgroundColor: color1}}>{types[0]}</span><span className="type-icon" style={{backgroundColor: color2}}>{types[1]}</span></div>
-        }
-        else {
-            return <div className="types"><span className="type-icon" style={{backgroundColor: "white"}}>None</span></div>
-        }
-    }
-
     function generateAbilities(ability1: string, ability2: string, ability3: string) {
         return <div className="ability-list">
             {ability1.length > 0 ? <span>1. {ability1}</span> : null}
@@ -150,42 +124,16 @@ function Info() {
         </div>
     }
 
-    const colours : any = {
-        normal: '#A8A77A',
-        fire: '#EE8130',
-        water: '#6390F0',
-        electric: '#F7D02C',
-        grass: '#7AC74C',
-        ice: '#96D9D6',
-        fighting: '#C22E28',
-        poison: '#A33EA1',
-        ground: '#E2BF65',
-        flying: '#A98FF3',
-        psychic: '#F95587',
-        bug: '#A6B91A',
-        rock: '#B6A136',
-        ghost: '#735797',
-        dragon: '#6F35FC',
-        dark: '#705746',
-        steel: '#B7B7CE',
-        fairy: '#D685AD',
-    };
-
-    function setTypeColor(type : string) {
-        let string = type.toLowerCase()
-        if(string in colours) {
-            return colours[string]
-        }
-        else {
-            return 'grey'
-        }
-        
-    }
-
-    console.log(data)
-
     return (
         <div className={"container"}>
+            <header className="info-header-container">
+                <Link to="/" className="back-button-link">
+                    <div className="back-button-container">
+                        <span className="material-icons md-36">arrow_back</span>
+                        <span className="back-button-text">Tilbake</span>
+                    </div>
+                </Link>
+            </header>
             <div className="info-container">
                 <div className="top-container">
                     <div className="image">
