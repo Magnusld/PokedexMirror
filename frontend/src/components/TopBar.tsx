@@ -34,6 +34,7 @@ export function TopBar(props: {
   }
 
   /**
+   *
    * Adds change on search input to searchSlice state
    * @param event 
    */
