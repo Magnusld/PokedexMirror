@@ -1,15 +1,12 @@
 import {
-    intArg,
     makeSchema,
     nonNull,
     objectType,
-    stringArg,
     inputObjectType,
     arg,
-    asNexusMethod,
-    enumType, queryType,
+    queryType,
 } from 'nexus';
-import { nexusPrisma } from 'nexus-plugin-prisma'
+import {nexusPrisma} from 'nexus-plugin-prisma';
 import {Context} from './context';
 import pluralize from "pluralize";
 import {createPokemonRating, getRatingsForPokemon, updatePokemonRating} from "./resolvers/PokemonRating";
@@ -46,50 +43,49 @@ const Pokemon = objectType({
             resolve: (source, args, context) => {
                 return getRatingsForPokemon(context, source)
                     .then(ratings => {
-                        const numberOfRatings = ratings.length
-                        if (numberOfRatings <= 0) return 0
+                        const numberOfRatings = ratings.length;
+                        if (numberOfRatings <= 0) return 0;
                         const total = ratings
                             .map(entry => entry.rating)
-                            .reduce((accumulator, currentValue) => accumulator+currentValue)
-                        return total / numberOfRatings
-                    })
+                            .reduce((accumulator, currentValue) => accumulator + currentValue);
+                        return total / numberOfRatings;
+                    });
             }
-        })
+        });
     }
 });
 
 const PokemonRating = objectType({
     name: 'PokemonRating',
     definition(t) {
-        t.nonNull.int('id')
-        t.nonNull.int('pokemonId')
-        t.nonNull.string("userGuid")
+        t.nonNull.int('id');
+        t.nonNull.int('pokemonId');
+        t.nonNull.string("userGuid");
         t.field('ratedPokemon', {
             type: 'Pokemon',
             resolve: (source, _, context) => {
-                return getPokemon(context, source)
+                return getPokemon(context, source);
             }
-        })
-        t.nonNull.float("rating")
+        });
+        t.nonNull.float("rating");
     }
-})
+});
 
-const Query = queryType( {
+const Query = queryType({
 
     definition: t => {
-        t.crud.pokemon()
+        t.crud.pokemon();
         t.crud.pokemons({
             pagination: true,
             filtering: true,
             ordering: true,
-
-        })
-        t.crud.pokemonRating()
+        });
+        t.crud.pokemonRating();
         t.crud.pokemonratings({
             pagination: true,
             filtering: true,
             ordering: true,
-        })
+        });
 
     }
 });
@@ -109,9 +105,9 @@ const Mutation = objectType({
                 )
             },
             resolve: (source, args, context) => {
-                return createPokemonRating(context, args)
+                return createPokemonRating(context, args);
             }
-        })
+        });
 
         t.field('ChangeRating', {
             type: 'PokemonRating',
@@ -123,45 +119,45 @@ const Mutation = objectType({
                 )
             },
             resolve: (source, args, context) => {
-                return updatePokemonRating(context, args)
+                return updatePokemonRating(context, args);
             }
-        })
+        });
 
-        t.crud.deleteOnePokemonRating()
+        t.crud.deleteOnePokemonRating();
     }
 });
 
 const RatingWhereInput = inputObjectType({
     name: 'RatingWhereInput',
     definition(t) {
-        t.nonNull.int('id')
+        t.nonNull.int('id');
     }
-})
+});
 
-const RatingWhereInputGuidId = inputObjectType( {
+const RatingWhereInputGuidId = inputObjectType({
     name: "RatingWhereInputGuidId",
     definition(t) {
-        t.nonNull.int("pokemonId")
-        t.nonNull.string("userGuid")
+        t.nonNull.int("pokemonId");
+        t.nonNull.string("userGuid");
     }
-})
+});
 
 const RatingUpdateInput = inputObjectType({
     name: 'RatingUpdateInput',
     definition(t) {
-        t.nonNull.field('ratingToUpdate', {type: RatingWhereInputGuidId})
-        t.nonNull.int('newRating')
+        t.nonNull.field('ratingToUpdate', {type: RatingWhereInputGuidId});
+        t.nonNull.int('newRating');
     }
-})
+});
 
 const RatingCreateInput = inputObjectType({
     name: 'RatingCreateInput',
     definition(t) {
-        t.nonNull.int('pokemonId')
-        t.nonNull.string("userGuid")
-        t.nonNull.int('rating')
+        t.nonNull.int('pokemonId');
+        t.nonNull.string("userGuid");
+        t.nonNull.int('rating');
     }
-})
+});
 
 
 export const schema = makeSchema({

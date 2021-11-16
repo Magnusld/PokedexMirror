@@ -1,11 +1,10 @@
 generator client {
   provider = "prisma-client-js"
-  binaryTargets = ["debian-openssl-1.1.x", "windows", "darwin"]
 }
 
 datasource db {
   provider = "sqlite"
-  url      = "file:./dev.db"
+  url      = env("SQLITE_PATH")
 }
 
 model PokemonRating {

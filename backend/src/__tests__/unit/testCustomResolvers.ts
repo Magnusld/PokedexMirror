@@ -1,7 +1,7 @@
-import {MockContext, Context, createMockContext} from '../context';
-import {createPokemonRating, getRatingsForPokemon, updatePokemonRating} from "../resolvers/PokemonRating";
-import {NexusGenObjects} from "../generated/nexus";
-import {getPokemon} from "../resolvers/Pokemon";
+import {MockContext, Context, createMockContext} from '../../context';
+import {createPokemonRating, getRatingsForPokemon, updatePokemonRating} from "../../resolvers/PokemonRating";
+import {NexusGenObjects} from "../../generated/nexus";
+import {getPokemon} from "../../resolvers/Pokemon";
 
 let mockCtx: MockContext;
 let ctx: Context;
@@ -11,7 +11,7 @@ beforeEach(() => {
     ctx = mockCtx as unknown as Context;
 });
 
-test("should perform a cal to create a new rating", async () => {
+test("should perform a call to create a new rating", async () => {
 
     const newRating: NexusGenObjects["PokemonRating"] = {
         id: 0,
@@ -32,7 +32,7 @@ test("should perform a cal to create a new rating", async () => {
         rating: 5,
         userGuid: "test",
     });
-
+    await expect(ctx.prisma.pokemonRating.create).toBeCalled()
 });
 
 test("should perform a call to update a rating", async () => {
@@ -57,7 +57,7 @@ test("should perform a call to update a rating", async () => {
         rating: 5,
         userGuid: "test",
     });
-
+    await expect(ctx.prisma.pokemonRating.update).toBeCalled()
 });
 
 test("should perform a call to findMany on Pokemon", async () => {
@@ -68,6 +68,7 @@ test("should perform a call to findMany on Pokemon", async () => {
     })).resolves.toEqual(
         ratings
     )
+    await expect(ctx.prisma.pokemonRating.findMany).toBeCalled()
 })
 
 test("should perform a call to get a pokemon", async () => {
@@ -79,4 +80,5 @@ test("should perform a call to get a pokemon", async () => {
     mockCtx.prisma.pokemon.findUnique.mockResolvedValue(pokemonDummy)
 
     await expect(getPokemon(ctx, pokemonDummy)).resolves.toEqual(pokemonDummy)
+    await expect(ctx.prisma.pokemon.findUnique).toBeCalled()
 })
