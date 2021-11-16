@@ -1,11 +1,12 @@
 // tests/__helpers.ts
 import {PrismaClient} from "@prisma/client";
-import {ServerInfo} from "apollo-server";
+import {ApolloServer, ServerInfo} from "apollo-server";
 import {execSync} from "child_process";
 import getPort, {makeRange} from "get-port";
 import {join} from "path";
 import {GraphQLClient} from "graphql-request";
 import {apolloServer} from "../../server";
+import {context} from "../../context";
 
 type TestContext = {
     client: GraphQLClient;
@@ -36,20 +37,25 @@ export function createTestContext(): TestContext {
 
 function graphqlTestContext() {
     let serverInstance: ServerInfo | null = null;
+    let apolloInstance: ApolloServer | null = null
     return {
         async before() {
-            serverInstance = await apolloServer().listen(
+            apolloInstance = apolloServer()
+            serverInstance = await apolloInstance.listen(
                 {
                     port: await getPort(/*{port: makeRange(4000, 6000)}*/)
                 });
             // Close the Prisma Client connection when the Apollo Server is closed
             serverInstance.server.on("close", async () => {
-                prismaCli.$disconnect()
+                await prismaCli.$disconnect()
+                await context.prisma.$disconnect()
             });
             return new GraphQLClient(`http://localhost:${serverInstance.port}`);
         },
         async after() {
             serverInstance?.server.close();
+            await apolloInstance?.stop()
+            console.log(`gql/apollo after ${serverInstance} ${apolloInstance}`)
         },
     };
 }
@@ -102,8 +108,8 @@ const pokemon1 = {
         ability2: "TestAbility2",
         ability3: "TestAbility3",
         species: "",
-        type1: "",
-        type2: "",
+        type1: "Fire",
+        type2: "Flying",
         heightMeter: 5,
         weightKg: 5,
     }
@@ -125,8 +131,8 @@ const pokemon2 = {
         ability2: "TestAbility2",
         ability3: "TestAbility3",
         species: "",
-        type1: "",
-        type2: "",
+        type1: "Grass",
+        type2: undefined,
         heightMeter: 5,
         weightKg: 5,
     }

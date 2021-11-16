@@ -5,7 +5,7 @@ jest.setTimeout(30000)
 
 const ctx = createTestContext();
 
-test("test", async () => {
+test("that mutation create rating returns and persists on server", async () => {
     const result =
     await ctx.client.request(gql`mutation CreateRatingMutation($data: RatingCreateInput!) {
                 CreateRating(data: $data) {
