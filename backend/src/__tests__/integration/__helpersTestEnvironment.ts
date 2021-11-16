@@ -55,7 +55,6 @@ function graphqlTestContext() {
         async after() {
             serverInstance?.server.close();
             await apolloInstance?.stop()
-            console.log(`gql/apollo after ${serverInstance} ${apolloInstance}`)
         },
     };
 }
@@ -80,7 +79,6 @@ function prismaTestContext() {
         async after() {
             // Drop the schema after the tests have completed
             execSync(`npm run test:migrate:reset`);
-
             // Release the Prisma Client connection
             await prismaClient?.$disconnect();
         },

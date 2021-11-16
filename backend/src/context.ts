@@ -13,14 +13,6 @@ export const context: Context = {
 
 /*Testspesifikke exports*/
 
-export const testClient: PrismaClient = new PrismaClient({
-    datasources: {
-        db: {
-            url: "file:./test.db"
-        }
-    }
-})
-
 export type MockContext = {
     prisma: DeepMockProxy<PrismaClient>
 }
