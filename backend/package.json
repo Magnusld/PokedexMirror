@@ -2,17 +2,18 @@
   "name": "typescript-graphql",
   "license": "MIT",
   "scripts": {
-    "dev": "ts-node-dev --no-notify --respawn --transpile-only src/index",
+    "dev": "dotenv -e .env.development ts-node-dev -- --no-notify --respawn --transpile-only src/index",
+    "dev:test": "dotenv -e .env.test ts-node-dev -- --no-notify --respawn --transpile-only src/index",
     "start": "node dist/index",
-    "clean": "rm -rf dist",
-    "build": "npm -s run clean && npm -s run generate && tsc",
+    "clean": "rimraf dist",
+    "build": "npm -s run clean && npm -s run generate && tsc -p tsconfig.build.json",
     "generate": "npm -s run generate:prisma && npm -s run generate:nexus",
     "generate:prisma": "prisma generate",
     "generate:nexus": "ts-node --transpile-only src/schema",
-    "seed": "ts-node ./prisma/seed.ts",
+    "seed": "ts-node src/util/seedData",
     "test": "dotenv -e .env.test jest -i",
     "test:unit": "dotenv -e .env.test jest __tests__/unit -i",
-    "test:integration": "dotenv -e .env.test jest __tests__/integration -i --runInBand",
+    "test:integration": "dotenv -e .env.test jest __tests__/integration -i",
     "test:migrate": "dotenv -e .env.test npx prisma db push",
     "test:migrate:reset": "dotenv -e .env.test npx prisma migrate reset -- --force"
   },
@@ -36,6 +37,7 @@
     "@types/node": "14.17.21",
     "@types/pluralize": "0.0.29",
     "@types/sqlite3": "^3.1.7",
+    "cross-env": "^7.0.3",
     "dotenv-cli": "^4.1.0",
     "get-port": "^5.1.1",
     "graphql-request": "^3.6.1",
@@ -43,13 +45,12 @@
     "jest-mock-extended": "^2.0.4",
     "pluralize": "^8.0.0",
     "prisma": "^2.23.0",
+    "rimraf": "^3.0.2",
     "sqlite3": "^5.0.2",
     "ts-jest": "^27.0.7",
     "ts-node": "10.2.1",
     "ts-node-dev": "1.1.8",
     "typescript": "^4.4.3"
   },
-  "prisma": {
-    "seed": "ts-node prisma/seed.ts"
-  }
+  "prisma": {}
 }

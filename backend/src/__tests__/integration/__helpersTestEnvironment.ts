@@ -7,6 +7,12 @@ import {join} from "path";
 import {GraphQLClient} from "graphql-request";
 import {apolloServer} from "../../server";
 import {context} from "../../context";
+import {seedForTesting} from "../../util/seedTestData";
+
+/*
+Sets up the environment in order to run the integration tests, while also taking care to tear down the
+environment and closing/disconnecting all handles.
+ */
 
 type TestContext = {
     client: GraphQLClient;
@@ -19,6 +25,9 @@ export function createTestContext(): TestContext {
     let ctx = {} as TestContext;
     const graphqlCtx = graphqlTestContext();
     const prismaCtx = prismaTestContext();
+    beforeAll(async () => {
+        execSync("npm run test:migrate:reset")
+    })
     beforeEach(async () => {
         const client = await graphqlCtx.before();
         const db = await prismaCtx.before();
@@ -85,53 +94,3 @@ function prismaTestContext() {
     };
 }
 
-async function seedForTesting(db: PrismaClient) {
-    await db.pokemon.create(pokemon1);
-    await db.pokemon.create(pokemon2);
-}
-
-const pokemon1 = {
-    data: {
-        id: 0,
-        name: "TestPokemon1",
-        generation: 1,
-        pokedexNr: 5,
-        hp: 5,
-        attack: 5,
-        sp_attack: 5,
-        defense: 5,
-        sp_defense: 5,
-        speed: 5,
-        ability1: "TestAbility1",
-        ability2: "TestAbility2",
-        ability3: "TestAbility3",
-        species: "",
-        type1: "Fire",
-        type2: "Flying",
-        heightMeter: 5,
-        weightKg: 5,
-    }
-};
-
-const pokemon2 = {
-    data: {
-        id: 1,
-        name: "TestPokemon2",
-        generation: 6,
-        pokedexNr: 1,
-        hp: 5,
-        attack: 5,
-        sp_attack: 5,
-        defense: 5,
-        sp_defense: 5,
-        speed: 5,
-        ability1: "TestAbility1",
-        ability2: "TestAbility2",
-        ability3: "TestAbility3",
-        species: "",
-        type1: "Grass",
-        type2: undefined,
-        heightMeter: 5,
-        weightKg: 5,
-    }
-};
