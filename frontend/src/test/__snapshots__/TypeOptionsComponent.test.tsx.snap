@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Test av GenOptionsComponent renders 1`] = `
+exports[`Test for TypeOptionComponent renders 1`] = `
 <Provider
   store={
     Object {
@@ -13,7 +13,7 @@ exports[`Test av GenOptionsComponent renders 1`] = `
     }
   }
 >
-  <GenOptionsComponent>
+  <TypeOptionComponent>
     <div
       style={
         Object {
@@ -24,7 +24,7 @@ exports[`Test av GenOptionsComponent renders 1`] = `
     >
       <div
         className="filteringOptionsContainer"
-        id="genOptions"
+        id="typeOptions"
       >
         <div>
           <h3
@@ -35,22 +35,16 @@ exports[`Test av GenOptionsComponent renders 1`] = `
               }
             }
           >
-            Generasjon
+            Type
           </h3>
         </div>
         <div
           className="optionsButtonsContainer"
-          style={
-            Object {
-              "flexGrow": 1,
-            }
-          }
         >
           <ToggleButton
             checked={true}
-            className="mb-2"
+            className="mb-2 bug"
             id="toggle-check"
-            key="0"
             onClick={[Function]}
             type="checkbox"
             value="1"
@@ -69,21 +63,39 @@ exports[`Test av GenOptionsComponent renders 1`] = `
             <Button
               active={false}
               as="label"
-              className="mb-2"
+              className="mb-2 bug"
               disabled={false}
               htmlFor="toggle-check"
               onClick={[Function]}
               variant="outline-primary"
             >
               <label
-                className="mb-2 btn btn-outline-primary"
+                className="mb-2 bug btn btn-outline-primary"
                 htmlFor="toggle-check"
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="button"
                 tabIndex={0}
               >
-                Gen 1
+                <ForwardRef(SvgPokémonBugTypeIcon)
+                  style={
+                    Object {
+                      "height": 35,
+                      "width": 35,
+                    }
+                  }
+                >
+                  <svg
+                    style={
+                      Object {
+                        "height": 35,
+                        "width": 35,
+                      }
+                    }
+                  >
+                    Pokémon_Bug_Type_Icon.svg
+                  </svg>
+                </ForwardRef(SvgPokémonBugTypeIcon)>
               </label>
             </Button>
           </ToggleButton>
@@ -91,7 +103,6 @@ exports[`Test av GenOptionsComponent renders 1`] = `
             checked={true}
             className="mb-2"
             id="toggle-check"
-            key="1"
             onClick={[Function]}
             type="checkbox"
             value="1"
@@ -124,7 +135,25 @@ exports[`Test av GenOptionsComponent renders 1`] = `
                 role="button"
                 tabIndex={0}
               >
-                Gen 2
+                <ForwardRef(SvgPokémonDarkTypeIcon)
+                  style={
+                    Object {
+                      "height": 35,
+                      "width": 35,
+                    }
+                  }
+                >
+                  <svg
+                    style={
+                      Object {
+                        "height": 35,
+                        "width": 35,
+                      }
+                    }
+                  >
+                    Pokémon_Dark_Type_Icon.svg
+                  </svg>
+                </ForwardRef(SvgPokémonDarkTypeIcon)>
               </label>
             </Button>
           </ToggleButton>
@@ -132,7 +161,6 @@ exports[`Test av GenOptionsComponent renders 1`] = `
             checked={true}
             className="mb-2"
             id="toggle-check"
-            key="2"
             onClick={[Function]}
             type="checkbox"
             value="1"
@@ -165,7 +193,25 @@ exports[`Test av GenOptionsComponent renders 1`] = `
                 role="button"
                 tabIndex={0}
               >
-                Gen 3
+                <ForwardRef(SvgPokémonDragonTypeIcon)
+                  style={
+                    Object {
+                      "height": 35,
+                      "width": 35,
+                    }
+                  }
+                >
+                  <svg
+                    style={
+                      Object {
+                        "height": 35,
+                        "width": 35,
+                      }
+                    }
+                  >
+                    Pokémon_Dragon_Type_Icon.svg
+                  </svg>
+                </ForwardRef(SvgPokémonDragonTypeIcon)>
               </label>
             </Button>
           </ToggleButton>
@@ -173,7 +219,6 @@ exports[`Test av GenOptionsComponent renders 1`] = `
             checked={true}
             className="mb-2"
             id="toggle-check"
-            key="3"
             onClick={[Function]}
             type="checkbox"
             value="1"
@@ -206,7 +251,25 @@ exports[`Test av GenOptionsComponent renders 1`] = `
                 role="button"
                 tabIndex={0}
               >
-                Gen 4
+                <ForwardRef(SvgPokémonElectricTypeIcon)
+                  style={
+                    Object {
+                      "height": 35,
+                      "width": 35,
+                    }
+                  }
+                >
+                  <svg
+                    style={
+                      Object {
+                        "height": 35,
+                        "width": 35,
+                      }
+                    }
+                  >
+                    Pokémon_Electric_Type_Icon.svg
+                  </svg>
+                </ForwardRef(SvgPokémonElectricTypeIcon)>
               </label>
             </Button>
           </ToggleButton>
@@ -214,7 +277,6 @@ exports[`Test av GenOptionsComponent renders 1`] = `
             checked={true}
             className="mb-2"
             id="toggle-check"
-            key="4"
             onClick={[Function]}
             type="checkbox"
             value="1"
@@ -247,7 +309,25 @@ exports[`Test av GenOptionsComponent renders 1`] = `
                 role="button"
                 tabIndex={0}
               >
-                Gen 5
+                <ForwardRef(SvgPokémonFairyTypeIcon)
+                  style={
+                    Object {
+                      "height": 35,
+                      "width": 35,
+                    }
+                  }
+                >
+                  <svg
+                    style={
+                      Object {
+                        "height": 35,
+                        "width": 35,
+                      }
+                    }
+                  >
+                    Pokémon_Fairy_Type_Icon.svg
+                  </svg>
+                </ForwardRef(SvgPokémonFairyTypeIcon)>
               </label>
             </Button>
           </ToggleButton>
@@ -255,7 +335,6 @@ exports[`Test av GenOptionsComponent renders 1`] = `
             checked={true}
             className="mb-2"
             id="toggle-check"
-            key="5"
             onClick={[Function]}
             type="checkbox"
             value="1"
@@ -288,7 +367,25 @@ exports[`Test av GenOptionsComponent renders 1`] = `
                 role="button"
                 tabIndex={0}
               >
-                Gen 6
+                <ForwardRef(SvgPokémonFightingTypeIcon)
+                  style={
+                    Object {
+                      "height": 35,
+                      "width": 35,
+                    }
+                  }
+                >
+                  <svg
+                    style={
+                      Object {
+                        "height": 35,
+                        "width": 35,
+                      }
+                    }
+                  >
+                    Pokémon_Fighting_Type_Icon.svg
+                  </svg>
+                </ForwardRef(SvgPokémonFightingTypeIcon)>
               </label>
             </Button>
           </ToggleButton>
@@ -296,7 +393,6 @@ exports[`Test av GenOptionsComponent renders 1`] = `
             checked={true}
             className="mb-2"
             id="toggle-check"
-            key="6"
             onClick={[Function]}
             type="checkbox"
             value="1"
@@ -329,7 +425,25 @@ exports[`Test av GenOptionsComponent renders 1`] = `
                 role="button"
                 tabIndex={0}
               >
-                Gen 7
+                <ForwardRef(SvgPokémonFireTypeIcon)
+                  style={
+                    Object {
+                      "height": 35,
+                      "width": 35,
+                    }
+                  }
+                >
+                  <svg
+                    style={
+                      Object {
+                        "height": 35,
+                        "width": 35,
+                      }
+                    }
+                  >
+                    Pokémon_Fire_Type_Icon.svg
+                  </svg>
+                </ForwardRef(SvgPokémonFireTypeIcon)>
               </label>
             </Button>
           </ToggleButton>
@@ -337,7 +451,6 @@ exports[`Test av GenOptionsComponent renders 1`] = `
             checked={true}
             className="mb-2"
             id="toggle-check"
-            key="7"
             onClick={[Function]}
             type="checkbox"
             value="1"
@@ -370,458 +483,645 @@ exports[`Test av GenOptionsComponent renders 1`] = `
                 role="button"
                 tabIndex={0}
               >
-                Gen 8
+                <ForwardRef(SvgPokémonFlyingTypeIcon)
+                  style={
+                    Object {
+                      "height": 35,
+                      "width": 35,
+                    }
+                  }
+                >
+                  <svg
+                    style={
+                      Object {
+                        "height": 35,
+                        "width": 35,
+                      }
+                    }
+                  >
+                    Pokémon_Flying_Type_Icon.svg
+                  </svg>
+                </ForwardRef(SvgPokémonFlyingTypeIcon)>
+              </label>
+            </Button>
+          </ToggleButton>
+          <ToggleButton
+            checked={true}
+            className="mb-2"
+            id="toggle-check"
+            onClick={[Function]}
+            type="checkbox"
+            value="1"
+            variant="outline-primary"
+          >
+            <input
+              autoComplete="off"
+              checked={true}
+              className="btn-check"
+              disabled={false}
+              id="toggle-check"
+              onChange={[Function]}
+              type="checkbox"
+              value="1"
+            />
+            <Button
+              active={false}
+              as="label"
+              className="mb-2"
+              disabled={false}
+              htmlFor="toggle-check"
+              onClick={[Function]}
+              variant="outline-primary"
+            >
+              <label
+                className="mb-2 btn btn-outline-primary"
+                htmlFor="toggle-check"
+                onClick={[Function]}
+                onKeyDown={[Function]}
+                role="button"
+                tabIndex={0}
+              >
+                <ForwardRef(SvgPokémonGhostTypeIcon)
+                  style={
+                    Object {
+                      "height": 35,
+                      "width": 35,
+                    }
+                  }
+                >
+                  <svg
+                    style={
+                      Object {
+                        "height": 35,
+                        "width": 35,
+                      }
+                    }
+                  >
+                    Pokémon_Ghost_Type_Icon.svg
+                  </svg>
+                </ForwardRef(SvgPokémonGhostTypeIcon)>
+              </label>
+            </Button>
+          </ToggleButton>
+          <ToggleButton
+            checked={true}
+            className="mb-2"
+            id="toggle-check"
+            onClick={[Function]}
+            type="checkbox"
+            value="1"
+            variant="outline-primary"
+          >
+            <input
+              autoComplete="off"
+              checked={true}
+              className="btn-check"
+              disabled={false}
+              id="toggle-check"
+              onChange={[Function]}
+              type="checkbox"
+              value="1"
+            />
+            <Button
+              active={false}
+              as="label"
+              className="mb-2"
+              disabled={false}
+              htmlFor="toggle-check"
+              onClick={[Function]}
+              variant="outline-primary"
+            >
+              <label
+                className="mb-2 btn btn-outline-primary"
+                htmlFor="toggle-check"
+                onClick={[Function]}
+                onKeyDown={[Function]}
+                role="button"
+                tabIndex={0}
+              >
+                <ForwardRef(SvgPokémonGrassTypeIcon)
+                  style={
+                    Object {
+                      "height": 35,
+                      "width": 35,
+                    }
+                  }
+                >
+                  <svg
+                    style={
+                      Object {
+                        "height": 35,
+                        "width": 35,
+                      }
+                    }
+                  >
+                    Pokémon_Grass_Type_Icon.svg
+                  </svg>
+                </ForwardRef(SvgPokémonGrassTypeIcon)>
+              </label>
+            </Button>
+          </ToggleButton>
+          <ToggleButton
+            checked={true}
+            className="mb-2"
+            id="toggle-check"
+            onClick={[Function]}
+            type="checkbox"
+            value="1"
+            variant="outline-primary"
+          >
+            <input
+              autoComplete="off"
+              checked={true}
+              className="btn-check"
+              disabled={false}
+              id="toggle-check"
+              onChange={[Function]}
+              type="checkbox"
+              value="1"
+            />
+            <Button
+              active={false}
+              as="label"
+              className="mb-2"
+              disabled={false}
+              htmlFor="toggle-check"
+              onClick={[Function]}
+              variant="outline-primary"
+            >
+              <label
+                className="mb-2 btn btn-outline-primary"
+                htmlFor="toggle-check"
+                onClick={[Function]}
+                onKeyDown={[Function]}
+                role="button"
+                tabIndex={0}
+              >
+                <ForwardRef(SvgPokémonGroundTypeIcon)
+                  style={
+                    Object {
+                      "height": 35,
+                      "width": 35,
+                    }
+                  }
+                >
+                  <svg
+                    style={
+                      Object {
+                        "height": 35,
+                        "width": 35,
+                      }
+                    }
+                  >
+                    Pokémon_Ground_Type_Icon.svg
+                  </svg>
+                </ForwardRef(SvgPokémonGroundTypeIcon)>
+              </label>
+            </Button>
+          </ToggleButton>
+          <ToggleButton
+            checked={true}
+            className="mb-2"
+            id="toggle-check"
+            onClick={[Function]}
+            type="checkbox"
+            value="1"
+            variant="outline-primary"
+          >
+            <input
+              autoComplete="off"
+              checked={true}
+              className="btn-check"
+              disabled={false}
+              id="toggle-check"
+              onChange={[Function]}
+              type="checkbox"
+              value="1"
+            />
+            <Button
+              active={false}
+              as="label"
+              className="mb-2"
+              disabled={false}
+              htmlFor="toggle-check"
+              onClick={[Function]}
+              variant="outline-primary"
+            >
+              <label
+                className="mb-2 btn btn-outline-primary"
+                htmlFor="toggle-check"
+                onClick={[Function]}
+                onKeyDown={[Function]}
+                role="button"
+                tabIndex={0}
+              >
+                <ForwardRef(SvgPokémonIceTypeIcon)
+                  style={
+                    Object {
+                      "height": 35,
+                      "width": 35,
+                    }
+                  }
+                >
+                  <svg
+                    style={
+                      Object {
+                        "height": 35,
+                        "width": 35,
+                      }
+                    }
+                  >
+                    Pokémon_Ice_Type_Icon.svg
+                  </svg>
+                </ForwardRef(SvgPokémonIceTypeIcon)>
+              </label>
+            </Button>
+          </ToggleButton>
+          <ToggleButton
+            checked={true}
+            className="mb-2"
+            id="toggle-check"
+            onClick={[Function]}
+            type="checkbox"
+            value="1"
+            variant="outline-primary"
+          >
+            <input
+              autoComplete="off"
+              checked={true}
+              className="btn-check"
+              disabled={false}
+              id="toggle-check"
+              onChange={[Function]}
+              type="checkbox"
+              value="1"
+            />
+            <Button
+              active={false}
+              as="label"
+              className="mb-2"
+              disabled={false}
+              htmlFor="toggle-check"
+              onClick={[Function]}
+              variant="outline-primary"
+            >
+              <label
+                className="mb-2 btn btn-outline-primary"
+                htmlFor="toggle-check"
+                onClick={[Function]}
+                onKeyDown={[Function]}
+                role="button"
+                tabIndex={0}
+              >
+                <ForwardRef(SvgPokémonNormalTypeIcon)
+                  style={
+                    Object {
+                      "height": 35,
+                      "width": 35,
+                    }
+                  }
+                >
+                  <svg
+                    style={
+                      Object {
+                        "height": 35,
+                        "width": 35,
+                      }
+                    }
+                  >
+                    Pokémon_Normal_Type_Icon.svg
+                  </svg>
+                </ForwardRef(SvgPokémonNormalTypeIcon)>
+              </label>
+            </Button>
+          </ToggleButton>
+          <ToggleButton
+            checked={true}
+            className="mb-2"
+            id="toggle-check"
+            onClick={[Function]}
+            type="checkbox"
+            value="1"
+            variant="outline-primary"
+          >
+            <input
+              autoComplete="off"
+              checked={true}
+              className="btn-check"
+              disabled={false}
+              id="toggle-check"
+              onChange={[Function]}
+              type="checkbox"
+              value="1"
+            />
+            <Button
+              active={false}
+              as="label"
+              className="mb-2"
+              disabled={false}
+              htmlFor="toggle-check"
+              onClick={[Function]}
+              variant="outline-primary"
+            >
+              <label
+                className="mb-2 btn btn-outline-primary"
+                htmlFor="toggle-check"
+                onClick={[Function]}
+                onKeyDown={[Function]}
+                role="button"
+                tabIndex={0}
+              >
+                <ForwardRef(SvgPokémonPoisonTypeIcon)
+                  style={
+                    Object {
+                      "height": 35,
+                      "width": 35,
+                    }
+                  }
+                >
+                  <svg
+                    style={
+                      Object {
+                        "height": 35,
+                        "width": 35,
+                      }
+                    }
+                  >
+                    Pokémon_Poison_Type_Icon.svg
+                  </svg>
+                </ForwardRef(SvgPokémonPoisonTypeIcon)>
+              </label>
+            </Button>
+          </ToggleButton>
+          <ToggleButton
+            checked={true}
+            className="mb-2"
+            id="toggle-check"
+            onClick={[Function]}
+            type="checkbox"
+            value="1"
+            variant="outline-primary"
+          >
+            <input
+              autoComplete="off"
+              checked={true}
+              className="btn-check"
+              disabled={false}
+              id="toggle-check"
+              onChange={[Function]}
+              type="checkbox"
+              value="1"
+            />
+            <Button
+              active={false}
+              as="label"
+              className="mb-2"
+              disabled={false}
+              htmlFor="toggle-check"
+              onClick={[Function]}
+              variant="outline-primary"
+            >
+              <label
+                className="mb-2 btn btn-outline-primary"
+                htmlFor="toggle-check"
+                onClick={[Function]}
+                onKeyDown={[Function]}
+                role="button"
+                tabIndex={0}
+              >
+                <ForwardRef(SvgPokémonPsychicTypeIcon)
+                  style={
+                    Object {
+                      "height": 35,
+                      "width": 35,
+                    }
+                  }
+                >
+                  <svg
+                    style={
+                      Object {
+                        "height": 35,
+                        "width": 35,
+                      }
+                    }
+                  >
+                    Pokémon_Psychic_Type_Icon.svg
+                  </svg>
+                </ForwardRef(SvgPokémonPsychicTypeIcon)>
+              </label>
+            </Button>
+          </ToggleButton>
+          <ToggleButton
+            checked={true}
+            className="mb-2"
+            id="toggle-check"
+            onClick={[Function]}
+            type="checkbox"
+            value="1"
+            variant="outline-primary"
+          >
+            <input
+              autoComplete="off"
+              checked={true}
+              className="btn-check"
+              disabled={false}
+              id="toggle-check"
+              onChange={[Function]}
+              type="checkbox"
+              value="1"
+            />
+            <Button
+              active={false}
+              as="label"
+              className="mb-2"
+              disabled={false}
+              htmlFor="toggle-check"
+              onClick={[Function]}
+              variant="outline-primary"
+            >
+              <label
+                className="mb-2 btn btn-outline-primary"
+                htmlFor="toggle-check"
+                onClick={[Function]}
+                onKeyDown={[Function]}
+                role="button"
+                tabIndex={0}
+              >
+                <ForwardRef(SvgPokémonRockTypeIcon)
+                  style={
+                    Object {
+                      "height": 35,
+                      "width": 35,
+                    }
+                  }
+                >
+                  <svg
+                    style={
+                      Object {
+                        "height": 35,
+                        "width": 35,
+                      }
+                    }
+                  >
+                    Pokémon_Rock_Type_Icon.svg
+                  </svg>
+                </ForwardRef(SvgPokémonRockTypeIcon)>
+              </label>
+            </Button>
+          </ToggleButton>
+          <ToggleButton
+            checked={true}
+            className="mb-2"
+            id="toggle-check"
+            onClick={[Function]}
+            type="checkbox"
+            value="1"
+            variant="outline-primary"
+          >
+            <input
+              autoComplete="off"
+              checked={true}
+              className="btn-check"
+              disabled={false}
+              id="toggle-check"
+              onChange={[Function]}
+              type="checkbox"
+              value="1"
+            />
+            <Button
+              active={false}
+              as="label"
+              className="mb-2"
+              disabled={false}
+              htmlFor="toggle-check"
+              onClick={[Function]}
+              variant="outline-primary"
+            >
+              <label
+                className="mb-2 btn btn-outline-primary"
+                htmlFor="toggle-check"
+                onClick={[Function]}
+                onKeyDown={[Function]}
+                role="button"
+                tabIndex={0}
+              >
+                <ForwardRef(SvgPokémonSteelTypeIcon)
+                  style={
+                    Object {
+                      "height": 35,
+                      "width": 35,
+                    }
+                  }
+                >
+                  <svg
+                    style={
+                      Object {
+                        "height": 35,
+                        "width": 35,
+                      }
+                    }
+                  >
+                    Pokémon_Steel_Type_Icon.svg
+                  </svg>
+                </ForwardRef(SvgPokémonSteelTypeIcon)>
+              </label>
+            </Button>
+          </ToggleButton>
+          <ToggleButton
+            checked={true}
+            className="mb-2"
+            id="toggle-check"
+            onClick={[Function]}
+            type="checkbox"
+            value="1"
+            variant="outline-primary"
+          >
+            <input
+              autoComplete="off"
+              checked={true}
+              className="btn-check"
+              disabled={false}
+              id="toggle-check"
+              onChange={[Function]}
+              type="checkbox"
+              value="1"
+            />
+            <Button
+              active={false}
+              as="label"
+              className="mb-2"
+              disabled={false}
+              htmlFor="toggle-check"
+              onClick={[Function]}
+              variant="outline-primary"
+            >
+              <label
+                className="mb-2 btn btn-outline-primary"
+                htmlFor="toggle-check"
+                onClick={[Function]}
+                onKeyDown={[Function]}
+                role="button"
+                tabIndex={0}
+              >
+                <ForwardRef(SvgPokémonWaterTypeIcon)
+                  style={
+                    Object {
+                      "height": 35,
+                      "width": 35,
+                    }
+                  }
+                >
+                  <svg
+                    style={
+                      Object {
+                        "height": 35,
+                        "width": 35,
+                      }
+                    }
+                  >
+                    Pokémon_Water_Type_Icon.svg
+                  </svg>
+                </ForwardRef(SvgPokémonWaterTypeIcon)>
               </label>
             </Button>
           </ToggleButton>
         </div>
-        <Button
-          active={false}
-          className="clearAllButton"
-          disabled={false}
-          onClick={[Function]}
-          variant="secondary"
-        >
-          <button
-            className="clearAllButton btn btn-secondary"
-            disabled={false}
-            onClick={[Function]}
-            type="button"
-          >
-            Fjerne alle valg
-          </button>
-        </Button>
-        <Button
-          active={false}
-          className="setAllButton"
-          disabled={false}
-          onClick={[Function]}
-          variant="secondary"
-        >
-          <button
-            className="setAllButton btn btn-secondary"
-            disabled={false}
-            onClick={[Function]}
-            type="button"
-          >
-            Velg alle
-          </button>
-        </Button>
-      </div>
-    </div>
-  </GenOptionsComponent>
-</Provider>
-`;
-
-exports[`Test for GenOptionsComponent renders 1`] = `
-<Provider
-  store={
-    Object {
-      "clearActions": [Function],
-      "dispatch": [Function],
-      "getActions": [Function],
-      "getState": [Function],
-      "replaceReducer": [Function],
-      "subscribe": [Function],
-    }
-  }
->
-  <GenOptionsComponent>
-    <div
-      style={
-        Object {
-          "display": "flex",
-          "justifyContent": "center",
-        }
-      }
-    >
-      <div
-        className="filteringOptionsContainer"
-        id="genOptions"
-      >
         <div>
-          <h3
-            style={
-              Object {
-                "marginTop": 10,
-                "textAlign": "left",
-              }
-            }
-          >
-            Generasjon
-          </h3>
-        </div>
-        <div
-          className="optionsButtonsContainer"
-          style={
-            Object {
-              "flexGrow": 1,
-            }
-          }
-        >
-          <ToggleButton
-            checked={true}
-            className="mb-2"
-            id="toggle-check"
-            key="0"
-            onClick={[Function]}
-            type="checkbox"
-            value="1"
-            variant="outline-primary"
-          >
-            <input
-              autoComplete="off"
-              checked={true}
-              className="btn-check"
-              disabled={false}
-              id="toggle-check"
-              onChange={[Function]}
-              type="checkbox"
-              value="1"
-            />
-            <Button
-              active={false}
-              as="label"
-              className="mb-2"
-              disabled={false}
-              htmlFor="toggle-check"
-              onClick={[Function]}
-              variant="outline-primary"
-            >
-              <label
-                className="mb-2 btn btn-outline-primary"
-                htmlFor="toggle-check"
-                onClick={[Function]}
-                onKeyDown={[Function]}
-                role="button"
-                tabIndex={0}
-              >
-                Gen 1
-              </label>
-            </Button>
-          </ToggleButton>
-          <ToggleButton
-            checked={true}
-            className="mb-2"
-            id="toggle-check"
-            key="1"
-            onClick={[Function]}
-            type="checkbox"
-            value="1"
-            variant="outline-primary"
-          >
-            <input
-              autoComplete="off"
-              checked={true}
-              className="btn-check"
-              disabled={false}
-              id="toggle-check"
-              onChange={[Function]}
-              type="checkbox"
-              value="1"
-            />
-            <Button
-              active={false}
-              as="label"
-              className="mb-2"
-              disabled={false}
-              htmlFor="toggle-check"
-              onClick={[Function]}
-              variant="outline-primary"
-            >
-              <label
-                className="mb-2 btn btn-outline-primary"
-                htmlFor="toggle-check"
-                onClick={[Function]}
-                onKeyDown={[Function]}
-                role="button"
-                tabIndex={0}
-              >
-                Gen 2
-              </label>
-            </Button>
-          </ToggleButton>
-          <ToggleButton
-            checked={true}
-            className="mb-2"
-            id="toggle-check"
-            key="2"
-            onClick={[Function]}
-            type="checkbox"
-            value="1"
-            variant="outline-primary"
-          >
-            <input
-              autoComplete="off"
-              checked={true}
-              className="btn-check"
-              disabled={false}
-              id="toggle-check"
-              onChange={[Function]}
-              type="checkbox"
-              value="1"
-            />
-            <Button
-              active={false}
-              as="label"
-              className="mb-2"
-              disabled={false}
-              htmlFor="toggle-check"
-              onClick={[Function]}
-              variant="outline-primary"
-            >
-              <label
-                className="mb-2 btn btn-outline-primary"
-                htmlFor="toggle-check"
-                onClick={[Function]}
-                onKeyDown={[Function]}
-                role="button"
-                tabIndex={0}
-              >
-                Gen 3
-              </label>
-            </Button>
-          </ToggleButton>
-          <ToggleButton
-            checked={true}
-            className="mb-2"
-            id="toggle-check"
-            key="3"
-            onClick={[Function]}
-            type="checkbox"
-            value="1"
-            variant="outline-primary"
-          >
-            <input
-              autoComplete="off"
-              checked={true}
-              className="btn-check"
-              disabled={false}
-              id="toggle-check"
-              onChange={[Function]}
-              type="checkbox"
-              value="1"
-            />
-            <Button
-              active={false}
-              as="label"
-              className="mb-2"
-              disabled={false}
-              htmlFor="toggle-check"
-              onClick={[Function]}
-              variant="outline-primary"
-            >
-              <label
-                className="mb-2 btn btn-outline-primary"
-                htmlFor="toggle-check"
-                onClick={[Function]}
-                onKeyDown={[Function]}
-                role="button"
-                tabIndex={0}
-              >
-                Gen 4
-              </label>
-            </Button>
-          </ToggleButton>
-          <ToggleButton
-            checked={true}
-            className="mb-2"
-            id="toggle-check"
-            key="4"
-            onClick={[Function]}
-            type="checkbox"
-            value="1"
-            variant="outline-primary"
-          >
-            <input
-              autoComplete="off"
-              checked={true}
-              className="btn-check"
-              disabled={false}
-              id="toggle-check"
-              onChange={[Function]}
-              type="checkbox"
-              value="1"
-            />
-            <Button
-              active={false}
-              as="label"
-              className="mb-2"
-              disabled={false}
-              htmlFor="toggle-check"
-              onClick={[Function]}
-              variant="outline-primary"
-            >
-              <label
-                className="mb-2 btn btn-outline-primary"
-                htmlFor="toggle-check"
-                onClick={[Function]}
-                onKeyDown={[Function]}
-                role="button"
-                tabIndex={0}
-              >
-                Gen 5
-              </label>
-            </Button>
-          </ToggleButton>
-          <ToggleButton
-            checked={true}
-            className="mb-2"
-            id="toggle-check"
-            key="5"
-            onClick={[Function]}
-            type="checkbox"
-            value="1"
-            variant="outline-primary"
-          >
-            <input
-              autoComplete="off"
-              checked={true}
-              className="btn-check"
-              disabled={false}
-              id="toggle-check"
-              onChange={[Function]}
-              type="checkbox"
-              value="1"
-            />
-            <Button
-              active={false}
-              as="label"
-              className="mb-2"
-              disabled={false}
-              htmlFor="toggle-check"
-              onClick={[Function]}
-              variant="outline-primary"
-            >
-              <label
-                className="mb-2 btn btn-outline-primary"
-                htmlFor="toggle-check"
-                onClick={[Function]}
-                onKeyDown={[Function]}
-                role="button"
-                tabIndex={0}
-              >
-                Gen 6
-              </label>
-            </Button>
-          </ToggleButton>
-          <ToggleButton
-            checked={true}
-            className="mb-2"
-            id="toggle-check"
-            key="6"
-            onClick={[Function]}
-            type="checkbox"
-            value="1"
-            variant="outline-primary"
-          >
-            <input
-              autoComplete="off"
-              checked={true}
-              className="btn-check"
-              disabled={false}
-              id="toggle-check"
-              onChange={[Function]}
-              type="checkbox"
-              value="1"
-            />
-            <Button
-              active={false}
-              as="label"
-              className="mb-2"
-              disabled={false}
-              htmlFor="toggle-check"
-              onClick={[Function]}
-              variant="outline-primary"
-            >
-              <label
-                className="mb-2 btn btn-outline-primary"
-                htmlFor="toggle-check"
-                onClick={[Function]}
-                onKeyDown={[Function]}
-                role="button"
-                tabIndex={0}
-              >
-                Gen 7
-              </label>
-            </Button>
-          </ToggleButton>
-          <ToggleButton
-            checked={true}
-            className="mb-2"
-            id="toggle-check"
-            key="7"
-            onClick={[Function]}
-            type="checkbox"
-            value="1"
-            variant="outline-primary"
-          >
-            <input
-              autoComplete="off"
-              checked={true}
-              className="btn-check"
-              disabled={false}
-              id="toggle-check"
-              onChange={[Function]}
-              type="checkbox"
-              value="1"
-            />
-            <Button
-              active={false}
-              as="label"
-              className="mb-2"
-              disabled={false}
-              htmlFor="toggle-check"
-              onClick={[Function]}
-              variant="outline-primary"
-            >
-              <label
-                className="mb-2 btn btn-outline-primary"
-                htmlFor="toggle-check"
-                onClick={[Function]}
-                onKeyDown={[Function]}
-                role="button"
-                tabIndex={0}
-              >
-                Gen 8
-              </label>
-            </Button>
-          </ToggleButton>
-        </div>
-        <Button
-          active={false}
-          className="clearAllButton"
-          disabled={false}
-          onClick={[Function]}
-          variant="secondary"
-        >
-          <button
-            className="clearAllButton btn btn-secondary"
+          <Button
+            active={false}
+            className="clearAllButton"
             disabled={false}
             onClick={[Function]}
-            type="button"
+            variant="secondary"
           >
-            Fjerne alle valg
-          </button>
-        </Button>
-        <Button
-          active={false}
-          className="setAllButton"
-          disabled={false}
-          onClick={[Function]}
-          variant="secondary"
-        >
-          <button
-            className="setAllButton btn btn-secondary"
+            <button
+              className="clearAllButton btn btn-secondary"
+              disabled={false}
+              onClick={[Function]}
+              type="button"
+            >
+              Fjerne alle valg
+            </button>
+          </Button>
+          <Button
+            active={false}
+            className="setAllButton"
             disabled={false}
             onClick={[Function]}
-            type="button"
+            variant="secondary"
           >
-            Velg alle
-          </button>
-        </Button>
+            <button
+              className="setAllButton btn btn-secondary"
+              disabled={false}
+              onClick={[Function]}
+              type="button"
+            >
+              Velg alle
+            </button>
+          </Button>
+        </div>
       </div>
     </div>
-  </GenOptionsComponent>
+  </TypeOptionComponent>
 </Provider>
 `;

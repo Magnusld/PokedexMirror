@@ -12,7 +12,7 @@ import {GenOptionsComponent} from "../components/GenOptionsComponent";
 
 Enzyme.configure({ adapter: new Adapter() });
 
-describe("Test av GenOptionsComponent", () => {
+describe("Test for GenOptionsComponent", () => {
   let wrapper: any
   const mockStore = configureStore([thunk])
   const store = mockStore({
