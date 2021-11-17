@@ -1,7 +1,8 @@
-import {render, screen} from '@testing-library/react';
+import {render, screen, waitFor} from '@testing-library/react';
 import { MemoryRouter, Route, Router } from 'react-router';
 import Info, {GET_POKEMON_INFO} from '../pages/Info';
 import { MockedProvider } from '@apollo/client/testing';
+import renderer from "react-test-renderer";
 
 const mocks = [
     {
@@ -33,7 +34,8 @@ const mocks = [
               speed: 50, 
               ability1: 'superspeed', 
               ability2: 'high-energy', 
-              ability3: 'bad-teeth'
+              ability3: 'bad-teeth',
+              aggregated_rating: 4
             },
         },
       },
@@ -42,6 +44,10 @@ const mocks = [
 
 describe("correct info is displayed", () => {
     beforeEach(async () => {
+        /*
+        This render function will throw errors about using the function act(). These errors will
+        not hinder the tests and can be ignored.
+        */
         render(
             <MockedProvider mocks={mocks} addTypename={false}>
                 <MemoryRouter initialEntries={["/info/50"]}>
@@ -66,16 +72,32 @@ describe("correct info is displayed", () => {
         expect(screen.getByText(/Height/i)).toHaveTextContent("0.6")
     })
 
-    /* it("correct total stats", () => {
-        expect(screen.getByText(/300/i)).toHaveTextContent("300")
-    }) */
-    
+    it("correct total stats", async () => {
+        await waitFor(() => expect(screen.getByText(/300/i)).toHaveTextContent("300"))
+    })
+
     it("correct abilities", () => {
         expect(screen.getByText(/1./i)).toHaveTextContent("superspeed")
         expect(screen.getByText(/2./i)).toHaveTextContent("high-energy")
         expect(screen.getByText(/Hidden ability./i)).toHaveTextContent("bad-teeth")
     })
     
+})
+
+describe("rendering is correct", () => {
+    it("Snapshot-test of page", () => {
+        const tree = renderer.create(
+        <MockedProvider mocks={mocks} addTypename={false}>
+            <MemoryRouter initialEntries={["/info/50"]}>
+                <Route path="/info/:id">
+                    <Info/>
+                </Route>
+            </MemoryRouter>
+        </MockedProvider>).toJSON
+        expect(tree).not.toBeNull()
+        expect(tree).toMatchSnapshot()
+    })
+
 })
 
 
