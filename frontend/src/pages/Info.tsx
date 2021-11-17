@@ -93,8 +93,8 @@ function Info() {
         if(data?.pokemon) setSpeed(data?.pokemon.speed)
     }, [data])
 
-    let showTypeEmblem = typesToList(data ? data.pokemon.type1 : "", data ? data.pokemon.type2 : "").map((Type) => (
-        <span>
+    let showTypeEmblem = typesToList(data ? data.pokemon.type1 : "", data ? data.pokemon.type2 : "").map((Type, i) => (
+        <span key={i}>
           {Type === "Bug" ? <Bug className={"typeIcon"}/> : null}
           {Type === "Dark" ? <Dark className={"typeIcon"}/> : null}
           {Type === "Dragon" ? <Dragon className={"typeIcon"}/> : null}
@@ -165,34 +165,36 @@ function Info() {
                     <div className="stats">
                         <h2>Stats</h2>
                         <table className="stats-table">
-                            <tr>
-                                <td>HP</td>
-                                <td>{hp}</td>
-                            </tr>
-                            <tr>
-                                <td>Attack</td>
-                                <td>{attack}</td>
-                            </tr>
-                            <tr>
-                                <td>Defense</td>
-                                <td>{defense}</td>
-                            </tr>
-                            <tr>
-                                <td>Sp. Attack</td>
-                                <td>{spAttack}</td>
-                            </tr>
-                            <tr>
-                                <td>Sp. Defense</td>
-                                <td>{spDefense}</td>
-                            </tr>
-                            <tr>
-                                <td>Speed</td>
-                                <td>{speed}</td>
-                            </tr>
-                            <tr>
-                                <td>Totalt</td>
-                                <td>{hp + attack + defense + spAttack + spDefense + speed}</td>
-                            </tr>
+                            <tbody>
+                                <tr>
+                                    <td>HP</td>
+                                    <td>{hp}</td>
+                                </tr>
+                                <tr>
+                                    <td>Attack</td>
+                                    <td>{attack}</td>
+                                </tr>
+                                <tr>
+                                    <td>Defense</td>
+                                    <td>{defense}</td>
+                                </tr>
+                                <tr>
+                                    <td>Sp. Attack</td>
+                                    <td>{spAttack}</td>
+                                </tr>
+                                <tr>
+                                    <td>Sp. Defense</td>
+                                    <td>{spDefense}</td>
+                                </tr>
+                                <tr>
+                                    <td>Speed</td>
+                                    <td>{speed}</td>
+                                </tr>
+                                <tr>
+                                    <td>Totalt</td>
+                                    <td>{hp + attack + defense + spAttack + spDefense + speed}</td>
+                                </tr>
+                            </tbody>
                         </table>
                     </div>
                     <div className="abilities">
