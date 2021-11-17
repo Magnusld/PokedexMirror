@@ -4,7 +4,7 @@ import {SelectedGeneration} from "../types";
 export interface SelectedGenState {
   value: SelectedGeneration[]
 }
-function initiateList() {
+export function initiateList() {
   const value: SelectedGeneration[] = []
   const list = [1,2,3,4,5,6,7,8]
   list.map((gen, i) => {

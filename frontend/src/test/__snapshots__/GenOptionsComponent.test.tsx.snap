@@ -1,0 +1,414 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test av GenOptionsComponent renders 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <GenOptionsComponent>
+    <div
+      style={
+        Object {
+          "display": "flex",
+          "justifyContent": "center",
+        }
+      }
+    >
+      <div
+        className="filteringOptionsContainer"
+        id="genOptions"
+      >
+        <div>
+          <h3
+            style={
+              Object {
+                "marginTop": 10,
+                "textAlign": "left",
+              }
+            }
+          >
+            Generasjon
+          </h3>
+        </div>
+        <div
+          className="optionsButtonsContainer"
+          style={
+            Object {
+              "flexGrow": 1,
+            }
+          }
+        >
+          <ToggleButton
+            checked={true}
+            className="mb-2"
+            id="toggle-check"
+            key="0"
+            onClick={[Function]}
+            type="checkbox"
+            value="1"
+            variant="outline-primary"
+          >
+            <input
+              autoComplete="off"
+              checked={true}
+              className="btn-check"
+              disabled={false}
+              id="toggle-check"
+              onChange={[Function]}
+              type="checkbox"
+              value="1"
+            />
+            <Button
+              active={false}
+              as="label"
+              className="mb-2"
+              disabled={false}
+              htmlFor="toggle-check"
+              onClick={[Function]}
+              variant="outline-primary"
+            >
+              <label
+                className="mb-2 btn btn-outline-primary"
+                htmlFor="toggle-check"
+                onClick={[Function]}
+                onKeyDown={[Function]}
+                role="button"
+                tabIndex={0}
+              >
+                Gen 1
+              </label>
+            </Button>
+          </ToggleButton>
+          <ToggleButton
+            checked={true}
+            className="mb-2"
+            id="toggle-check"
+            key="1"
+            onClick={[Function]}
+            type="checkbox"
+            value="1"
+            variant="outline-primary"
+          >
+            <input
+              autoComplete="off"
+              checked={true}
+              className="btn-check"
+              disabled={false}
+              id="toggle-check"
+              onChange={[Function]}
+              type="checkbox"
+              value="1"
+            />
+            <Button
+              active={false}
+              as="label"
+              className="mb-2"
+              disabled={false}
+              htmlFor="toggle-check"
+              onClick={[Function]}
+              variant="outline-primary"
+            >
+              <label
+                className="mb-2 btn btn-outline-primary"
+                htmlFor="toggle-check"
+                onClick={[Function]}
+                onKeyDown={[Function]}
+                role="button"
+                tabIndex={0}
+              >
+                Gen 2
+              </label>
+            </Button>
+          </ToggleButton>
+          <ToggleButton
+            checked={true}
+            className="mb-2"
+            id="toggle-check"
+            key="2"
+            onClick={[Function]}
+            type="checkbox"
+            value="1"
+            variant="outline-primary"
+          >
+            <input
+              autoComplete="off"
+              checked={true}
+              className="btn-check"
+              disabled={false}
+              id="toggle-check"
+              onChange={[Function]}
+              type="checkbox"
+              value="1"
+            />
+            <Button
+              active={false}
+              as="label"
+              className="mb-2"
+              disabled={false}
+              htmlFor="toggle-check"
+              onClick={[Function]}
+              variant="outline-primary"
+            >
+              <label
+                className="mb-2 btn btn-outline-primary"
+                htmlFor="toggle-check"
+                onClick={[Function]}
+                onKeyDown={[Function]}
+                role="button"
+                tabIndex={0}
+              >
+                Gen 3
+              </label>
+            </Button>
+          </ToggleButton>
+          <ToggleButton
+            checked={true}
+            className="mb-2"
+            id="toggle-check"
+            key="3"
+            onClick={[Function]}
+            type="checkbox"
+            value="1"
+            variant="outline-primary"
+          >
+            <input
+              autoComplete="off"
+              checked={true}
+              className="btn-check"
+              disabled={false}
+              id="toggle-check"
+              onChange={[Function]}
+              type="checkbox"
+              value="1"
+            />
+            <Button
+              active={false}
+              as="label"
+              className="mb-2"
+              disabled={false}
+              htmlFor="toggle-check"
+              onClick={[Function]}
+              variant="outline-primary"
+            >
+              <label
+                className="mb-2 btn btn-outline-primary"
+                htmlFor="toggle-check"
+                onClick={[Function]}
+                onKeyDown={[Function]}
+                role="button"
+                tabIndex={0}
+              >
+                Gen 4
+              </label>
+            </Button>
+          </ToggleButton>
+          <ToggleButton
+            checked={true}
+            className="mb-2"
+            id="toggle-check"
+            key="4"
+            onClick={[Function]}
+            type="checkbox"
+            value="1"
+            variant="outline-primary"
+          >
+            <input
+              autoComplete="off"
+              checked={true}
+              className="btn-check"
+              disabled={false}
+              id="toggle-check"
+              onChange={[Function]}
+              type="checkbox"
+              value="1"
+            />
+            <Button
+              active={false}
+              as="label"
+              className="mb-2"
+              disabled={false}
+              htmlFor="toggle-check"
+              onClick={[Function]}
+              variant="outline-primary"
+            >
+              <label
+                className="mb-2 btn btn-outline-primary"
+                htmlFor="toggle-check"
+                onClick={[Function]}
+                onKeyDown={[Function]}
+                role="button"
+                tabIndex={0}
+              >
+                Gen 5
+              </label>
+            </Button>
+          </ToggleButton>
+          <ToggleButton
+            checked={true}
+            className="mb-2"
+            id="toggle-check"
+            key="5"
+            onClick={[Function]}
+            type="checkbox"
+            value="1"
+            variant="outline-primary"
+          >
+            <input
+              autoComplete="off"
+              checked={true}
+              className="btn-check"
+              disabled={false}
+              id="toggle-check"
+              onChange={[Function]}
+              type="checkbox"
+              value="1"
+            />
+            <Button
+              active={false}
+              as="label"
+              className="mb-2"
+              disabled={false}
+              htmlFor="toggle-check"
+              onClick={[Function]}
+              variant="outline-primary"
+            >
+              <label
+                className="mb-2 btn btn-outline-primary"
+                htmlFor="toggle-check"
+                onClick={[Function]}
+                onKeyDown={[Function]}
+                role="button"
+                tabIndex={0}
+              >
+                Gen 6
+              </label>
+            </Button>
+          </ToggleButton>
+          <ToggleButton
+            checked={true}
+            className="mb-2"
+            id="toggle-check"
+            key="6"
+            onClick={[Function]}
+            type="checkbox"
+            value="1"
+            variant="outline-primary"
+          >
+            <input
+              autoComplete="off"
+              checked={true}
+              className="btn-check"
+              disabled={false}
+              id="toggle-check"
+              onChange={[Function]}
+              type="checkbox"
+              value="1"
+            />
+            <Button
+              active={false}
+              as="label"
+              className="mb-2"
+              disabled={false}
+              htmlFor="toggle-check"
+              onClick={[Function]}
+              variant="outline-primary"
+            >
+              <label
+                className="mb-2 btn btn-outline-primary"
+                htmlFor="toggle-check"
+                onClick={[Function]}
+                onKeyDown={[Function]}
+                role="button"
+                tabIndex={0}
+              >
+                Gen 7
+              </label>
+            </Button>
+          </ToggleButton>
+          <ToggleButton
+            checked={true}
+            className="mb-2"
+            id="toggle-check"
+            key="7"
+            onClick={[Function]}
+            type="checkbox"
+            value="1"
+            variant="outline-primary"
+          >
+            <input
+              autoComplete="off"
+              checked={true}
+              className="btn-check"
+              disabled={false}
+              id="toggle-check"
+              onChange={[Function]}
+              type="checkbox"
+              value="1"
+            />
+            <Button
+              active={false}
+              as="label"
+              className="mb-2"
+              disabled={false}
+              htmlFor="toggle-check"
+              onClick={[Function]}
+              variant="outline-primary"
+            >
+              <label
+                className="mb-2 btn btn-outline-primary"
+                htmlFor="toggle-check"
+                onClick={[Function]}
+                onKeyDown={[Function]}
+                role="button"
+                tabIndex={0}
+              >
+                Gen 8
+              </label>
+            </Button>
+          </ToggleButton>
+        </div>
+        <Button
+          active={false}
+          className="clearAllButton"
+          disabled={false}
+          onClick={[Function]}
+          variant="secondary"
+        >
+          <button
+            className="clearAllButton btn btn-secondary"
+            disabled={false}
+            onClick={[Function]}
+            type="button"
+          >
+            Fjerne alle valg
+          </button>
+        </Button>
+        <Button
+          active={false}
+          className="setAllButton"
+          disabled={false}
+          onClick={[Function]}
+          variant="secondary"
+        >
+          <button
+            className="setAllButton btn btn-secondary"
+            disabled={false}
+            onClick={[Function]}
+            type="button"
+          >
+            Velg alle
+          </button>
+        </Button>
+      </div>
+    </div>
+  </GenOptionsComponent>
+</Provider>
+`;
