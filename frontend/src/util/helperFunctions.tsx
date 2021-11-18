@@ -37,7 +37,7 @@ export function typesToList(...types : string[]) : string[] {
  * @param type2 of pokemon
  * @returns jsx with type-emblems
  */
-export function typeListToEmblems(type1: string, type2: string) {
+export function typeListToEmblems(type1: string, type2: string) : JSX.Element[] {
     return typesToList(type1, type2).map((Type, i) => (
         <div key={i}>
           {Type === "Bug" ? <Bug className={"typeIcon"}/> : null}

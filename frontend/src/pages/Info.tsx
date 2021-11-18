@@ -76,7 +76,14 @@ function Info() {
 
     let showTypeEmblem = data ? typeListToEmblems(data.pokemon.type1, data?.pokemon.type2) : null
 
-    function generateAbilities(ability1: string, ability2: string, ability3: string) {
+    /**
+     * Puts abilities in correct ordering in jsx
+     * @param ability1 pokemon ability 1 from graphQL
+     * @param ability2 pokemon ability 2 from graphQL
+     * @param ability3 pokemon ability 3 from graphQL
+     * @returns jsx with abilities
+     */
+    function generateAbilities(ability1: string, ability2: string, ability3: string) : JSX.Element {
         return <div className="ability-list">
             {ability1.length > 0 ? <span>1. {ability1}</span> : null}
             {ability2.length > 0 ? <span>2. {ability2}</span> : null}
