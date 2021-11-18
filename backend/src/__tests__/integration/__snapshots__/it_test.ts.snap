@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ChangeRatingMutation should return correct data and persist on server 1`] = `
+Object {
+  "ChangeRating": Object {
+    "id": 0,
+    "pokemonId": 0,
+    "ratedPokemon": Object {
+      "id": 0,
+    },
+    "rating": 3,
+  },
+}
+`;
+
+exports[`ChangeRatingMutation should return correct data and persist on server 2`] = `
+Array [
+  Object {
+    "id": 0,
+    "pokemonId": 0,
+    "rating": 3,
+    "userGuid": "testGuid",
+  },
+]
+`;
+
+exports[`CreateRatingMutation should return correct data and persist on server 1`] = `
+Object {
+  "CreateRating": Object {
+    "id": 1,
+    "pokemonId": 1,
+    "ratedPokemon": Object {
+      "id": 1,
+      "name": "TestPokemon2",
+    },
+    "userGuid": "testrating for pokemon1",
+  },
+}
+`;
+
+exports[`CreateRatingMutation should return correct data and persist on server 2`] = `
+Array [
+  Object {
+    "id": 0,
+    "pokemonId": 0,
+    "rating": 5,
+    "userGuid": "testGuid",
+  },
+  Object {
+    "id": 1,
+    "pokemonId": 1,
+    "rating": 5,
+    "userGuid": "testrating for pokemon1",
+  },
+]
+`;
