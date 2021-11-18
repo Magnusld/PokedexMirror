@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`that mutation create rating returns and persists on server 1`] = `
+exports[`mutation createRating returns and persists on server 1`] = `
 Object {
   "CreateRating": Object {
     "id": 1,
@@ -12,4 +12,21 @@ Object {
     "userGuid": "testrating for pokemon1",
   },
 }
+`;
+
+exports[`mutation createRating returns and persists on server 2`] = `
+Array [
+  Object {
+    "id": 0,
+    "pokemonId": 0,
+    "rating": 5,
+    "userGuid": "testGuid",
+  },
+  Object {
+    "id": 1,
+    "pokemonId": 1,
+    "rating": 5,
+    "userGuid": "testrating for pokemon1",
+  },
+]
 `;

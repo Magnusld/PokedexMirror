@@ -5,16 +5,13 @@ jest.setTimeout(30000)
 
 const ctx = createTestContext();
 
-test("that mutation create rating returns and persists on server", async () => {
+test("mutation createRating returns and persists on server", async () => {
     const result =
     await ctx.client.request(gql`mutation CreateRatingMutation($data: RatingCreateInput!) {
                 CreateRating(data: $data) {
                     id
                     pokemonId
-                    ratedPokemon {
-                        id
-                        name
-                    }
+                    ratedPokemon { id name }
                     userGuid
                 }
             }`,
@@ -27,4 +24,9 @@ test("that mutation create rating returns and persists on server", async () => {
         }
     );
     expect(result).toMatchSnapshot()
+
+    const persistedData = await ctx.db.pokemonRating.findMany()
+    expect(persistedData).toMatchSnapshot()
 });
+
+test.todo//("", async () => {})
