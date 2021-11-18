@@ -12,7 +12,7 @@ const config: Config.InitialOptions = {
         "src/**/*.{js,ts}",
         "!**/node_modules",
         "!src/generated",
-        "!src/__tests__"
+        "!src/__tests__",
     ]
 };
 export default config;
