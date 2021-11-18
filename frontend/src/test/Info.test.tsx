@@ -93,7 +93,7 @@ describe("rendering is correct", () => {
                     <Info/>
                 </Route>
             </MemoryRouter>
-        </MockedProvider>).toJSON
+        </MockedProvider>).toJSON()
         expect(tree).not.toBeNull()
         expect(tree).toMatchSnapshot()
     })

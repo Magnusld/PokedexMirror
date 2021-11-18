@@ -1,3 +1,440 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`rendering is correct Snapshot-test of page 1`] = `[Function]`;
+exports[`rendering is correct Snapshot-test of page 1`] = `
+<div
+  className="container"
+>
+  <header
+    className="info-header-container"
+  >
+    <a
+      className="back-button-link"
+      href="/"
+      onClick={[Function]}
+    >
+      <div
+        className="back-button-container"
+      >
+        <span
+          className="material-icons md-36"
+        >
+          arrow_back
+        </span>
+        <span
+          className="back-button-text"
+        >
+          Tilbake
+        </span>
+      </div>
+    </a>
+  </header>
+  <div
+    className="info-container"
+  >
+    <div
+      className="top-container"
+    >
+      <div
+        className="image"
+      >
+        <img
+          alt="undefined bilde"
+          src="/images/fullsize/000.png"
+        />
+      </div>
+      <div
+        className="basic-info"
+      >
+        <div
+          className="name-number"
+        >
+          <span
+            className="pokename"
+          />
+          <span
+            className="pokenum"
+          >
+            #
+          </span>
+        </div>
+        <div
+          className="more-info"
+        >
+          <span />
+          <span>
+            Generasjon: 
+          </span>
+        </div>
+        <div
+          className="types"
+        />
+        <div
+          className="all-ratings-container"
+        >
+          <div
+            className="personal-rating-container"
+          >
+            <div
+              className="rating-number"
+            >
+              Din vurdering:
+            </div>
+            <span
+              className=""
+            >
+              <span
+                aria-hidden="true"
+                onClick={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                style={
+                  Object {
+                    "color": "#cccccc",
+                    "cursor": "pointer",
+                    "display": "inline-flex",
+                    "height": 25,
+                    "transition": "",
+                    "width": 25,
+                  }
+                }
+              >
+                <svg
+                  fill="currentColor"
+                  height={25}
+                  viewBox="0 0 24 24"
+                  width={25}
+                >
+                  <path
+                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+                  />
+                </svg>
+              </span>
+              <span
+                aria-hidden="true"
+                onClick={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                style={
+                  Object {
+                    "color": "#cccccc",
+                    "cursor": "pointer",
+                    "display": "inline-flex",
+                    "height": 25,
+                    "transition": "",
+                    "width": 25,
+                  }
+                }
+              >
+                <svg
+                  fill="currentColor"
+                  height={25}
+                  viewBox="0 0 24 24"
+                  width={25}
+                >
+                  <path
+                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+                  />
+                </svg>
+              </span>
+              <span
+                aria-hidden="true"
+                onClick={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                style={
+                  Object {
+                    "color": "#cccccc",
+                    "cursor": "pointer",
+                    "display": "inline-flex",
+                    "height": 25,
+                    "transition": "",
+                    "width": 25,
+                  }
+                }
+              >
+                <svg
+                  fill="currentColor"
+                  height={25}
+                  viewBox="0 0 24 24"
+                  width={25}
+                >
+                  <path
+                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+                  />
+                </svg>
+              </span>
+              <span
+                aria-hidden="true"
+                onClick={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                style={
+                  Object {
+                    "color": "#cccccc",
+                    "cursor": "pointer",
+                    "display": "inline-flex",
+                    "height": 25,
+                    "transition": "",
+                    "width": 25,
+                  }
+                }
+              >
+                <svg
+                  fill="currentColor"
+                  height={25}
+                  viewBox="0 0 24 24"
+                  width={25}
+                >
+                  <path
+                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+                  />
+                </svg>
+              </span>
+              <span
+                aria-hidden="true"
+                onClick={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                style={
+                  Object {
+                    "color": "#cccccc",
+                    "cursor": "pointer",
+                    "display": "inline-flex",
+                    "height": 25,
+                    "transition": "",
+                    "width": 25,
+                  }
+                }
+              >
+                <svg
+                  fill="currentColor"
+                  height={25}
+                  viewBox="0 0 24 24"
+                  width={25}
+                >
+                  <path
+                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+                  />
+                </svg>
+              </span>
+            </span>
+          </div>
+          <div
+            className="aggregated-rating-container"
+          >
+            <div
+              className="rating-number"
+            >
+              Andres vurdering:
+            </div>
+            <span
+              className=""
+            >
+              <span
+                style={
+                  Object {
+                    "color": "#cccccc",
+                    "display": "inline-flex",
+                    "height": 25,
+                    "width": 25,
+                  }
+                }
+              >
+                <svg
+                  fill="currentColor"
+                  height={25}
+                  viewBox="0 0 24 24"
+                  width={25}
+                >
+                  <path
+                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+                  />
+                </svg>
+              </span>
+              <span
+                style={
+                  Object {
+                    "color": "#cccccc",
+                    "display": "inline-flex",
+                    "height": 25,
+                    "width": 25,
+                  }
+                }
+              >
+                <svg
+                  fill="currentColor"
+                  height={25}
+                  viewBox="0 0 24 24"
+                  width={25}
+                >
+                  <path
+                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+                  />
+                </svg>
+              </span>
+              <span
+                style={
+                  Object {
+                    "color": "#cccccc",
+                    "display": "inline-flex",
+                    "height": 25,
+                    "width": 25,
+                  }
+                }
+              >
+                <svg
+                  fill="currentColor"
+                  height={25}
+                  viewBox="0 0 24 24"
+                  width={25}
+                >
+                  <path
+                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+                  />
+                </svg>
+              </span>
+              <span
+                style={
+                  Object {
+                    "color": "#cccccc",
+                    "display": "inline-flex",
+                    "height": 25,
+                    "width": 25,
+                  }
+                }
+              >
+                <svg
+                  fill="currentColor"
+                  height={25}
+                  viewBox="0 0 24 24"
+                  width={25}
+                >
+                  <path
+                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+                  />
+                </svg>
+              </span>
+              <span
+                style={
+                  Object {
+                    "color": "#cccccc",
+                    "display": "inline-flex",
+                    "height": 25,
+                    "width": 25,
+                  }
+                }
+              >
+                <svg
+                  fill="currentColor"
+                  height={25}
+                  viewBox="0 0 24 24"
+                  width={25}
+                >
+                  <path
+                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+                  />
+                </svg>
+              </span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="middle-container"
+    >
+      <span>
+        Weight: 
+        kg
+      </span>
+      <span>
+        Height: 
+        m
+      </span>
+    </div>
+    <div
+      className="bottom-container"
+    >
+      <div
+        className="stats"
+      >
+        <h2>
+          Stats
+        </h2>
+        <table
+          className="stats-table"
+        >
+          <tbody>
+            <tr>
+              <td>
+                HP
+              </td>
+              <td>
+                0
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Attack
+              </td>
+              <td>
+                0
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Defense
+              </td>
+              <td>
+                0
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Sp. Attack
+              </td>
+              <td>
+                0
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Sp. Defense
+              </td>
+              <td>
+                0
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Speed
+              </td>
+              <td>
+                0
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Totalt
+              </td>
+              <td>
+                0
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div
+        className="abilities"
+      >
+        <h2>
+          Abilities
+        </h2>
+        <div
+          className="ability-list"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
