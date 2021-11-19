@@ -4,3 +4,4 @@ src/generated/
 *.env*
 *.db
 *.db-journal
+/coverage/

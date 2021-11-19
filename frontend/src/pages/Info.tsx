@@ -7,26 +7,7 @@ import { PokemonAdvanced } from '../types';
 import PokemonStarRating from "../components/PokemonStarRating";
 import PokemonAggregatedRating from "../components/PokemonAggregatedRating";
 import { getFullSize } from '../util/imageResolver';
-import { typesToList } from '../util/helperFunctions';
-
-import {ReactComponent as Bug} from "../assets/typeIconsSvg/Pokémon_Bug_Type_Icon.svg";
-import {ReactComponent as Dark} from "../assets/typeIconsSvg/Pokémon_Dark_Type_Icon.svg";
-import {ReactComponent as Dragon} from "../assets/typeIconsSvg/Pokémon_Dragon_Type_Icon.svg";
-import {ReactComponent as Electric} from "../assets/typeIconsSvg/Pokémon_Electric_Type_Icon.svg";
-import {ReactComponent as Fairy} from "../assets/typeIconsSvg/Pokémon_Fairy_Type_Icon.svg";
-import {ReactComponent as Fighting} from "../assets/typeIconsSvg/Pokémon_Fighting_Type_Icon.svg";
-import {ReactComponent as Fire} from "../assets/typeIconsSvg/Pokémon_Fire_Type_Icon.svg";
-import {ReactComponent as Flying} from "../assets/typeIconsSvg/Pokémon_Flying_Type_Icon.svg";
-import {ReactComponent as Ghost} from "../assets/typeIconsSvg/Pokémon_Ghost_Type_Icon.svg";
-import {ReactComponent as Grass} from "../assets/typeIconsSvg/Pokémon_Grass_Type_Icon.svg";
-import {ReactComponent as Ground} from "../assets/typeIconsSvg/Pokémon_Ground_Type_Icon.svg";
-import {ReactComponent as Ice} from "../assets/typeIconsSvg/Pokémon_Ice_Type_Icon.svg";
-import {ReactComponent as Normal} from "../assets/typeIconsSvg/Pokémon_Normal_Type_Icon.svg";
-import {ReactComponent as Poison} from "../assets/typeIconsSvg/Pokémon_Poison_Type_Icon.svg";
-import {ReactComponent as Psychic} from "../assets/typeIconsSvg/Pokémon_Psychic_Type_Icon.svg";
-import {ReactComponent as Rock} from "../assets/typeIconsSvg/Pokémon_Rock_Type_Icon.svg";
-import {ReactComponent as Steel} from "../assets/typeIconsSvg/Pokémon_Steel_Type_Icon.svg";
-import {ReactComponent as Water} from "../assets/typeIconsSvg/Pokémon_Water_Type_Icon.svg";
+import { typeListToEmblems } from '../util/helperFunctions';
 
 export const GET_POKEMON_INFO = gql`
     query($where: PokemonWhereUniqueInput!) {
@@ -93,30 +74,16 @@ function Info() {
         if(data?.pokemon) setSpeed(data?.pokemon.speed)
     }, [data])
 
-    let showTypeEmblem = typesToList(data ? data.pokemon.type1 : "", data ? data.pokemon.type2 : "").map((Type) => (
-        <span>
-          {Type === "Bug" ? <Bug className={"typeIcon"}/> : null}
-          {Type === "Dark" ? <Dark className={"typeIcon"}/> : null}
-          {Type === "Dragon" ? <Dragon className={"typeIcon"}/> : null}
-          {Type === "Electric" ? <Electric className={"typeIcon"}/> : null}
-          {Type === "Fairy" ? <Fairy className={"typeIcon"}/> : null}
-          {Type === "Fighting" ? <Fighting className={"typeIcon"}/> : null}
-          {Type === "Fire" ? <Fire className={"typeIcon"}/> : null}
-          {Type === "Flying" ? <Flying className={"typeIcon"}/> : null}
-          {Type === "Ghost" ? <Ghost className={"typeIcon"}/> : null}
-          {Type === "Grass" ? <Grass className={"typeIcon"}/> : null}
-          {Type === "Ground" ? <Ground className={"typeIcon"}/> : null}
-          {Type === "Ice" ? <Ice className={"typeIcon"}/> : null}
-          {Type === "Normal" ? <Normal className={"typeIcon"}/> : null}
-          {Type === "Poison" ? <Poison className={"typeIcon"}/> : null}
-          {Type === "Psychic" ? <Psychic className={"typeIcon"}/> : null}
-          {Type === "Rock" ? <Rock className={"typeIcon"}/> : null}
-          {Type === "Steel" ? <Steel className={"typeIcon"}/> : null}
-          {Type === "Water" ? <Water className={"typeIcon"}/> : null}
-        </span>
-    ))
+    let showTypeEmblem = data ? typeListToEmblems(data.pokemon.type1, data?.pokemon.type2) : null
 
-    function generateAbilities(ability1: string, ability2: string, ability3: string) {
+    /**
+     * Puts abilities in correct ordering in jsx
+     * @param ability1 pokemon ability 1 from graphQL
+     * @param ability2 pokemon ability 2 from graphQL
+     * @param ability3 pokemon ability 3 from graphQL
+     * @returns jsx with abilities
+     */
+    function generateAbilities(ability1: string, ability2: string, ability3: string) : JSX.Element {
         return <div className="ability-list">
             {ability1.length > 0 ? <span>1. {ability1}</span> : null}
             {ability2.length > 0 ? <span>2. {ability2}</span> : null}
@@ -165,34 +132,36 @@ function Info() {
                     <div className="stats">
                         <h2>Stats</h2>
                         <table className="stats-table">
-                            <tr>
-                                <td>HP</td>
-                                <td>{hp}</td>
-                            </tr>
-                            <tr>
-                                <td>Attack</td>
-                                <td>{attack}</td>
-                            </tr>
-                            <tr>
-                                <td>Defense</td>
-                                <td>{defense}</td>
-                            </tr>
-                            <tr>
-                                <td>Sp. Attack</td>
-                                <td>{spAttack}</td>
-                            </tr>
-                            <tr>
-                                <td>Sp. Defense</td>
-                                <td>{spDefense}</td>
-                            </tr>
-                            <tr>
-                                <td>Speed</td>
-                                <td>{speed}</td>
-                            </tr>
-                            <tr>
-                                <td>Totalt</td>
-                                <td>{hp + attack + defense + spAttack + spDefense + speed}</td>
-                            </tr>
+                            <tbody>
+                                <tr>
+                                    <td>HP</td>
+                                    <td>{hp}</td>
+                                </tr>
+                                <tr>
+                                    <td>Attack</td>
+                                    <td>{attack}</td>
+                                </tr>
+                                <tr>
+                                    <td>Defense</td>
+                                    <td>{defense}</td>
+                                </tr>
+                                <tr>
+                                    <td>Sp. Attack</td>
+                                    <td>{spAttack}</td>
+                                </tr>
+                                <tr>
+                                    <td>Sp. Defense</td>
+                                    <td>{spDefense}</td>
+                                </tr>
+                                <tr>
+                                    <td>Speed</td>
+                                    <td>{speed}</td>
+                                </tr>
+                                <tr>
+                                    <td>Totalt</td>
+                                    <td>{hp + attack + defense + spAttack + spDefense + speed}</td>
+                                </tr>
+                            </tbody>
                         </table>
                     </div>
                     <div className="abilities">
