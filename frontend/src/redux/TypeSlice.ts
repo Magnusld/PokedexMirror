@@ -4,7 +4,7 @@ import { SelectedType} from "../types";
 export interface SelectedTypeState {
   value: SelectedType[]
 }
-function initiateList() {
+export function initiateList() {
   const value: SelectedType[] = []
   const names = ["Bug","Dark", "Dragon", "Electric", "Fairy", "Fighting",
     "Fire", "Flying", "Ghost", "Grass", "Ground", "Ice", "Normal", "Poison", "Psychic", "Rock", "Steel", "Water"]
