@@ -1,7 +1,7 @@
 import {createTestContext} from "./__helpersTestEnvironment";
 import {gql} from "graphql-request";
 
-jest.setTimeout(30000);
+jest.setTimeout(20000);
 
 const ctx = createTestContext();
 
@@ -26,7 +26,6 @@ test("CreateRatingMutation should return correct data and persist on server", as
         }
     );
     expect(result).toMatchSnapshot();
-
     const persistedData = await ctx.db.pokemonRating.findMany();
     expect(persistedData).toMatchSnapshot();
 });
@@ -74,7 +73,24 @@ test("ChangeRatingMutation should return correct data and persist on server", as
 test("DeleteRating should have the correct return value and have change persist on server", async () => {
     const beforeDelete = await ctx.db.pokemonRating.findMany()
     expect(beforeDelete.length).toBe(1)
+    const deleteResult = await ctx.client.request(
+        gql`mutation DeleteRating($where: PokemonRatingWhereUniqueInput!) {
+            deleteOnePokemonRating(where: $where) {
+                id
+            }
+        }`,
+        {where: {
+                userGuid_pokemonId: {
+                    userGuid: "testGuid",
+                    pokemonId: 0
+                }
+            }
+        }
+    )
 
+    const afterDelete = await ctx.db.pokemonRating.findMany()
+    expect(deleteResult).toMatchSnapshot() // id for deleted entry
+    expect(afterDelete).toMatchSnapshot() // empty table
 
 });
 

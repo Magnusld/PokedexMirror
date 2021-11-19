@@ -54,3 +54,13 @@ Array [
   },
 ]
 `;
+
+exports[`DeleteRating should have the correct return value and have change persist on server 1`] = `
+Object {
+  "deleteOnePokemonRating": Object {
+    "id": 0,
+  },
+}
+`;
+
+exports[`DeleteRating should have the correct return value and have change persist on server 2`] = `Array []`;
