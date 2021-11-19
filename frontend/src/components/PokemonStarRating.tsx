@@ -2,6 +2,7 @@ import {SetStateAction, useEffect, useState} from "react";
 import {Rating} from "react-simple-star-rating";
 import {gql, useMutation, useQuery} from "@apollo/client";
 import {getGuid} from "../util/guidHelper";
+import {GET_POKEMON_INFO} from "../pages/Info";
 
 export type PokemonStarRatingProps = {
     pokemonId: number
@@ -68,12 +69,12 @@ interface UpsertResponse {
 export default function PokemonStarRating(props: PokemonStarRatingProps) {
     const [rating, setRating] = useState(0)
     const [hasRated, setHasRated] = useState(false)
-    const {loading, error, data} = useQuery<RatingDetails,RatingQueryVars>(GET_RATING, {
+    const {data} = useQuery<RatingDetails,RatingQueryVars>(GET_RATING, {
         variables: {where: {userGuid_pokemonId: { userGuid: getGuid(), pokemonId: props.pokemonId}}}
     })
     const [newRatingFunction] = useMutation<UpsertResponse, RatingNewDetails>(NEW_RATING, {
         variables: { data: { pokemonId: props.pokemonId, rating: rating, userGuid: getGuid()}},
-        refetchQueries: [GET_RATING]
+        refetchQueries: [GET_RATING, GET_POKEMON_INFO]
     })
     const [saveRatingFunction] = useMutation<UpsertResponse,RatingSaveDetails>(SAVE_RATING, {
         variables: { data: {
@@ -81,15 +82,15 @@ export default function PokemonStarRating(props: PokemonStarRatingProps) {
                 ratingToUpdate: { pokemonId: props.pokemonId, userGuid: getGuid()
                 }
             }},
-        refetchQueries: [GET_RATING]
+        refetchQueries: [GET_RATING, GET_POKEMON_INFO]
     })
 
     const handleRating = async (rate: SetStateAction<number>) => {
         await setRating(rate)
         if (!hasRated) {
-            newRatingFunction()
+            await newRatingFunction()
         } else {
-            saveRatingFunction()
+            await saveRatingFunction()
         }
     }
 
