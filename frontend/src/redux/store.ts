@@ -7,7 +7,7 @@ import sortReducer from './sortSlice'
 export const store = configureStore({
   reducer: {
     selectedGen: selectedGenReducer,
-    4,
+    selectedType: selectedTypeReducer,
     searchInput: searchReducer,
     sort: sortReducer
   },
