@@ -12,14 +12,14 @@ import {seedForTesting} from "../../util/seedTestData";
 /*
 Sets up the environment in order to run the integration tests, while also taking care to tear down the
 environment and closing/disconnecting all handles.
+
+Built on the example provided by Nexus: https://nexusjs.org/docs/getting-started/tutorial/chapter-testing-with-prisma
  */
 
 type TestContext = {
     client: GraphQLClient;
     db: PrismaClient;
 };
-
-let prismaCli: PrismaClient;
 
 export function createTestContext(): TestContext {
     let ctx = {} as TestContext;
@@ -56,7 +56,6 @@ function graphqlTestContext() {
                 });
             // Close the Prisma Client connection when the Apollo Server is closed
             serverInstance.server.on("close", async () => {
-                await prismaCli.$disconnect()
                 await context.prisma.$disconnect()
             });
             return new GraphQLClient(`http://localhost:${serverInstance.port}`);
@@ -82,7 +81,7 @@ function prismaTestContext() {
                     },
                 },
             });
-            prismaCli = prismaClient
+
             return prismaClient;
         },
         async after() {
