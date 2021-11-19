@@ -212,10 +212,6 @@ input RatingUpdateInput {
   ratingToUpdate: RatingWhereInputGuidId!
 }
 
-input RatingWhereInput {
-  id: Int!
-}
-
 input RatingWhereInputGuidId {
   pokemonId: Int!
   userGuid: String!
