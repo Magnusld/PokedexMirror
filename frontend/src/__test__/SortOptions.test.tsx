@@ -36,4 +36,9 @@ describe("Test the SortOptions Component", () => {
     expect(toJson(wrapper)).toMatchSnapshot()
   })
 
+  it("dispatches change on type correctly", () => {
+    const typeSortSelector = wrapper.find("select.sort-select.form-select")[0]
+    console.log(typeSortSelector.html())
+  })
+
 })
