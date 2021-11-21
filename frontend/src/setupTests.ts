@@ -3,6 +3,9 @@
 // expect(element).toHaveTextContent(/react/i)
 // learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom';
+import React from "react"
+
+React.useLayoutEffect = React.useEffect
 
 const originalError = console.error;
 
@@ -11,7 +14,9 @@ beforeAll(() => {
     if (/Warning.*not wrapped in act/.test(args[0])) {
       return;
     }
-
+    else if(/Missing field.*while writing result/.test(args[0])){
+      return;
+    }
     originalError.call(console, ...args);
   };
 });

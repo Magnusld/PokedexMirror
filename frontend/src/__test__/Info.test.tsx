@@ -44,10 +44,6 @@ const mocks = [
 
 describe("correct info is displayed", () => {
     beforeEach(async () => {
-        /*
-        This render function will throw errors about using the function act(). These errors will
-        not hinder the tests and can be ignored.
-        */
         render(
             <MockedProvider mocks={mocks} addTypename={false}>
                 <MemoryRouter initialEntries={["/info/50"]}>
