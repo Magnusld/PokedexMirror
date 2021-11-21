@@ -37,8 +37,25 @@ describe("Test the SortOptions Component", () => {
   })
 
   it("dispatches change on type correctly", () => {
-    const typeSortSelector = wrapper.find("select.sort-select.form-select")[0]
-    console.log(typeSortSelector.html())
+    const typeSortSelector = wrapper.find("select.sort-select.form-select").at(0)
+    expect(typeSortSelector).not.toBeNull()
+    typeSortSelector.simulate("change", {
+      target: {value: "name"}
+    })
+    const expectedDispatch = {type: "sort/changeSortType", payload: "name"}
+    const actions = store.getActions()
+    expect(actions).toEqual([expectedDispatch])
+  })
+
+  it("dispatches change on order correctly", () => {
+    const orderSortSelector = wrapper.find("select.sort-select.form-select").at(1)
+    expect(orderSortSelector).not.toBeNull()
+    orderSortSelector.simulate("change", {
+      target: {value: "desc"}
+    })
+    const expectedDispatch = {type: "sort/changeSortOrder", payload: "desc"}
+    const actions = store.getActions()
+    expect(actions).toEqual([expectedDispatch])
   })
 
 })
