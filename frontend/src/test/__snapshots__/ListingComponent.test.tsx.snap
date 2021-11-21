@@ -1,3 +1,62 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Test that a listing renders correctly Snapshottest of component 1`] = `[Function]`;
+exports[`Test that a listing renders correctly Snapshottest of component 1`] = `
+Array [
+  " ",
+  <div
+    className="AsGrid"
+    style={
+      Object {
+        "backgroundImage": "url(/images/fullsize/004.png)",
+        "backgroundPosition": "center 25%",
+        "backgroundRepeat": "no-repeat",
+        "backgroundSize": "150px 150px",
+      }
+    }
+  >
+    <a
+      className="listingLink"
+      href="/info/27"
+      onClick={[Function]}
+    >
+      <div
+        className="listingAsGrid"
+      >
+        <div
+          className="pokedexNumberAsGrid"
+        >
+          <h3>
+            #
+            4
+          </h3>
+        </div>
+        <div
+          className="listingInfoAsGrid"
+        >
+          <div>
+            <h5>
+              Charmander
+            </h5>
+          </div>
+          <p>
+            Gen 
+            1
+          </p>
+        </div>
+        <div
+          className="typeEmblemAsGrid"
+        >
+          <div>
+            <svg
+              className="typeIcon"
+            >
+              Pokémon_Fire_Type_Icon.svg
+            </svg>
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>,
+  " ",
+]
+`;
