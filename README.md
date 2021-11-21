@@ -4,6 +4,9 @@
 ### Oppsett av prosjekt
 Informasjon om hvordan man setter opp prosjektet lokalt ligger i de indre README.md filene under frontend og backend. Dette gjelder også kjøring av testene, både komponent- og enhetstester, samt end-2-end tester.
 
+### Informasjon prosjekt 4
+Etter 1. november 2021 starter issues og merge requests på #1 og !1 igjen, derfor da også commits og branches.
+
 # Prosjekt 4
 For prosjekt 4 valgte vi oppgave b., enhets- og integrasjonstesting i frontend og backend.
 
