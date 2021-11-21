@@ -17,9 +17,6 @@ import {HashRouter as Router, Route, Switch} from 'react-router-dom';
 
 Enzyme.configure({ adapter: new Adapter() });
 
-function delay(ms: number) {
-    return new Promise( resolve => setTimeout(resolve, ms) );
-}
 
 describe("Unit test on the ListComponent component", () => {
     let wrapper: any
@@ -139,7 +136,8 @@ describe("Unit test on the ListComponent component", () => {
 
         await new Promise(resolve => setTimeout(resolve, 0));
 
-        const nextPageButton = wrapper.find("#nextPageButton").at(0)
+        const nextPageButton = wrapper.find("#nextPageButton").at(1)
+        console.log(nextPageButton.html())
         expect(nextPageButton).not.toBeNull()
         await nextPageButton.simulate("click")
         /**
@@ -147,7 +145,8 @@ describe("Unit test on the ListComponent component", () => {
          */
         expect(wrapper.find("div.AsGrid")).toHaveLength(5)
 
-        const prevPageButton = wrapper.find("#prevPageButton").at(0)
+        const prevPageButton = wrapper.find("#prevPageButton").at(1)
+        console.log(prevPageButton.html())
         expect(prevPageButton).not.toBeNull()
         await prevPageButton.simulate("click")
         expect(wrapper.find("div.AsGrid")).toHaveLength(5)
@@ -160,8 +159,8 @@ describe("Unit test on the ListComponent component", () => {
         await firstPageButton.simulate("click")
         expect(wrapper.find("div.AsGrid")).toHaveLength(5)
     })
-
 })
+
 
 describe("Fail to get data", () => {
     let wrapper: any
@@ -199,7 +198,10 @@ describe("Fail to get data", () => {
                 },
             },
             result: {
-                data: undefined
+                data: undefined,
+                error: {
+                    message: "Simulated error"
+                }
             }
         }
 
@@ -226,6 +228,7 @@ describe("Fail to get data", () => {
         await new Promise(resolve => setTimeout(resolve, 0));
 
         expect(wrapper.find("#fail")).not.toBeNull()
+        expect(wrapper.find("#error")).not.toBeNull()
     })
 })
 

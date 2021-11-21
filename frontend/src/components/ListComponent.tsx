@@ -140,7 +140,7 @@ export function ListComponent(props: {
     } else { return "AsList"}
   }
 
-  if (error) return <div>Error! {error.message}</div>;
+  if (error) return <div id={"error"}>Error! {error.message}</div>;
 
   return (
       <div id="list">
