@@ -27,7 +27,7 @@ import {ReactComponent as Water} from "../assets/typeIconsSvg/Pokémon_Water_Typ
 * @returns list with types
 */
 export function typesToList(...types : string[]) : string[] {
-    const typeList = types.filter((type) => type.length > 0);
+    const typeList = types.filter((type) => type);
     return typeList;
 }
 
