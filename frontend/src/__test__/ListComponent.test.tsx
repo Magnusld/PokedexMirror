@@ -1,54 +1,64 @@
-import * as ReactDOM from 'react-dom';
 import React from "react";
-import {ListComponent} from "../components/ListComponent"
-import renderer from "react-test-renderer";
-import {Provider} from "react-redux";
-import { store } from '../redux/store'
-import {ApolloProvider, ApolloClient, createHttpLink, InMemoryCache} from '@apollo/client';
+import { mount } from "enzyme";
+import * as reactRedux from "react-redux"
+import Enzyme from 'enzyme';
+import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
+import configureStore from 'redux-mock-store'
+import thunk from 'redux-thunk';
+import {Provider, useSelector} from 'react-redux'
+import toJson from "enzyme-to-json";
+import sortReducer from "../redux/sortSlice";
+import selectedTypeReducer from "../redux/TypeSlice";
+import selectedGenReducer from "../redux/generationSlice";
+import searchReducer from "../redux/searchSlice";
+import {ListComponent, GET_POKEMON_DATA} from "../components/ListComponent";
+import { MockedProvider } from '@apollo/client/testing';
 
-const httpLink = createHttpLink({
-    uri: 'http://localhost:4000'
-});
-
-const client = new ApolloClient({
-    link: httpLink,
-    cache: new InMemoryCache()
-});
-
+Enzyme.configure({ adapter: new Adapter() });
 
 describe("Unit test on the ListComponent component", () => {
-    let container: HTMLDivElement;
-    beforeEach(() => {
-        container = document.createElement("div");
-        document.body.appendChild(container);
-
-        ReactDOM.render(
-            <ApolloProvider client={client}>
-                <Provider store={store}>
-                    <ListComponent asGrid={true} />
-                </Provider>
-            </ApolloProvider>, container)
+    let wrapper: any
+    const mockStore = configureStore([thunk])
+    const store = mockStore({
+        reducer: {
+            selectedGen: selectedGenReducer,
+            selectedType: selectedTypeReducer,
+            searchInput: searchReducer,
+            sort: sortReducer
+        }
     })
+    const props = {
+        asGrid: true
+    }
+    const mocks: any[] = [
+        {
+            request: {
+                query: GET_POKEMON_DATA,
+                variables: {
 
+                }
+            }
+        }
+
+    ]
+    //const useSelectorMock = jest.spyOn(reactRedux, "useSelector")
+    //const initialValue = {}
+
+    beforeEach( () => {
+        wrapper = mount(
+            <MockedProvider mocks={mocks} addTypename={false}>
+                <Provider store={store}>
+                    <ListComponent {...props}/>
+                </Provider>
+            </MockedProvider>)
+    })
     afterEach(() => {
-        document.body.removeChild(container);
-        container.remove();
-        jest.resetAllMocks();
+        //useSelectorMock.mockClear()
+        //useSelectorMock.mockReturnValue(initialValue)
+        store.clearActions()
     })
 
-    it("matches snapshot for component", () => {
-        const tree = renderer.create(
-            <ApolloProvider client={client}>
-                <Provider store={store}>
-                    <ListComponent asGrid={true} />
-                </Provider>
-            </ApolloProvider>).toJSON()
-        expect(tree).toMatchSnapshot()
+    it("renders", () => {
+        expect(wrapper).not.toBeNull()
     })
-
-    it("renders listingComponents", ()=> {
-        const numberOfListings = container.querySelectorAll("div").length
-        expect(numberOfListings).toBeGreaterThan(0)
-    })
-
 })

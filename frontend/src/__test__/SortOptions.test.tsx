@@ -9,7 +9,6 @@ import {Provider, useSelector} from 'react-redux'
 import toJson from "enzyme-to-json";
 import sortReducer from '../redux/sortSlice'
 import { SortOptions } from "../components/SortOptions";
-import {RootState} from "../redux/store";
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -18,7 +17,9 @@ describe("Test the SortOptions Component", () => {
   let wrapper: any
   const mockStore = configureStore([thunk])
   const store = mockStore({
-    sort: sortReducer
+    reducer: {
+      sort: sortReducer
+    }
   })
   const useSelectorMock = jest.spyOn(reactRedux, "useSelector")
   const initialValue = {type: "pokedexNr", ordering: "asc"}

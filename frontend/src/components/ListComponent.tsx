@@ -8,19 +8,7 @@ import gql from 'graphql-tag';
 import {useSelector} from 'react-redux';
 import {RootState} from '../redux/store';
 
-export function ListComponent(props: {
-  asGrid: boolean
-}) {
-
-  const [nextQueryIds, setNextQueryIds] = useState<any[]>([null, null])
-  const [pageCounter, setPageCounter] = useState<number>(1)
-
-  interface PokemonSimpleData {
-    pokemons: PokemonSimple[]
-  }
-
-
-  const GET_POKEMON_DATA = gql`
+export const GET_POKEMON_DATA = gql`
   query($orderBy: [PokemonOrderByInput!], $where: PokemonWhereInput, $first: Int, $after: PokemonWhereUniqueInput, $last: Int, $before: PokemonWhereUniqueInput) {
     pokemons(orderBy: $orderBy, where: $where, first: $first, after: $after, last: $last, before: $before,) {
       id
@@ -32,6 +20,18 @@ export function ListComponent(props: {
     }
   }
   `;
+
+export function ListComponent(props: {
+  asGrid: boolean
+}) {
+
+  const [nextQueryIds, setNextQueryIds] = useState<any[]>([null, null])
+  const [pageCounter, setPageCounter] = useState<number>(1)
+
+  interface PokemonSimpleData {
+    pokemons: PokemonSimple[]
+  }
+
 
   const searchInput = useSelector((state: RootState) => state.searchInput.value)
   const selectedGen = useSelector((state: RootState) => state.selectedGen.value.filter(element => element.selected).map(element => element.id + 1))
