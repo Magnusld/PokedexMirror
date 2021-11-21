@@ -96,6 +96,7 @@ export function ListComponent(props: {
    */
   function showListing(pokeList: any[] | undefined) {
     if(pokeList != undefined) {
+      console.log(pokeList)
       return pokeList.map((pokemon : PokemonSimple, i) => (
         <ListingComponent key={i} asGrid={asGrid} pokemon={pokemon} />
       ))
