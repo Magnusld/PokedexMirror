@@ -1,9 +1,41 @@
-# ReactPokedex
+# ReactPokedex 
 
 
 ### Oppsett av prosjekt
 Informasjon om hvordan man setter opp prosjektet lokalt ligger i de indre README.md filene under frontend og backend. Dette gjelder også kjøring av testene, både komponent- og enhetstester, samt end-2-end tester.
 
+# Prosjekt 4
+For prosjekt 4 valgte vi oppgave b., enhets- og integrasjonstesting i frontend og backend.
+
+## Frontend:
+Her har det vært mest fokus på testing, men også noen forbedringer.
+Forbedringer
+Siden for mer info om valgt pokemon fikk noen endringer. Øverst på siden er det lagt til en tilbake-knapp. I tilbakemelding fra prosjekt 3 var dette noe flere mente kunne vært forbedret. En slik knapp er også noe som har blitt vanligere i moderne websider og apper. 
+På denne siden endret vi også hvordan vurderinger av pokemon fungerer. Før måtte man “refreshe” siden for å kunne se sin vurdering reflektert i “andres vurdering”. Nå oppdateres dette med en gang man endrer sin egen vurdering. 
+
+### Testing
+For å gjøre testing i frontend har vi for det meste brukt Jest, React testing library, Enzyme og noen mindre bibliotek for testing: Redux-mock-store, react-test-renderer. Vi testet de viktigste komponentene og sidene, og viktig funksjonalitet som konvertering av liste med pokemontyper til ikoner.
+
+#### Enzyme
+Enzyme er et react test utility bibliotek laget av AirBnB. Vi bruker det for å enklere kunne mounte og simulere bruker interaksjon i enhetstester. 
+
+### Cypress
+Her ble det lagt til enda flere tester. Disse testet spesifikt funksjonaliteten til sortering, paginering og rating av pokemon. Det er også laget noen tester som bruker en mocked database lokalt i backend. Den brukes for det meste til å teste rating av pokemon, slik at man får samme resultat hver gang testen kjøres. Databasen må da altså restartes hver gang testing av mocked datasett skal gjøres. Grunnen til at vi bruker enda flere end-to-end tester er fordi vi føler de er veldig verdifulle tester. Dette fordi vi får testet hvordan nettsiden virker utad til brukeren, men også at alt “under panseret” fungerer på rett måte. 
+
+
+## Backend:
+I backend bruker vi jest for både enhetstesting og integrasjonstester. Enhetstestingen er ikke spesielt omfattende, mye fordi koden som faktisk kjører er generert, og denne vil selv håndtere feil, som f.eks. dårlig utformede queries mot endpoint eller feil typer på args. 
+
+Enhetstestene består derfor i hovedsak av at kall/svar fra database blir mocket, og at tilsvarende resolvers bruker riktig kall mot database og videreformidler svaret uten feil. Hvis vi hadde flere domenespesifikke begrensninger (som ikke databasen håndterer) som ble enforcet av server, kunne en annen ting vi burde teste her være hvorvidt logikken fanger opp disse tilfellene og returnerer riktig på bakgrunn av dette. Et eksempel ville vært vurderingsfeaturen i frontend, hvor vi per nå ikke har noen begrensning på tallet som kan settes på en vurdering, men siden fokuset var på å skrive og ev. forbedre eksisterende tester for dette prosjektet, så ble dette nedprioritert.
+
+Hver av integrasjonstestene kjører opp en egen instans av serveren samt en egen sqlite-databasefil for å teste at queries gir forventet svar med samme datasett. Videre er det også tester som skal sikre at riktig utformede mutations endrer eller legger til nye entries med korrekt data, samt at disse endringene faktisk blir lagret i database, og ikke kun i minne på server.
+
+En av utfordringene vi ikke fikk løst direkte med testing i backend er at integrasjonstestene per nå må kjøres sekvensielt. Dette fordi vi ikke fant en god løsning for vårt valg av ORM, Prisma, og sqlite som database. Kort forklart så gjør måten Prisma fungerer på sammen med sqlite det vanskelig å kjøre opp parallelle serverinstanser med forskjellige skjemaer slik vi løste det i prosjekt 3, og med tiden vi hadde til disposisjon valgte vi heller å fokusere på å få på plass tester. Siden hver av testene initialiserer en egen server som også må avsluttes på korrekt vis, så gjør det at alle testene per nå tar ca. 50 sekunder (testet på stasjonær workstation), mot forventet kjøretid på 15-16 sekunder hvis testene kunne kjørt parallelt. En av løsningene som ble sett på var å bytte til en full database, f.eks. SQL Server, hvor parallelle skjemaer ville vært enklere å benytte, men igjen på grunn av tid, så valgte vi å beholde løsningen vi allerede hadde.
+
+I tillegg til testing, så har også koden i backend blitt omstrukturert for bedre lesbarhet og oversikt, men funksjonelt identisk med backend for prosjekt 3, og derfor er det heller ikke blitt deployet noen ny backend på VM.
+
+
+# Prosjekt 3
 
 ## Frontend
 
