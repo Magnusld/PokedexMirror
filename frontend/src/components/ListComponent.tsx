@@ -8,19 +8,7 @@ import gql from 'graphql-tag';
 import {useSelector} from 'react-redux';
 import {RootState} from '../redux/store';
 
-export function ListComponent(props: {
-  asGrid: boolean
-}) {
-
-  const [nextQueryIds, setNextQueryIds] = useState<any[]>([null, null])
-  const [pageCounter, setPageCounter] = useState<number>(1)
-
-  interface PokemonSimpleData {
-    pokemons: PokemonSimple[]
-  }
-
-
-  const GET_POKEMON_DATA = gql`
+export const GET_POKEMON_DATA = gql`
   query($orderBy: [PokemonOrderByInput!], $where: PokemonWhereInput, $first: Int, $after: PokemonWhereUniqueInput, $last: Int, $before: PokemonWhereUniqueInput) {
     pokemons(orderBy: $orderBy, where: $where, first: $first, after: $after, last: $last, before: $before,) {
       id
@@ -32,6 +20,18 @@ export function ListComponent(props: {
     }
   }
   `;
+
+export function ListComponent(props: {
+  asGrid: boolean
+}) {
+
+  const [nextQueryIds, setNextQueryIds] = useState<any[]>([null, null])
+  const [pageCounter, setPageCounter] = useState<number>(1)
+
+  interface PokemonSimpleData {
+    pokemons: PokemonSimple[]
+  }
+
 
   const searchInput = useSelector((state: RootState) => state.searchInput.value)
   const selectedGen = useSelector((state: RootState) => state.selectedGen.value.filter(element => element.selected).map(element => element.id + 1))
@@ -95,13 +95,14 @@ export function ListComponent(props: {
    * @returns a list with compontents
    */
   function showListing(pokeList: any[] | undefined) {
+
     if(pokeList != undefined) {
       return pokeList.map((pokemon : PokemonSimple, i) => (
         <ListingComponent key={i} asGrid={asGrid} pokemon={pokemon} />
       ))
     }
     else {
-      return <div>Failed!</div>
+      return <div id={"fail"}>Failed!</div>
     }
   }
   function showPrevListings() {
@@ -125,12 +126,10 @@ export function ListComponent(props: {
 
   function showNextListings() {
     setPageCounter(pageCounter + 1)
-
     if (data != undefined) {
       const newAfter: AfterInputFields = {
         id: data.pokemons[data.pokemons.length -1].id
       }
-
       setNextQueryIds([newAfter, null])
     }
   }
@@ -141,10 +140,10 @@ export function ListComponent(props: {
     } else { return "AsList"}
   }
 
-  if (error) return <div>Error! {error.message}</div>;
+  if (error) return <div id={"error"}>Error! {error.message}</div>;
 
   return (
-      <div>
+      <div id="list">
           {loading ? (<p>Loading</p>) : (
             <div className={"list"+chooseClassName()}>
               {showListing(data?.pokemons)}
@@ -152,12 +151,12 @@ export function ListComponent(props: {
           )}
           <div className={"showMore"}>
             <div className={"PageNavButtonGroups"}>
-              <Button className={"showNextButton"} onClick={showFirstListings}>&lt;&lt; Første side</Button>
+              <Button id="firstPageButton" className={"showNextButton"} onClick={showFirstListings}>&lt;&lt; Første side</Button>
             </div>
             <div className={"PageNavButtonGroups"}>
-              <Button className={"showNextButton"} onClick={showPrevListings} disabled={pageCounter==1} > &lt; Forrige side</Button>
+              <Button id="prevPageButton" className={"showNextButton"} onClick={showPrevListings} disabled={pageCounter==1} > &lt; Forrige side</Button>
               <div className="page-counter">{pageCounter}</div>
-              <Button className={"showNextButton"} onClick={showNextListings} disabled={data?.pokemons.length != 15}>Neste side &gt; </Button>
+              <Button id="nextPageButton" className={"showNextButton"} onClick={showNextListings} disabled={data?.pokemons.length != 15}>Neste side &gt; </Button>
             </div>
             <div className={"PageNavButtonGroups"}>
               {/*Funksjonalitet for en annen gang :)*/}

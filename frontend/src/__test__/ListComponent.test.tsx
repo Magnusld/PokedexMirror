@@ -1,54 +1,234 @@
-import * as ReactDOM from 'react-dom';
 import React from "react";
-import {ListComponent} from "../components/ListComponent"
-import renderer from "react-test-renderer";
-import {Provider} from "react-redux";
-import { store } from '../redux/store'
-import {ApolloProvider, ApolloClient, createHttpLink, InMemoryCache} from '@apollo/client';
+import {mount, shallow} from "enzyme";
+import * as reactRedux from "react-redux"
+import Enzyme from 'enzyme';
+import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
+import configureStore from 'redux-mock-store'
+import thunk from 'redux-thunk';
+import {Provider, useSelector} from 'react-redux'
+import toJson from "enzyme-to-json";
+import sortReducer from "../redux/sortSlice";
+import selectedTypeReducer from "../redux/TypeSlice";
+import selectedGenReducer from "../redux/generationSlice";
+import searchReducer from "../redux/searchSlice";
+import {ListComponent, GET_POKEMON_DATA} from "../components/ListComponent";
+import { MockedProvider } from '@apollo/client/testing';
+import {HashRouter as Router, Route, Switch} from 'react-router-dom';
 
-const httpLink = createHttpLink({
-    uri: 'http://localhost:4000'
-});
-
-const client = new ApolloClient({
-    link: httpLink,
-    cache: new InMemoryCache()
-});
+Enzyme.configure({ adapter: new Adapter() });
 
 
 describe("Unit test on the ListComponent component", () => {
-    let container: HTMLDivElement;
-    beforeEach(() => {
-        container = document.createElement("div");
-        document.body.appendChild(container);
-
-        ReactDOM.render(
-            <ApolloProvider client={client}>
-                <Provider store={store}>
-                    <ListComponent asGrid={true} />
-                </Provider>
-            </ApolloProvider>, container)
+    let wrapper: any
+    const mockStore = configureStore([thunk])
+    const store = mockStore({
+        reducer: {
+            selectedGen: selectedGenReducer,
+            selectedType: selectedTypeReducer,
+            searchInput: searchReducer,
+            sort: sortReducer
+        }
     })
+    const initialValue = {
+        selectedGen: [{
+            id: 0, selected: true, name: "Gen " + 1
+        }],
+        selectedType: [
+            {id: 0, selected: true, name: "Grass"},
+            {id: 1, selected: true, name: "Fire"}
+        ],
+        searchInput: "",
+        sort: {type: "pokedexNr", ordering: "asc"}
+    }
+    const mocks: any[] = [
+        {
+            request: {
+                query: GET_POKEMON_DATA,
+                variables: {
+                    "orderBy": {},
+                    "first": 15,
+                    "last": null,
+                    "after": null,
+                    "before": null,
+                    "where": {"type1":{"in":{"selectedGen":[{"id":0,"selected":true,"name":"Gen 1"}],"selectedType":[{"id":0,"selected":true,"name":"Grass"},{"id":1,"selected":true,"name":"Fire"}],"searchInput":"","sort":{"type":"pokedexNr","ordering":"asc"}}},"generation":{"in":{"selectedGen":[{"id":0,"selected":true,"name":"Gen 1"}],"selectedType":[{"id":0,"selected":true,"name":"Grass"},{"id":1,"selected":true,"name":"Fire"}],"searchInput":"","sort":{"type":"pokedexNr","ordering":"asc"}}},"name":{"contains":{"selectedGen":[{"id":0,"selected":true,"name":"Gen 1"}],"selectedType":[{"id":0,"selected":true,"name":"Grass"},{"id":1,"selected":true,"name":"Fire"}],"searchInput":"","sort":{"type":"pokedexNr","ordering":"asc"}}}}
+                    },
+                },
+            result: {
+                data: {
+                    pokemons :[
+                        {__typename: "Pokemon", generation: 1, id: 3, name: "Bulbasaur", pokedexNr: 1, type1: "Grass", type2: "Poison"},
+                        {__typename: "Pokemon", generation: 1, id: 24, name: "Ivysaur", pokedexNr: 2, type1: "Grass", type2: "Poison"},
+                        {__typename: "Pokemon", generation: 1, id: 2, name: "Venusaur", pokedexNr: 3, type1: "Grass", type2: "Poison"},
+                        {__typename: "Pokemon", generation: 1, id: 68, name: "Charmander", pokedexNr: 4, type1: "Fire", type2: ""},
+                        {__typename: "Pokemon", generation: 1, id: 26, name: "Charmeleon", pokedexNr: 5, type1: "Fire", type2: ""}
+                    ]
+                }
+            }
+        }
+
+    ]
+    const useSelectorMock = jest.spyOn(reactRedux, "useSelector")
 
     afterEach(() => {
-        document.body.removeChild(container);
-        container.remove();
-        jest.resetAllMocks();
+        useSelectorMock.mockClear()
+        store.clearActions()
     })
 
-    it("matches snapshot for component", () => {
-        const tree = renderer.create(
-            <ApolloProvider client={client}>
+    it("renders as Grid", async () => {
+        useSelectorMock.mockReturnValue(initialValue)
+        wrapper = await mount(
+            <MockedProvider mocks={mocks} addTypename={false}>
                 <Provider store={store}>
-                    <ListComponent asGrid={true} />
+                    <Router>
+                        <ListComponent asGrid={true}/>
+                    </Router>
                 </Provider>
-            </ApolloProvider>).toJSON()
-        expect(tree).toMatchSnapshot()
+            </MockedProvider>)
+
+        await new Promise(resolve => setTimeout(resolve, 0));
+
+        expect(wrapper).not.toBeNull()
+        expect(toJson(wrapper)).toMatchSnapshot()
     })
 
-    it("renders listingComponents", ()=> {
-        const numberOfListings = container.querySelectorAll("div").length
-        expect(numberOfListings).toBeGreaterThan(0)
+    it("renders as List", async () => {
+        useSelectorMock.mockReturnValue(initialValue)
+        wrapper = await mount(
+            <MockedProvider mocks={mocks} addTypename={false}>
+                <Provider store={store}>
+                    <Router>
+                        <ListComponent asGrid = {false}/>
+                    </Router>
+                </Provider>
+            </MockedProvider>)
+
+        await new Promise(resolve => setTimeout(resolve, 0));
+
+        expect(wrapper).not.toBeNull()
     })
 
+    it("renders correct listings", async () => {
+        useSelectorMock.mockReturnValue(initialValue)
+        wrapper = await shallow(
+            <MockedProvider mocks={mocks} addTypename={false}>
+                <Provider store={store}>
+                    <Router>
+                        <ListComponent asGrid={true}/>
+                    </Router>
+                </Provider>
+            </MockedProvider>)
+
+        await new Promise(resolve => setTimeout(resolve, 0));
+
+        expect(wrapper.find("p")).not.toBeNull()
+    })
+
+    it("handles page changes correctly", async () => {
+        useSelectorMock.mockReturnValue(initialValue)
+        wrapper = await mount(
+            <MockedProvider mocks={mocks} addTypename={false}>
+                <Provider store={store}>
+                    <Router>
+                        <ListComponent asGrid={true}/>
+                    </Router>
+                </Provider>
+            </MockedProvider>)
+
+        await new Promise(resolve => setTimeout(resolve, 0));
+
+        const nextPageButton = wrapper.find("#nextPageButton").at(1)
+        console.log(nextPageButton.html())
+        expect(nextPageButton).not.toBeNull()
+        await nextPageButton.simulate("click")
+        /**
+         * Because we are mocking the response, we are going to get the same pokemon on every page
+         */
+        expect(wrapper.find("div.AsGrid")).toHaveLength(5)
+
+        const prevPageButton = wrapper.find("#prevPageButton").at(1)
+        console.log(prevPageButton.html())
+        expect(prevPageButton).not.toBeNull()
+        await prevPageButton.simulate("click")
+        expect(wrapper.find("div.AsGrid")).toHaveLength(5)
+
+        await nextPageButton.simulate("click")
+        await nextPageButton.simulate("click")
+
+        const firstPageButton = wrapper.find("#firstPageButton").at(0)
+        expect(firstPageButton).not.toBeNull()
+        await firstPageButton.simulate("click")
+        expect(wrapper.find("div.AsGrid")).toHaveLength(5)
+    })
 })
+
+
+describe("Fail to get data", () => {
+    let wrapper: any
+    const mockStore = configureStore([thunk])
+    const store = mockStore({
+        reducer: {
+            selectedGen: selectedGenReducer,
+            selectedType: selectedTypeReducer,
+            searchInput: searchReducer,
+            sort: sortReducer
+        }
+    })
+    const initialValue = {
+        selectedGen: [{
+            id: 0, selected: true, name: "Gen " + 1
+        }],
+        selectedType: [
+            {id: 0, selected: true, name: "Grass"},
+            {id: 1, selected: true, name: "Fire"}
+        ],
+        searchInput: "",
+        sort: {type: "pokedexNr", ordering: "asc"}
+    }
+    const mocks: any[] = [
+        {
+            request: {
+                query: GET_POKEMON_DATA,
+                variables: {
+                    "orderBy": {},
+                    "first": 15,
+                    "last": null,
+                    "after": null,
+                    "before": null,
+                    "where": {"type1":{"in":{"selectedGen":[{"id":0,"selected":true,"name":"Gen 1"}],"selectedType":[{"id":0,"selected":true,"name":"Grass"},{"id":1,"selected":true,"name":"Fire"}],"searchInput":"","sort":{"type":"pokedexNr","ordering":"asc"}}},"generation":{"in":{"selectedGen":[{"id":0,"selected":true,"name":"Gen 1"}],"selectedType":[{"id":0,"selected":true,"name":"Grass"},{"id":1,"selected":true,"name":"Fire"}],"searchInput":"","sort":{"type":"pokedexNr","ordering":"asc"}}},"name":{"contains":{"selectedGen":[{"id":0,"selected":true,"name":"Gen 1"}],"selectedType":[{"id":0,"selected":true,"name":"Grass"},{"id":1,"selected":true,"name":"Fire"}],"searchInput":"","sort":{"type":"pokedexNr","ordering":"asc"}}}}
+                },
+            },
+            result: {
+                data: undefined,
+                error: {
+                    message: "Simulated error"
+                }
+            }
+        }
+
+    ]
+    const useSelectorMock = jest.spyOn(reactRedux, "useSelector")
+
+    afterEach(() => {
+        useSelectorMock.mockClear()
+        store.clearActions()
+    })
+
+    it("receives no data", async () => {
+
+        useSelectorMock.mockReturnValue(initialValue)
+        wrapper = await mount(
+            <MockedProvider mocks={mocks} addTypename={false}>
+                <Provider store={store}>
+                    <Router>
+                        <ListComponent asGrid = {true}/>
+                    </Router>
+                </Provider>
+            </MockedProvider>)
+
+        await new Promise(resolve => setTimeout(resolve, 0));
+
+        expect(wrapper.find("#fail")).not.toBeNull()
+        expect(wrapper.find("#error")).not.toBeNull()
+    })
+})
+
