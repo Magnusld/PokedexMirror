@@ -5,7 +5,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {GenOptionsComponent} from "./components/GenOptionsComponent";
 import {TypeOptionComponent} from "./components/TypeOptionComponent";
 import {ListComponent} from "./components/ListComponent";
-//import {Generation} from "./types";
 import Info from './pages/Info';
 import {SortOptions} from './components/SortOptions';
 
