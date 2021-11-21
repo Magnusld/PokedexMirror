@@ -1,7 +1,7 @@
 {
   "name": "frontend",
   "version": "0.1.0",
-  "homepage": "prosjekt3",
+  "homepage": "prosjekt4",
   "private": true,
   "dependencies": {
     "@apollo/client": "^3.4.16",
