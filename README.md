@@ -13,8 +13,10 @@ Forbedringer
 Siden for mer info om valgt pokemon fikk noen endringer. Øverst på siden er det lagt til en tilbake-knapp. I tilbakemelding fra prosjekt 3 var dette noe flere mente kunne vært forbedret. En slik knapp er også noe som har blitt vanligere i moderne websider og apper. 
 På denne siden endret vi også hvordan vurderinger av pokemon fungerer. Før måtte man “refreshe” siden for å kunne se sin vurdering reflektert i “andres vurdering”. Nå oppdateres dette med en gang man endrer sin egen vurdering. 
 
+
 ### Testing
-For å gjøre testing i frontend har vi for det meste brukt Jest, React testing library, Enzyme og noen mindre bibliotek for testing: Redux-mock-store, react-test-renderer. Vi testet de viktigste komponentene og sidene, og viktig funksjonalitet som konvertering av liste med pokemontyper til ikoner.
+For å gjøre testing i frontend har vi for det meste brukt Jest, React testing library, Enzyme og noen mindre bibliotek for testing: Redux-mock-store, react-test-renderer. Vi testet de viktigste komponentene og sidene, og viktig funksjonalitet som konvertering av liste med pokemontyper til ikoner. I Enhetstestene har vi testet de komponentene og funksjonen vi har lagd selv, det blir dog brukt en del tredjepartsbibliotek noe som fører til at test-dekningsgraden ikke blir 100 av enhetstestene.
+
 
 #### Enzyme
 Enzyme er et react test utility bibliotek laget av AirBnB. Vi bruker det for å enklere kunne mounte og simulere bruker interaksjon i enhetstester. 
