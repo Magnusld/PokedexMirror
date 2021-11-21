@@ -34,11 +34,16 @@ describe("Test the SortOptions Component", () => {
   it("renders", () => {
     expect(wrapper).not.toBeNull()
     expect(toJson(wrapper)).toMatchSnapshot()
+    expect(wrapper.find("h3").text()).toEqual("Sortering")
   })
 
   it("dispatches change on type correctly", () => {
     const typeSortSelector = wrapper.find("select.sort-select.form-select").at(0)
     expect(typeSortSelector).not.toBeNull()
+    const options = typeSortSelector.find("option")
+    expect(options).toHaveLength(2)
+    expect(options.at(0).text()).toEqual("Nummer")
+    expect(options.at(1).text()).toEqual("Navn")
     typeSortSelector.simulate("change", {
       target: {value: "name"}
     })

@@ -1,9 +1,8 @@
-import React, {useState} from 'react';
+import React from 'react';
 import '../style/App.css';
-import {Button, Form, ToggleButton} from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import {RootState} from "../redux/store";
 import {useDispatch, useSelector} from "react-redux";
-import {setAllGensFalse, swapSelectedGen} from "../redux/generationSlice";
 import { changeSortOrder, changeSortType } from '../redux/sortSlice';
 
 export function SortOptions() {
@@ -50,9 +49,7 @@ export function SortOptions() {
                     <option value="desc">Synkende</option>
                 </Form.Select>
             </div>
-            
           </div>
-          
         </div>
       </div>
   )
