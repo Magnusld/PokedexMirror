@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import '../style/App.css';
-import {Button, Form, ToggleButton} from "react-bootstrap";
+import {Button, ToggleButton} from "react-bootstrap";
 import {ReactComponent as Bug} from "../assets/typeIconsSvg/Pokémon_Bug_Type_Icon.svg";
 import {ReactComponent as Dark} from "../assets/typeIconsSvg/Pokémon_Dark_Type_Icon.svg";
 import {ReactComponent as Dragon} from "../assets/typeIconsSvg/Pokémon_Dragon_Type_Icon.svg";
@@ -22,10 +22,8 @@ import {ReactComponent as Water} from "../assets/typeIconsSvg/Pokémon_Water_Typ
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../redux/store";
 import {setAllTypesFalse, setAllTypesTrue, swapSelectedType} from "../redux/TypeSlice";
-import {setAllGensTrue} from "../redux/generationSlice";
 
 export function TypeOptionComponent() {
-  const [checked, setChecked] = useState(false) // Temp variabel
   const selectedType = useSelector((state: RootState) => state.selectedType.value)
   const dispatch = useDispatch()
 
@@ -40,7 +38,7 @@ export function TypeOptionComponent() {
             <h3 style={{textAlign: "left", marginTop: 10}}>Type</h3>
           </div>
           <div className={"optionsButtonsContainer"}>
-            <ToggleButton className="mb-2"
+            <ToggleButton className="mb-2 bug"
                           type="checkbox" value="1"
                           checked={selectedType[0].selected}
                           variant="outline-primary"

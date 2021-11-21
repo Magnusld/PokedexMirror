@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`queries to Pokemon should match snapshots 1`] = `
+Object {
+  "pokemons": Array [
+    Object {
+      "__typename": "Pokemon",
+      "id": 1,
+      "name": "TestPokemon2",
+      "pokedexNr": 1,
+    },
+    Object {
+      "__typename": "Pokemon",
+      "id": 0,
+      "name": "TestPokemon1",
+      "pokedexNr": 5,
+    },
+  ],
+}
+`;
+
+exports[`queries to Pokemon should match snapshots 2`] = `
+Object {
+  "pokemons": Array [
+    Object {
+      "__typename": "Pokemon",
+      "id": 0,
+      "name": "TestPokemon1",
+      "pokedexNr": 5,
+    },
+    Object {
+      "__typename": "Pokemon",
+      "id": 1,
+      "name": "TestPokemon2",
+      "pokedexNr": 1,
+    },
+  ],
+}
+`;

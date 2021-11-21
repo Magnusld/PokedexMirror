@@ -1,0 +1,131 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test of TopBar component renders 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <TopBar
+    asGrid={true}
+    setAsGrid={[MockFunction]}
+    setShowGenSelection={[MockFunction]}
+    setShowSorting={[MockFunction]}
+    setShowTypeSelection={[MockFunction]}
+    showGenSelection={false}
+    showSorting={false}
+    showTypeSelection={false}
+  >
+    <nav>
+      <div
+        className="topbar"
+      >
+        <div>
+          <input
+            className="search"
+            onChange={[Function]}
+            placeholder="Søk"
+          />
+          <ForwardRef(SvgSearchBlack24Dp)
+            style={
+              Object {
+                "fill": "#F5F5F5",
+                "height": 35,
+                "width": 35,
+              }
+            }
+          >
+            <svg
+              style={
+                Object {
+                  "fill": "#F5F5F5",
+                  "height": 35,
+                  "width": 35,
+                }
+              }
+            >
+              search_black_24dp.svg
+            </svg>
+          </ForwardRef(SvgSearchBlack24Dp)>
+        </div>
+        <div
+          className="advanced"
+        >
+          <Button
+            active={false}
+            disabled={false}
+            onClick={[Function]}
+            variant="outline-light"
+          >
+            <button
+              className="btn btn-outline-light"
+              disabled={false}
+              onClick={[Function]}
+              type="button"
+            >
+              Innstillinger
+            </button>
+          </Button>
+        </div>
+        <div
+          className="list-grid-swap"
+        >
+          <ForwardRef(SvgListBlack24Dp)
+            className=""
+            onClick={[Function]}
+            style={
+              Object {
+                "height": 35,
+                "width": 35,
+              }
+            }
+          >
+            <svg
+              className=""
+              onClick={[Function]}
+              style={
+                Object {
+                  "height": 35,
+                  "width": 35,
+                }
+              }
+            >
+              list_black_24dp.svg
+            </svg>
+          </ForwardRef(SvgListBlack24Dp)>
+          <ForwardRef(SvgAppsBlack24Dp)
+            className="active"
+            onClick={[Function]}
+            style={
+              Object {
+                "height": 35,
+                "width": 35,
+              }
+            }
+          >
+            <svg
+              className="active"
+              onClick={[Function]}
+              style={
+                Object {
+                  "height": 35,
+                  "width": 35,
+                }
+              }
+            >
+              apps_black_24dp.svg
+            </svg>
+          </ForwardRef(SvgAppsBlack24Dp)>
+        </div>
+      </div>
+    </nav>
+  </TopBar>
+</Provider>
+`;

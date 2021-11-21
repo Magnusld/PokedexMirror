@@ -1,0 +1,106 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test the SortOptions Component renders 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <SortOptions>
+    <div
+      style={
+        Object {
+          "display": "flex",
+          "justifyContent": "center",
+          "width": "100%",
+        }
+      }
+    >
+      <div
+        className="filteringOptionsContainer sortOptions"
+      >
+        <div>
+          <h3
+            style={
+              Object {
+                "marginTop": 10,
+              }
+            }
+          >
+            Sortering
+          </h3>
+        </div>
+        <div
+          className="sort-form-select"
+        >
+          <div
+            className="sort-inner-select"
+          >
+            <h4>
+              Type
+            </h4>
+            <FormSelect
+              aria-label="Sorting type"
+              className="sort-select"
+              onChange={[Function]}
+            >
+              <select
+                aria-label="Sorting type"
+                className="sort-select form-select"
+                onChange={[Function]}
+              >
+                <option
+                  value="pokedexNr"
+                >
+                  Nummer
+                </option>
+                <option
+                  value="name"
+                >
+                  Navn
+                </option>
+              </select>
+            </FormSelect>
+          </div>
+          <div
+            className="sort-inner-select"
+          >
+            <h4>
+              Rekkefølge
+            </h4>
+            <FormSelect
+              aria-label="Sorting order"
+              className="sort-select"
+              onChange={[Function]}
+            >
+              <select
+                aria-label="Sorting order"
+                className="sort-select form-select"
+                onChange={[Function]}
+              >
+                <option
+                  value="asc"
+                >
+                  Stigende
+                </option>
+                <option
+                  value="desc"
+                >
+                  Synkende
+                </option>
+              </select>
+            </FormSelect>
+          </div>
+        </div>
+      </div>
+    </div>
+  </SortOptions>
+</Provider>
+`;

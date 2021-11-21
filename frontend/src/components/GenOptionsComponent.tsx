@@ -6,7 +6,6 @@ import {useDispatch, useSelector} from "react-redux";
 import {setAllGensFalse, setAllGensTrue, swapSelectedGen} from "../redux/generationSlice";
 
 export function GenOptionsComponent() {
-  const [checked, setChecked] = useState(false)
   const selectedGen = useSelector((state: RootState) => state.selectedGen.value)
   const dispatch = useDispatch()
 

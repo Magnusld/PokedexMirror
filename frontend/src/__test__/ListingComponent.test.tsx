@@ -31,7 +31,7 @@ describe("Test that a listing renders correctly", () => {
     })
 
     it("Snapshottest of component", () => {
-        const tree = renderer.create(<Router> <ListingComponent asGrid={true} pokemon={charmander} key={1}/> </Router>).toJSON
+        const tree = renderer.create(<Router> <ListingComponent asGrid={true} pokemon={charmander} key={1}/> </Router>).toJSON()
         expect(tree).toMatchSnapshot()
     })
 
