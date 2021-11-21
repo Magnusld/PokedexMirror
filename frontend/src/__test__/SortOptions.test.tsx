@@ -5,10 +5,11 @@ import Enzyme from 'enzyme';
 import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 import configureStore from 'redux-mock-store'
 import thunk from 'redux-thunk';
-import {Provider} from 'react-redux'
+import {Provider, useSelector} from 'react-redux'
 import toJson from "enzyme-to-json";
 import sortReducer from '../redux/sortSlice'
 import { SortOptions } from "../components/SortOptions";
+import {RootState} from "../redux/store";
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -62,5 +63,4 @@ describe("Test the SortOptions Component", () => {
     const actions = store.getActions()
     expect(actions).toEqual([expectedDispatch])
   })
-
 })
